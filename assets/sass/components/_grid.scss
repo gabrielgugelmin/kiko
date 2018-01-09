@@ -1,0 +1,72 @@
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    display: inline-block;
+    width: 50%;
+
+    &:hover {
+      text-decoration: none;
+
+      .grid__desc {
+        background-color: $c-gray;
+
+        h3,
+        p,
+        .grid__price {
+          color: $c-white;
+        }
+      }
+    }
+
+    @include media(">=tablet") {
+      width: 25%;
+    }
+  }
+
+  &__img {
+    height: 200px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  &__desc {
+    background-color: $c-white;
+    letter-spacing: .8px;
+    padding: 15px 20px 30px;
+    text-align: center;
+    transition: $dt;
+
+    @include media(">=tablet") {
+      padding: 15px 30px 40px;
+    }
+    
+    h3,
+    p {
+      color: $c-gray;     
+      font-weight: fw("bold"); 
+      margin: 0;
+      text-transform: uppercase;
+      transition: $dt;
+    }
+
+    h3 {
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    p {
+      font-size: 10px;
+    }
+  }
+
+  &__price {
+    color: $c-red;
+    font-weight: fw("bold");
+    font-size: 16px;;
+    margin-top: 15px;
+    transition: $dt;
+  }
+}

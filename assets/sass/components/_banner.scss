@@ -1,0 +1,11 @@
+.banner {
+  background-color: $c-gray-light;
+  height: 430px;
+
+  &__item {
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}

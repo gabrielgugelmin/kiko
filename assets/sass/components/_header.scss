@@ -1,0 +1,39 @@
+.header {
+
+  &-top {
+    background-color: $c-gray;
+    display: flex;
+    padding: 20px 0;
+
+    &__content {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &-bottom {
+    background-color: $c-white;
+    padding: 40px 0;
+
+    &__content {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+
+      @include media(">=desktop") {
+        justify-content: space-between;
+      }
+    }
+  }
+
+  
+
+  &__slogan {
+    color: $c-white;
+    font-size: 12px;
+    font-weight: fw("regular");
+    letter-spacing: 2px;
+  }
+}

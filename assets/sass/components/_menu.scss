@@ -1,0 +1,32 @@
+.menu {
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__item {
+    padding: 0 10px;
+
+    &:hover {
+      .menu__link {
+        color: $c-red;
+      }
+    }
+  }
+
+  &__link {
+    color: $c-black;
+    font-size: 12px;
+    font-weight: fw("semibold");
+    text-transform: uppercase;
+    transition: $dt;
+
+    img {
+      width: 20px;
+    }
+  }
+}
