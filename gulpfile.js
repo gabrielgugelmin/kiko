@@ -8,12 +8,25 @@ var gulp = require('gulp'),
     gulpSequence = require('gulp-sequence'),
     uglifycss = require('gulp-uglifycss'),
     uglifyjs = require('gulp-uglifyjs'),
-    autoprefixer = require('gulp-autoprefixer');
+    autoprefixer = require('gulp-autoprefixer'),
+    browserSync = require('browser-sync').create();
 
 var path = 'assets/';
 
 gulp.task('default', ['watch', 'sequence'], function() {
-    
+  
+});
+
+gulp.task('serve', ['styles'], function () {
+
+  browserSync.init({
+    server: "./"
+  });
+
+  gulp.watch(path + 'sass/**/*.scss', ['styles']);
+  gulp.watch(path + 'css/style.css', ['concatcss']);
+  gulp.watch(path + 'js/js.js', ['uglifyjs']);
+  gulp.watch('*.html').on('change', browserSync.reload);
 });
 
 gulp.task('sequence', gulpSequence('styles', 'uglifyjs'));
@@ -32,20 +45,14 @@ gulp.task('styles', function() {
       ],
     }))
     .pipe(gulp.dest(path + 'css/'))
-    .pipe(livereload());
+    .pipe(browserSync.stream());
 });
 
 gulp.task('watch', function() {
-  livereload.listen();
-    gulp.watch('*.html', ['html']);
-    gulp.watch(path + 'sass/**/*.scss', ['styles']);
-    gulp.watch(path + 'css/style.css',['concatcss']);
-    gulp.watch(path + 'js/js.js', ['uglifyjs']);
-});
-
-gulp.task('html', function() {
-  return gulp.src('**.html')
-  .pipe(livereload());
+  gulp.watch(path + 'sass/**/*.scss', ['styles']);
+  gulp.watch(path + 'css/style.css',['concatcss']);
+  gulp.watch(path + 'js/js.js', ['uglifyjs']);
+  gulp.watch('*.html', ['html']);
 });
 
 gulp.task('uglifyjs', function () {
@@ -53,14 +60,14 @@ gulp.task('uglifyjs', function () {
     .pipe(concat('js.min.js'))
     .pipe(uglifyjs())
     .pipe(gulp.dest('assets/js/'))
-    .pipe(livereload());
+    .pipe(browserSync.stream());
 });
 
 gulp.task('concatcss', function () {
   gulp.src([path + 'css/*.css', '!assets/css/style.min.css'])
     .pipe(concat('style.min.css'))
     .pipe(uglifycss())
-    .pipe(gulp.dest(path + 'css/'))
-    //.pipe(notify({ message: 'Styles task complete' }))
-    .pipe(livereload());
+    .pipe(browserSync.stream());
 });
+
+gulp.task('default', ['serve']);
