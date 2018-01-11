@@ -67,6 +67,10 @@ body {
   &__content {
     padding: 50px 0 70px;
     width: 100%;
+
+    &--top {
+      padding-bottom: 0;
+    }
   }
 
   &__header {
@@ -86,6 +90,10 @@ body {
       margin-bottom: 25px;
       line-height: 1.3;
       text-transform: uppercase;
+
+      @include media(">=desktop") {
+        letter-spacing: 14px;
+      }
     }
 
     p {
@@ -94,6 +102,25 @@ body {
       font-weight: fw("regular");
       letter-spacing: 1px;
       line-height: 1.2;
+    }
+  }
+}
+
+.k-container {
+  margin: 0 auto;
+
+  @include media("<desktop") {
+    max-width: 95%;
+  }
+
+  max-width: 1030px;
+}
+
+.newsletter {
+  .form__control {
+    
+    @include media(">=desktop") {
+      width: 33.333%;
     }
   }
 }

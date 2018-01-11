@@ -1,0 +1,36 @@
+.form {
+  display: flex;
+
+  &__control {
+    position: relative;
+  }
+  
+  &__error {
+    color: $c-red;
+    font-weight: fw("bold");
+    position: absolute;
+    right: 8px;
+    top: 5px;
+  }
+
+  &--inline {
+    justify-content: center;
+    
+    .form__control {
+      margin-right: 20px;
+    }
+  }
+}
+
+.input,
+.textarea {
+  @include placeholder {
+    font-style: italic;
+  }
+
+  border: 2px solid $c-gray-darker;
+  color: $c-gray-dark;
+  font-size: 15px;
+  padding: 10px;
+  width: 100%;
+}

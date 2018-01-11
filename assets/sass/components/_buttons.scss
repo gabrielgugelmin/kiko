@@ -5,14 +5,35 @@
   display: inline-block;
   font-size: 14px;
   font-weight: fw("bold");
-  transition: $dt;
-  padding: 8px 15px;
   letter-spacing: 4px;
+  padding: 8px 15px;
+  text-transform: uppercase;
+  transition: $dt;
 
   &:hover {
     background-color: darken($c-red, 8%);
     color: $c-white;
     text-decoration: none;
+  }
+
+  &--arrow {
+    padding: 8px 30px 8px 15px;
+
+    &::after {
+      border-color: transparent transparent transparent #ffffff;
+      border-style: solid;
+      border-width: 5px 0 5px 10px;
+      content: "";
+      display: inline-block;
+      height: 0;
+      left: 15px;
+      position: relative;
+      width: 0;
+    }
+  }
+
+  &--large {
+    padding: 13px 40px 13px 25px;
   }
 
   &--huge {
@@ -30,17 +51,5 @@
     }
   }
 
-  &--arrow {
-    &::after {
-      border-color: transparent transparent transparent #ffffff;
-      border-style: solid;
-      border-width: 5px 0 5px 10px;
-      content: "";
-      display: inline-block;
-      height: 0;
-      left: 15px;
-      position: relative;
-      width: 0;
-    }
-  }
+  
 }
