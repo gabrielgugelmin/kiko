@@ -19,6 +19,10 @@ body {
   background-color: #616161;  
 }
 
+.container {
+  max-width: 100%;
+}
+ 
 .page-wrapper {
   box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.6);
   background-color: $c-gray-lighter;
@@ -117,10 +121,27 @@ body {
 }
 
 .newsletter {
-  .form__control {
-    
-    @include media(">=desktop") {
-      width: 33.333%;
+
+  .form {
+    margin-bottom: 50px;
+
+    &__control {
+      &:last-child {
+        margin-right: 0;
+      }
+
+      @include media(">=tablet") {
+        width: 33.333%;
+      }
     }
+  }
+
+  &__small {
+    color: $c-gray-dark;
+    display: block;
+    font-size: 12px;
+    font-weight: fw("bold");
+    letter-spacing: 2px;
+    text-align: center;
   }
 }

@@ -1,0 +1,61 @@
+.instafeed {
+  display: flex;
+  margin: 60px auto 0;
+  flex-wrap: wrap;
+
+  &__item {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    height: 115px;
+    position: relative;
+    width: 50%;
+    
+    @include media(">=phone") {
+      height: 33%;
+      width: 33%;
+    }
+
+    @include media(">=tablet") {
+      height: 220px;
+      width: 20%;
+    }
+
+
+    &:hover {
+      a {
+        &::after{
+          opacity: 0;
+        }
+      }
+    }
+
+    a {
+      display: block;
+      height: 100%;
+      position: relative;
+
+      &::after {
+        background: rgba($c-red, .28);
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        transition: $dt;
+        z-index: 1;
+      }
+    }
+  }
+
+  &__link {
+    font-size: 16px;
+    letter-spacing: 2px;
+    margin-top: -22px;
+    position: relative;
+    text-align: center;
+    top: -40px;
+  }
+}

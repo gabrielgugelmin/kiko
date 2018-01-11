@@ -1,15 +1,45 @@
 .header {
 
+  @include media("<desktop") {
+    background: $c-white;
+    box-shadow: 0 0 5px 2px rgba($c-black, .3);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    left: 0;
+    max-width: 340px;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    transition: $dt;
+    transform: translateX(-360px);
+
+    &--open {
+      transform: translateX(0);
+    }
+  }
+
   &-top {
     background-color: $c-gray;
-    display: flex;
+    margin-top: auto;
+    order: 1;
     padding: 20px 0;
+    text-align: center;
+
+    @include media(">=desktop") {
+      order: 0;
+      margin-top: 0;
+    }
 
     &__content {
       align-items: center;
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+      flex-direction: column;
+      
+      @include media(">=desktop") {
+        flex-direction: row;
+        justify-content: space-between;
+      }
     }
   }
 
@@ -20,20 +50,30 @@
     &__content {
       align-items: center;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
 
       @include media(">=desktop") {
         justify-content: space-between;
+        flex-direction: row;
       }
     }
   }
 
-  
+  &__logo {
+    margin-bottom: 60px;
+    max-width: 80%;
+
+    @include media(">=desktop") {
+      margin-bottom: 0;
+      max-width: 100%;
+    }
+  }  
 
   &__slogan {
     color: $c-white;
     font-size: 12px;
     font-weight: fw("regular");
     letter-spacing: 2px;
+    margin-bottom: 10px;
   }
 }

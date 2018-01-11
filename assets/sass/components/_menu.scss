@@ -1,11 +1,20 @@
 .menu {
+  width: 100%;
+  
+  @include media(">=desktop") {
+    width: auto;
+  }
 
   &__list {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding: 0;
     margin: 0;
     list-style: none;
+
+    @include media(">=desktop") {
+      flex-direction: row;
+    }
   }
 
   &__item {
@@ -20,10 +29,19 @@
 
   &__link {
     color: $c-black;
-    font-size: 12px;
+    display: block;
+    font-size: 16px;
     font-weight: fw("semibold");
     text-transform: uppercase;
     transition: $dt;
+    text-align: center;
+    padding: 10px 0;
+
+    @include media(">=desktop") {
+      display: inline-block;
+      font-size: 12px;
+      padding: 0;
+    }
 
     img {
       width: 20px;

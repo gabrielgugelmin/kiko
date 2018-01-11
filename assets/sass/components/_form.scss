@@ -1,8 +1,11 @@
 .form {
   display: flex;
+  flex-direction: column;
 
   &__control {
     position: relative;
+    margin-bottom: 15px;
+    width: 100%;
   }
   
   &__error {
@@ -15,6 +18,10 @@
 
   &--inline {
     justify-content: center;
+
+    @include media(">=tablet") {
+      flex-direction: row;
+    }
     
     .form__control {
       margin-right: 20px;

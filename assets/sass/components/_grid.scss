@@ -45,16 +45,20 @@
   }
 
   &__img {
-    height: 120px;
+    height: 180px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 
-    @include media(">=tablet") {
-      height: 130px;
+    @include media(">=phone") {
+      height: 200px;
     }
 
     @include media(">=tablet") {
+      height: 160px;
+    }
+
+    @include media(">=desktop") {
       height: 200px;
     }
   }

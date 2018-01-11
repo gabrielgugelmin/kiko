@@ -55,16 +55,19 @@
     flex-direction: column;
 
     .media__item {
-      flex-direction: row;
-    }
-    
-    .media__item {
       align-items: center;
+      flex-direction: column;
       height: 235px;
       width: 100%;
 
-      &:nth-child(even) {
-        flex-direction: row-reverse;
+      
+
+      @include media(">=tablet") {
+        flex-direction: row;
+
+        &:nth-child(even) {
+          flex-direction: row-reverse;
+        }
       }
     }
 
@@ -94,10 +97,14 @@
 
     .media__title {
       color: $c-white;
-      font-size: 30px;
+      font-size: 16px;
       font-weight: fw("bold");
       letter-spacing: 10px;
       margin: 0;
+
+      @include media(">=tablet") {
+        font-size: 30px;
+      }
     }
   }
 }
