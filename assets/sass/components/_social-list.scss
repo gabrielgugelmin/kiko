@@ -20,4 +20,14 @@
   .icon-text {
     margin-left: 20px;
   }
+
+  &--big {
+    .social__item {
+      margin: 0 10px;
+
+      img {
+        width: 24px;
+      }
+    }
+  }
 }

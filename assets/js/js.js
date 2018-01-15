@@ -1,4 +1,17 @@
 $(function() {
+  // Ajusta header-top
+  if (checkWindowWidth() == 'mobile') {
+    $('.header-top').detach().appendTo('.header-bottom');
+  }
+
+  $(window).on('resize', function () {
+    if (checkWindowWidth() == 'mobile') {
+      $('.header-top').detach().appendTo('.header-bottom');
+    } else {
+      $('.header-top').detach().prependTo('.header');
+    }
+  });
+
   // Banner principal
   $('.js-banner-slider').slick({
     arrows: false
@@ -31,6 +44,18 @@ $(function() {
     ]
   });
 
+  // MENU
+  // click no hamburguer icon
+  $('.hamburger').on('click', function (e) {
+    e.preventDefault();
+
+    if ($('.header').hasClass('header--open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
   // Instagram
   if ($('#instafeed').length) {
 
@@ -45,3 +70,36 @@ $(function() {
     feed.run();
   }
 });
+
+function closeMenu() {
+  $('.header').removeClass('header--open');
+  $('.hamburger').removeClass('is-open');
+  $('body').removeClass('overflowHidden');
+}
+
+function openMenu() {
+  $('.hamburger').addClass('is-open');
+  $('.header').addClass('header--open');
+  $('body').addClass('overflowHidden');
+}
+
+function viewport() {
+  var e = window, a = 'inner';
+  if (!('innerWidth' in window)) {
+    a = 'client';
+    e = document.documentElement || document.body;
+  }
+  return { width: e[a + 'Width'], height: e[a + 'Height'] };
+}
+
+function checkWindowWidth() {
+  var w = viewport().width;
+  var size = '';
+  if (w > 991) {
+    size = 'desktop';
+  } else {
+    size = 'mobile';
+  }
+
+  return size;
+}

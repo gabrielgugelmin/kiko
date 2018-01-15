@@ -51,11 +51,17 @@
   }
 
   &__link {
-    font-size: 16px;
+    color: $c-gray-dark;
+    display: block;
+    font-size: 12px;
     letter-spacing: 2px;
     margin-top: -22px;
     position: relative;
     text-align: center;
     top: -40px;
+
+    @include media(">=desktop") {
+      font-size: 16px;
+    }
   }
 }

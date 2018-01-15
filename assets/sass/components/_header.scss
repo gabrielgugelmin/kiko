@@ -1,21 +1,27 @@
 .header {
 
   @include media("<desktop") {
-    background: $c-white;
+    background-color: $c-white;
     box-shadow: 0 0 5px 2px rgba($c-black, .3);
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    left: 0;
-    max-width: 340px;
+    height: 60px;
     position: fixed;
     top: 0;
-    z-index: 100;
-    transition: $dt;
-    transform: translateX(-360px);
+    width: 100%;
+    z-index: 200;
+  }
 
-    &--open {
-      transform: translateX(0);
+  &-aux {
+    &__logo {
+
+      img {
+        display: block;
+        max-width: 180px;
+        margin: 15px auto 0;
+      }
+    }
+
+    @include media(">=desktop") {
+      display: none;
     }
   }
 
@@ -25,7 +31,7 @@
     order: 1;
     padding: 20px 0;
     text-align: center;
-
+ 
     @include media(">=desktop") {
       order: 0;
       margin-top: 0;
@@ -47,6 +53,25 @@
     background-color: $c-white;
     padding: 40px 0;
 
+    @include media("<desktop") {
+      background: $c-white;
+      box-shadow: 0 0 5px 2px rgba($c-black, .3);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      left: 0;
+      max-width: 340px;
+      overflow-y: auto;
+      position: fixed;
+      top: 0;
+      transform: translateX(-360px);
+      transition: $dt;
+      z-index: 100;
+      padding: 0;
+
+      
+    }
+
     &__content {
       align-items: center;
       display: flex;
@@ -60,11 +85,12 @@
   }
 
   &__logo {
-    margin-bottom: 60px;
-    max-width: 80%;
+    margin-bottom: 40px;
+    margin-top: 15px;
+    max-width: 180px;
 
     @include media(">=desktop") {
-      margin-bottom: 0;
+      margin: 0;
       max-width: 100%;
     }
   }  
@@ -74,6 +100,11 @@
     font-size: 12px;
     font-weight: fw("regular");
     letter-spacing: 2px;
-    margin-bottom: 10px;
+  }
+
+  &--open {
+    .header-bottom {
+      transform: translateX(0);
+    }
   }
 }

@@ -10,9 +10,9 @@
 
   <link rel="stylesheet" href="assets/css/normalize.min.css">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/jquery.fancybox.min.css">
   <link rel="stylesheet" href="assets/css/slick.css">
   <link rel="stylesheet" href="assets/css/slick-theme.css">
-  <link rel="stylesheet" href="assets/css/jquery.fancybox.min.css">
   <link rel="stylesheet" href="assets/css/perfect-scrollbar.css">
 
   <link rel="stylesheet" href="assets/css/style.css">
@@ -31,8 +31,19 @@
 
 <body>
 
-  <div class="page-wrapper">
+  <div class="page-wrapper">    
     <header class="header">
+      <div class="header-aux">
+        <div class="hamburger">
+          <div class="hamburger-box">
+          </div>
+        </div>
+        
+        <a href="index.html" class="header-aux__logo">
+          <img src="assets/img/logo.png" alt="Kiko Autos">
+        </a>
+      </div>
+
       <div class="header-top">
         <div class="container">
           <div class="header-top__content">
@@ -382,26 +393,26 @@
         <div class="section__content section__content--top">
           <div class="media media--horizontal media--full">
           
-            <div class="media__item">
+            <a href="#!" class="media__item">
               <div class="media__img" style="background-image: url(assets/img/p1.jpg);"></div>
               <div class="media__desc media__desc--gray">
                 <h4 class="media__title">FINANCIAMENTO</h4>
               </div>
-            </div>
+            </a>
           
-            <div class="media__item">
+            <a href="#!" class="media__item">
               <div class="media__img" style="background-image: url(assets/img/p2.jpg);"></div>
               <div class="media__desc media__desc--red">
                 <h4 class="media__title">CONSÓRCIO</h4>
               </div>
-            </div>
+            </a>
           
-            <div class="media__item">
+            <a href="#!" class="media__item">
               <div class="media__img" style="background-image: url(assets/img/p3.jpg);"></div>
               <div class="media__desc media__desc--blue">
                 <h4 class="media__title">VENDA SEU CARRO</h4>
               </div>
-            </div>
+            </a>
           
           </div>
         </div>
@@ -451,9 +462,9 @@
           <div id="instafeed" class="instafeed"></div>
         </div>
 
-        <div class="instafeed__link">
+        <a hreft="https://www.instagram.com/kikoautos" class="instafeed__link" target="_blank">
            https://www.instagram.com/kikoautos
-        </div>
+        </a>
       </section>
 
       
@@ -465,83 +476,103 @@
       <div class="container">
 
         <div class="row">
-          <div class="col-md-3">
-            <!--<h5>SOBRE</h5>-->
-
+          <div class="col-md-4">
             <img src="assets/img/logo-footer.png" alt="Kiko Autos" class="footer__logo">
             <small class="footer__about">
                A KikoAutos tem como foco oferecer a seus clientes serviços agregados, não apenas um excelente automóvel 0KM ou seminovo.
               Por isso, serve como vitrine para o mercado e se destaca pelo seu atendimento de qualidade, consultores altamente treinados
               e infraestrutura moderna e diferenciada.
             </small>
+
+            <div class="social social--big">
+              <ul class="social__list">
+                <li class="social__item">
+                  <a href="#!">
+                    <img src="assets/img/icons/facebook.svg" alt="Facebook">
+                  </a>
+                </li>
+                <li class="social__item">
+                  <a href="#!">
+                    <img src="assets/img/icons/instagram.svg" alt="Instagram">
+                  </a>
+                </li>
+                <li class="social__item">
+                  <a href="#!">
+                    <img src="assets/img/icons/whatsapp.svg" alt="WhatsApp">
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="col-md-3">
-            <h5>CATEGORIAS</h5>
+          <div class="col-md-2">
+            <h5 class="footer__title">LINKS</h5>
 
             <ul class="footer__list">
               <li>
-                <a href="index.html">Home</a>
+                <a href="#!">Sobre</a>
               </li>
               <li>
-                <a href="#/">A empresa</a>
+                <a href="#/">Novos</a>
               </li>
               <li>
-                <a href="estoque.html">Veículos</a>
+                <a href="#!">Seminovos</a>
               </li>
               <li>
-                <a href="#/">Depoimentos</a>
+                <a href="#!">Financiamento</a>
               </li>
               <li>
-                <a href="#/" data-toggle="modal" data-target="#modalContato">Contato</a>
+                <a href="#!">Consórcio</a>
               </li>
               <li>
-                <a href="#/" data-toggle="modal" data-target="#modalContato">Agende uma visita</a>
+                <a href="#/">Contato</a>
               </li>
             </ul>
           </div>
           <div class="col-md-3">
-            <h5>CONTATO</h5>
+            <h5 class="footer__title">CONTATO</h5>
 
             <address class="footer__address">
-              <p>SÃO PAULO
-                <br>Av. Bandeirantes 5364</p>
-              <p>(11) 5594-7000</p>
+              <div class="footer__contact icon-text">
+                <img src="assets/img/icons/pin.svg" alt="Local">
+                <p>Rua Dr. Emilio Winther, 68.<br>Centro Taubaté / SP</p>
+              </div>
+              <div class="footer__contact icon-text">
+                <img src="assets/img/icons/clock.svg" alt="Horário">
+                <p>Segunda à sexta das 9h às 18h30 Sábado das 9h às 13h</p>
+              </div>
 
-              <a href="mailto:contato@Kiko Autos.com.br">contato@Kiko Autos.com.br</a>
-
-              <p>
-                De Seg. a Sex. das 09 às 19hs
-                <br>aos Sábados das 09 às 15hs.
-              </p>
+              <div class="footer__contact footer__contact--big icon-text">
+                <img src="assets/img/icons/phone.svg" alt="Horário">
+                <p>12 3632 3200</p>
+              </div>
             </address>
           </div>
 
           <div class="col-md-3">
-            <h5>COMPARTILHE</h5>
-
-            <ul class="footer__social">
-              <li>
-                <a href="#/">
-                  <img src="assets/img/icons/facebook.svg" alt="Facebook">
-                </a>
-              </li>
-              <li>
-                <a href="#/">
-                  <img src="assets/img/icons/twitter.svg" alt="Twitter">
-                </a>
-              </li>
-              <li>
-                <a href="#/">
-                  <img src="assets/img/icons/instagram.svg" alt="Instagram">
-                </a>
-              </li>
-            </ul>
+            <h5 class="footer__title">CONTATO</h5>
+          
+            <address class="footer__address">
+              <div class="footer__contact icon-text">
+                <img src="assets/img/icons/pin.svg" alt="Local">
+                <p>Rua Dr. Emilio Winther, 68.
+                  <br>Centro Taubaté / SP</p>
+              </div>
+              <div class="footer__contact icon-text">
+                <img src="assets/img/icons/clock.svg" alt="Horário">
+                <p>Segunda à sexta das 9h às 18h30 Sábado das 9h às 13h</p>
+              </div>
+          
+              <div class="footer__contact footer__contact--big icon-text">
+                <img src="assets/img/icons/phone.svg" alt="Horário">
+                <p>12 3632 3200</p>
+              </div>
+            </address>
           </div>
         </div>
       </div>
       <!-- container -->
 
-      <div class="Copyright">
+      <div class="footer__bottom">
         <div class="container">
           <small>
             Todos os direitos reservados
@@ -549,9 +580,8 @@
           </small>
 
           <div class="powered-by-inffus">
-            <!--<p>Desenvolvido por: <a title="Desenvolvido pela Inffus" href="http://inffus.com" target="_blank">INFFUS</a></p>-->
             <a title="Desenvolvido pela Inffus" href="http://inffus.com" target="_blank">
-              <img src="http://inffus.com/inffus-web-intelligence.svg" width="25">
+              <img src="http://inffus.com/inffus-web-intelligence.svg" width="20">
             </a>
 
           </div>
