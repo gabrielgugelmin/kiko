@@ -39,25 +39,45 @@
     text-transform: uppercase;
   }
 
+  &__text {
+    color: $c-gray-dark;
+    font-size: 15px;
+    text-align: center;
+  }
+
   &--center {
     max-width: 1030px;
     margin: 0 auto;
   }
 
   &--col4 {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
 
     .media__item {
+      justify-content: baseline;
+      padding: 0 30px;
       margin-bottom: 45px;
-    }
-    
-    @include media(">=tablet") {
-      flex-direction: row;
       
-      .media__item {
+      @include media(">=phone") {
+        width: 50%;
+      }
+
+      @include media(">=tablet") {
         width: 25%;
       }
+    }
+
+    .media__img {
+      align-items: center;
+      display: flex;
+      height: 120px;
+      justify-content: center;
+    }
+
+    .media__text {
+      margin-top: 30px;
     }
   }
 
