@@ -38,6 +38,14 @@ body {
   overflow: hidden;
 }
 
+.page-content {
+  margin-top: 60px;
+
+  @include media(">=desktop") {
+    margin-top: 0
+  }
+}
+
 .icon-text {
   display: flex;
   align-items: center;
@@ -87,7 +95,7 @@ body {
     margin: 0 auto;
 
     @include media(">=desktop") {
-      max-width: 52%;
+      max-width: 60%;
     }
 
     h2 {
@@ -139,6 +147,16 @@ body {
   }
 
   max-width: 1030px;
+}
+
+.k-link {
+  color: $c-red;
+  text-decoration: underline;
+  transition: $dt;
+
+  &:hover {
+    color: darken($c-red, 10%);
+  }
 }
 
 .newsletter {

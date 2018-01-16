@@ -37,6 +37,7 @@ $(function() {
         breakpoint: 767,
         settings: {
           arrows: false,
+          dots: true,
           slidesToShow: 3,
           slidesToScroll: 3,
         }
@@ -64,8 +65,18 @@ $(function() {
       userId: '4167153856',
       clientId: '9dd32bbb00284a19b83ebe8dbda91cb6',
       accessToken: '4167153856.1677ed0.7cfe7712070d4c5da39d9a197a0f4d9a',
-      limit: 10,
-      template: '<li class="instafeed__item" style="background-image: url({{image}});"><a href="{{link}}" target="_blank"></a></li>'
+      limit: 7,
+      resolution: 'standard_resolution',
+      template: '<li class="instafeed__item" style="background-image: url({{image}});"><a href="{{link}}" target="_blank"><div class="instafeed__info"><span>{{likes}}</span><span>{{comments}}</span></div></a></li>',
+      after: function () {
+        setTimeout(function() {
+          $('#instafeed').isotope({
+            masonry: {
+              columnWidth: 256
+            }
+          });
+        }, 500)
+      }
     });
     feed.run();
   }

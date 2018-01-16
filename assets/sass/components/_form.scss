@@ -35,9 +35,80 @@
     font-style: italic;
   }
 
-  border: 2px solid $c-gray-darker;
+  border: 2px solid $c-gray;
   color: $c-gray-dark;
   font-size: 15px;
   padding: 10px;
   width: 100%;
+}
+
+.textarea {
+  height: 105px;
+  resize: none;
+}
+
+/* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  left: -9999px;
+  position: absolute;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  cursor: pointer;
+  padding-left: 56px;
+  padding-top: 14px;
+  font-weight: fw("regular");
+  color: $c-gray;
+  font-size: 16px;
+  position: relative;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  background: transparent;
+  border: 2px solid $c-gray;
+  content: '';
+  height: 46px;
+  left: 0; top: 0;
+  position: absolute;
+  width: 46px; 
+}
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '✔';
+  position: absolute;
+  top: 0; 
+  left: 12px;
+  font-size: 28px;
+  line-height: 46px;
+  color: $c-blue;
+  transition: all .2s;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+}
+[type="checkbox"]:disabled:checked + label:after {
+  color: $c-gray;
+}
+[type="checkbox"]:disabled + label {
+  color: $c-gray-light;
+}
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+  box-shadow: 0 0 5px 1px rgba($c-black, .3);
 }

@@ -28,7 +28,37 @@
       height: 0;
       left: 15px;
       position: relative;
+      transition: $dt;
       width: 0;
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    border: 2px solid $c-gray;
+    color: $c-gray;
+
+    &::after {
+      border-color: transparent transparent transparent $c-gray;
+    }
+
+    &:hover {
+      color: $c-white;
+      background-color: $c-gray;
+
+      &::after {
+      border-color: transparent transparent transparent $c-white;
+    }
+    }
+  }
+
+  &--medium {
+    font-size: 18px;
+    line-height: 1.45;
+    padding: 8px 50px 8px 45px;
+
+    @include media("<=phone") {
+      width: 100%;
     }
   }
 
