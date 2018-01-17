@@ -6,15 +6,22 @@
     position: relative;
     margin-bottom: 15px;
     width: 100%;
+
+    &--error {
+      .input,
+      .textarea {
+        border-color: $c-red;
+      }
+    }
   }
-  
+
   &__error {
     color: $c-red;
     font-weight: fw("bold");
     position: absolute;
     right: 8px;
     top: 5px;
-  }
+  }  
 
   &--inline {
     justify-content: center;

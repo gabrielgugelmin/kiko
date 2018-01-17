@@ -13,61 +13,52 @@ var gulp = require('gulp'),
 
 var path = 'assets/';
 
-gulp.task('default', ['watch', 'sequence'], function() {
-  
-});
-
-gulp.task('serve', ['styles'], function () {
+gulp.task('serve', function () {
 
   browserSync.init({
     server: "./"
   });
-
-  gulp.watch(path + 'sass/**/*.scss', ['styles']);
-  gulp.watch(path + 'css/*.css', ['concatcss']);
-  gulp.watch(path + 'js/js.js', ['uglifyjs']);
-  gulp.watch('*.html').on('change', browserSync.reload);
 });
 
 
-gulp.task('styles', function() {
-  gulp.src(path + 'sass/**/*.scss')
-    .pipe(sass({'outputStyle': 'compressed'}).on('error', sass.logError))
-    .pipe(autoprefixer({
-      // http://browserl.ist/?q=%3E+1%25%2C+last+2+major+versions%2C+last+3+iOS+versions%2C+last+3+Safari+versions
-      browsers: [
-        '> 1%',
-        'last 2 major versions',
-        'last 3 iOS versions',
-        'last 3 Safari versions',
-        'not ie < 11',
-      ],
-    }))
-    .pipe(gulp.dest(path + 'css/'))
+gulp.task('styles', function () {
+  return gulp.src('assets/sass/style.scss')
+    .pipe(sass({ style: 'expanded' }).on('error', sass.logError))
+    .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+    .pipe(gulp.dest('assets/css'))
     .pipe(browserSync.stream());
+    //.pipe(notify({ message: 'Styles task complete' }));
 });
 
-gulp.task('watch', function() {
-  gulp.watch(path + 'sass/**/*.scss', ['styles']);
-  gulp.watch(path + 'css/*.css',['concatcss']);
-  gulp.watch(path + 'js/js.js', ['uglifyjs']);
-  gulp.watch('*.html', ['html']);
-});
-
-gulp.task('uglifyjs', function () {
+// Concatenate & Minify JS
+gulp.task('scripts', function () {
   gulp.src(['assets/js/*.js', '!assets/js/js.min.js', '!assets/js/jquery.min.js'])
     .pipe(concat('js.min.js'))
-    .pipe(uglifyjs())
+    .pipe(uglifyjs().on('error', function (e) {
+      console.log(e);
+    }))
     .pipe(gulp.dest('assets/js/'))
     .pipe(browserSync.stream());
 });
 
-gulp.task('concatcss', function () {
-  gulp.src([path + 'css/*.css', '!assets/css/style.min.css'])
-    .pipe(concat('style.min.css'))
-    .pipe(uglifycss())
-    .pipe(gulp.dest(path + 'css/'))
+// Concatenate & Minify JS
+gulp.task('html', function () {
+  return gulp.src('*.html')
     .pipe(browserSync.stream());
 });
 
-gulp.task('default', ['serve']);
+// Watch
+gulp.task('watch', function () {
+
+  // Watch .scss files
+  gulp.watch('assets/sass/**/*.scss', ['styles']);
+
+  // Watch .js files
+  gulp.watch('assets/js/js.js', ['scripts']);
+
+  // Watch .html files
+  gulp.watch('*.html', ['html']);
+
+});
+
+gulp.task('default', ['serve', 'html', 'styles', 'scripts' , 'watch']);

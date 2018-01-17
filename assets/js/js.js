@@ -57,8 +57,10 @@ $(function() {
     }
   });
 
+
+  var $containerInstafeed = $('#instafeed');
   // Instagram
-  if ($('#instafeed').length) {
+  if ($('#instafeed').length) { 
 
     var feed = new Instafeed({
       get: 'user',
@@ -69,17 +71,55 @@ $(function() {
       resolution: 'standard_resolution',
       template: '<li class="instafeed__item" style="background-image: url({{image}});"><a href="{{link}}" target="_blank"><div class="instafeed__info"><span>{{likes}}</span><span>{{comments}}</span></div></a></li>',
       after: function () {
-        setTimeout(function() {
-          $('#instafeed').isotope({
-            masonry: {
-              columnWidth: 256
-            }
-          });
-        }, 500)
+        if(checkWindowWidth() == 'desktop') {
+          setTimeout(function () {
+            $('#instafeed').isotope({
+              masonry: {
+                columnWidth: $containerInstafeed.width() / 5
+              }
+            });
+          }, 500)
+        }
       }
     });
     feed.run();
   }
+
+  $(window).smartresize(function () {
+    $containerInstafeed.isotope({
+      // update columnWidth to a percentage of container width
+      masonry: { columnWidth: ($containerInstafeed.width() < 480) ? $containerInstafeed.width() / 2 : $containerInstafeed.width() / 5 }
+    });
+  });
+
+  // form validate NEWSLETTER
+  var $form = $("#formNewsletter");    
+  $.validator.addMethod("letters", function (value, element) {
+    return this.optional(element) || value == value.match(/^[a-zA-Z\s]*$/);
+  });
+  $form.validate({
+    rules: {
+      nome: {
+        required: true,
+        minlength: 3,
+        letters: true
+      },
+      email: {
+        required: true,
+        email: true
+      }
+    },
+    errorClass: 'form__control--error',
+    highlight: function (element, errorClass, validClass) {
+      $(element).parent().addClass(errorClass)
+    },
+    errorPlacement: function (error, element) {
+      return true;
+    },
+    submitHandler: function () {
+      // lógica para sucesso do formulário
+    }
+  });
 });
 
 function closeMenu() {
