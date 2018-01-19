@@ -166,12 +166,18 @@
       .button--ghost:hover::after {
         border-color: transparent transparent transparent #ffffff; }
   .button--medium {
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1.45;
     padding: 8px 50px 8px 45px; }
     @media (max-width: 480px) {
       .button--medium {
         width: 100%; } }
+    @media (min-width: 992px) {
+      .button--medium {
+        font-size: 16px; } }
+    @media (min-width: 1280px) {
+      .button--medium {
+        font-size: 18px; } }
   .button--large {
     font-size: 18px;
     line-height: 1.45;
@@ -197,6 +203,49 @@
             -ms-flex-pack: left;
                 justify-content: left;
         width: 50%; } }
+  .button--red.button--ghost {
+    border-color: #cc1c22;
+    background-color: transparent;
+    color: #cc1c22; }
+    .button--red.button--ghost:hover {
+      color: #ffffff;
+      background-color: #cc1c22; }
+  .button--green.button--ghost {
+    border-color: #5da368;
+    background-color: transparent;
+    color: #5da368; }
+    .button--green.button--ghost:hover {
+      color: #ffffff;
+      background-color: #5da368; }
+  .button--blue.button--ghost {
+    border-color: #112c44;
+    background-color: transparent;
+    color: #112c44; }
+    .button--blue.button--ghost:hover {
+      color: #ffffff;
+      background-color: #112c44; }
+  .button-group {
+    margin: 95px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
+    @media (min-width: 992px) {
+      .button-group {
+        padding: 0 6%; } }
+    .button-group .button {
+      margin-bottom: 20px;
+      width: 100%; }
+      @media (min-width: 768px) {
+        .button-group .button {
+          width: 46%; } }
+      @media (min-width: 992px) {
+        .button-group .button {
+          width: 46%; } }
 
 .media {
   display: -webkit-box;
@@ -998,6 +1047,60 @@ body {
   .k-link:hover {
     color: #9f161b; }
 
+.table {
+  border: 1px solid #000000;
+  font-size: 12px;
+  margin-bottom: 15px; }
+  .table caption {
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    text-align: center; }
+  .table thead {
+    background-color: #ebebeb;
+    color: #363636;
+    font-weight: 700;
+    letter-spacing: 2px; }
+    .table thead tr th {
+      padding: 15px 10px;
+      border-bottom: 1px solid #000000; }
+      .table thead tr th:last-child {
+        text-align: right; }
+  .table tbody tr td {
+    border-top: 1px solid #000000;
+    letter-spacing: 2px;
+    padding: 15px 10px; }
+    .table tbody tr td:first-child {
+      font-weight: 700;
+      text-transform: uppercase;
+      width: 50%; }
+    .table tbody tr td:last-child {
+      text-align: right; }
+  .table__action {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
+    .table__action .button {
+      font-size: 13px;
+      letter-spacing: 4px;
+      padding: 7px 25px; }
+    .table__action span {
+      color: #4a4748;
+      font-size: 14px;
+      letter-spacing: 1px; }
+
+.text--small {
+  color: #252525;
+  font-size: 11px;
+  letter-spacing: 2px;
+  line-height: 1.2; }
+
 .newsletter .form {
   margin-bottom: 50px; }
   .newsletter .form__control:last-child {
@@ -1061,3 +1164,77 @@ body {
       -webkit-transform: rotate(-45deg);
               transform: rotate(-45deg);
       bottom: 0 !important; }
+
+.consorcio__marcas {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 650px;
+  margin: 30px auto 0; }
+  .consorcio__marcas img {
+    max-width: 270px; }
+
+.vantagens__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  max-width: 990px; }
+
+.vantagens__group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+  .vantagens__group:first-child {
+    display: none; }
+    @media (min-width: 992px) {
+      .vantagens__group:first-child {
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 50%; } }
+
+.vantagens__item {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #5da368;
+  border-radius: 10px;
+  color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+  max-width: 200px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 50px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 33%; }
+  @media (min-width: 768px) {
+    .vantagens__item {
+      width: 33.333%;
+      max-width: 200px;
+      -webkit-box-flex: 1;
+          -ms-flex-positive: 1;
+              flex-grow: 1; } }
+  @media (min-width: 992px) {
+    .vantagens__item {
+      font-size: 16px; } }

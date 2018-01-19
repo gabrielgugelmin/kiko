@@ -102,7 +102,7 @@
                   <a href="#!" class="menu__link">Financiamento</a>
                 </li>
                 <li class="menu__item">
-                  <a href="#!" class="menu__link">Consórcio</a>
+                  <a href="consorcio.html" class="menu__link">Consórcio</a>
                 </li>
                 <li class="menu__item">
                   <a href="#!" class="menu__link">Contato</a>
@@ -207,46 +207,46 @@
         </header>
         <div class="section__content">
           <div class="container">
-            <form class="form" action="">
+            <form class="form" action="" id="formConsignado">
               <div class="row">
                 <div class="col-md-6">
 
                   <div class="form__control">
-                    <input type="text" class="input" placeholder="NOME COMPLETO">
+                    <input type="text" class="input" placeholder="NOME COMPLETO" name="nome">
                   </div>
 
                   <div class="form__control">
-                    <input type="email" class="input" placeholder="EMAIL">
+                    <input type="email" class="input" placeholder="EMAIL" name="email">
                   </div>
 
                   <div class="form__control">
-                    <input type="tel" class="input" placeholder="TELEFONE">
+                    <input type="tel" class="input js-phone" placeholder="TELEFONE" name="telefone">
                   </div>
 
                   <div class="form__control">
-                    <input type="text" class="input" placeholder="CPF/CNPJ">
+                    <input type="text" class="input js-cpfcnpj" placeholder="CPF/CNPJ" name="cpfcnpj">
                   </div>
 
                   <div class="form__control">
-                    <input type="text" class="input" placeholder="ENDEREÇO COMPLETO">
+                    <input type="text" class="input" placeholder="ENDEREÇO COMPLETO" name="endereco">
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="form__control">
-                    <input type="text" class="input" placeholder="MARCA DO VEÍCULO">
+                    <input type="text" class="input" placeholder="MARCA DO VEÍCULO" name="marca">
                   </div>
 
                   <div class="form__control">
-                    <input type="text" class="input" placeholder="MODELO DO VEÍCULO">
+                    <input type="text" class="input" placeholder="MODELO DO VEÍCULO" name="modelo">
                   </div>
 
                   <div class="form__control">
-                    <input type="text" class="input" placeholder="ANO DE FABRICAÇÃO E MODELO">
+                    <input type="text" class="input js-ano" placeholder="ANO DE FABRICAÇÃO E MODELO" name="ano">
                   </div>
 
                   <div class="form__control">
-                    <textarea name="" id="" class="textarea" placeholder="INFORME MAIS DETALHES DO VEÍCULO"></textarea>
+                    <textarea name="detalhes" class="textarea" placeholder="INFORME MAIS DETALHES DO VEÍCULO"></textarea>
                   </div>
                 </div>
 
@@ -272,17 +272,17 @@
 
       <section>
         <div class="media media--horizontal media--full">
-          <a href="#!" class="media__item">
+          <a href="consorcio.html" class="media__item">
             <div class="media__img" style="background-image: url(assets/img/p2.jpg);"></div>
             <div class="media__desc media__desc--red">
               <h4 class="media__title">CONSÓRCIO</h4>
             </div>
           </a>
       
-          <a href="consignado.html" class="media__item">
-            <div class="media__img" style="background-image: url(assets/img/p3.jpg);"></div>
-            <div class="media__desc media__desc--blue">
-              <h4 class="media__title">VENDA SEU CARRO</h4>
+          <a href="financiamento.html" class="media__item">
+            <div class="media__img" style="background-image: url(assets/img/p1.jpg);"></div>
+            <div class="media__desc media__desc--gray">
+              <h4 class="media__title">FINANCIAMENTO</h4>
             </div>
           </a>
       
@@ -298,14 +298,14 @@
       
         <div class="k-container">
           <div class="section__content">
-            <form class="form form--inline">
+            <form class="form form--inline" id="formNewsletter">
               <div class="form__control">
-                <input type="text" class="input" placeholder="NOME COMPLETO">
+                <input type="text" class="input" placeholder="NOME COMPLETO" name="nome">
                 <span class="form__error">*</span>
               </div>
       
               <div class="form__control">
-                <input type="email" class="input" placeholder="E-MAIL">
+                <input type="email" class="input" placeholder="E-MAIL" name="email">
                 <span class="form__error">*</span>
               </div>
       
@@ -447,15 +447,15 @@
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVQh8KHCVUKoqVJHQGZbQNHdYjAPe8Km0"></script>
 
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
+ <script src="assets/js/jquery.min.js"></script>
+<!--   <script src="assets/js/bootstrap.min.js"></script>
   <script src="assets/js/isotope.pkgd.min.js"></script>
   <script src="assets/js/jquery.autocomplete.min.js"></script>
   <script src="assets/js/jquery.fancybox.min.js"></script>
   <script src="assets/js/perfect-scrollbar.jquery.min.js"></script>
   <script src="assets/js/slick.min.js"></script>
-  <script src="assets/js/instafeed.min.js"></script>
-  <script src="assets/js/js.js"></script>
+  <script src="assets/js/instafeed.min.js"></script> -->
+  <script src="assets/js/js.min.js"></script>
 
 
 

@@ -159,6 +159,84 @@ body {
   }
 }
 
+.table {
+  border: 1px solid $c-black;
+  font-size: 12px;
+  margin-bottom: 15px;
+
+  caption {
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+
+  thead {
+    background-color: $c-gray-lighter;
+    color: $c-gray-dark;
+    font-weight: fw("bold");
+    letter-spacing: 2px;
+
+    tr {
+      th {
+        padding: 15px 10px;
+        border-bottom: 1px solid $c-black;
+
+        &:last-child {
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        border-top: 1px solid $c-black;
+        letter-spacing: 2px;
+        padding: 15px 10px;
+
+        &:first-child {
+          font-weight: fw("bold");
+          text-transform: uppercase;
+          width: 50%;
+        }
+
+        &:last-child {
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  &__action {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    .button {
+      font-size: 13px;
+      letter-spacing: 4px;
+      padding: 7px 25px;
+    }
+
+    span {
+      color: $c-gray;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+  }  
+}
+
+.text {
+  &--small {
+    color: $c-gray-darker;
+    font-size: 11px;
+    letter-spacing: 2px;
+    line-height: 1.2;
+  }
+}
+
 .newsletter {
 
   .form {
@@ -247,4 +325,70 @@ body {
 			}
 		}
 	}
+}
+
+.consorcio {
+
+  &__marcas {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    max-width: 650px;
+    margin: 30px auto 0;
+    
+    img {
+      max-width: 270px;
+    }
+  }
+}
+
+.vantagens {
+  &__content {
+    display: flex;
+    margin: 0 auto;
+    max-width: 990px;
+  }
+
+  &__group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &:first-child {
+      display: none;
+
+      @include media(">=desktop") {
+        align-items: center;
+        display: flex;
+        width: 50%;
+      }
+    }    
+  }
+
+  &__item {
+    align-items: center;
+    background-color: $c-green;
+    border-radius: 10px;
+    color: $c-white;
+    display: flex;
+    font-size: 14px;
+    font-weight: fw("semibold");
+    max-width: 200px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 50px;
+
+    flex-grow: 1;
+    width: 33%;
+
+    @include media(">=tablet") {
+      width: 33.333%;
+      max-width: 200px;
+      flex-grow: 1;
+    }
+
+    @include media(">=desktop") {
+      font-size: 16px;
+    }
+  }
 }

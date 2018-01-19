@@ -64,9 +64,9 @@ $(function() {
 
     var feed = new Instafeed({
       get: 'user',
-      userId: '4167153856',
-      clientId: '9dd32bbb00284a19b83ebe8dbda91cb6',
-      accessToken: '4167153856.1677ed0.7cfe7712070d4c5da39d9a197a0f4d9a',
+      userId: '248226773',
+      clientId: '604a50aa8fab404f9705ed4b7dd7ad17',
+      accessToken: '248226773.604a50a.403e75a180134bd9b810099ef51e38ef',
       limit: 7,
       resolution: 'standard_resolution',
       template: '<li class="instafeed__item" style="background-image: url({{image}});"><a href="{{link}}" target="_blank"><div class="instafeed__info"><span>{{likes}}</span><span>{{comments}}</span></div></a></li>',
@@ -83,26 +83,50 @@ $(function() {
       }
     });
     feed.run();
-  }
+  };
 
-  $(window).smartresize(function () {
+  $(window).on('resize', function () {
     $containerInstafeed.isotope({
       // update columnWidth to a percentage of container width
       masonry: { columnWidth: ($containerInstafeed.width() < 480) ? $containerInstafeed.width() / 2 : $containerInstafeed.width() / 5 }
     });
   });
 
-  // form validate NEWSLETTER
-  var $form = $("#formNewsletter");    
-  $.validator.addMethod("letters", function (value, element) {
-    return this.optional(element) || value == value.match(/^[a-zA-Z\s]*$/);
-  });
-  $form.validate({
+  // máscaras de formulário
+
+  // Mascara de CPF e CNPJ
+  var cpfCnpjMaskBehavior = function (val) {
+    return val.replace(/\D/g, '').length <= 11 ? '000.000.000-009' : '00.000.000/0000-00';
+  },
+    cpfCnpjpOptions = {
+      onKeyPress: function (val, e, field, options) {
+        field.mask(cpfCnpjMaskBehavior.apply({}, arguments), options);
+      }
+    };
+  
+  var phoneMaskBehavior = function (val) {
+    return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+  },
+    options = {
+      onKeyPress: function (val, e, field, options) {
+        field.mask(phoneMaskBehavior.apply({}, arguments), options);
+      }
+    };
+
+  $('.js-phone').mask(phoneMaskBehavior, options);
+  $('.js-cpfcnpj').mask(cpfCnpjMaskBehavior, cpfCnpjpOptions);
+  $('.js-ano').mask('0000');
+  
+
+  // form validate 
+  var $formNewsletter = $("#formNewsletter");
+  var $formConsignado = $("#formConsignado");
+
+  $formNewsletter.validate({
     rules: {
       nome: {
         required: true,
-        minlength: 3,
-        letters: true
+        minlength: 3
       },
       email: {
         required: true,
@@ -117,7 +141,80 @@ $(function() {
       return true;
     },
     submitHandler: function () {
+      alert('sucesso');
       // lógica para sucesso do formulário
+      /* var dados = $(form).serialize();
+
+      $.ajax({
+        type: "POST",
+        url: "processa.php",
+        data: dados,
+        success: function (data) {
+          alert(data);
+        }
+      });
+
+      return false; */
+    }
+  });
+
+
+
+
+  $formConsignado.validate({
+    rules: {
+      nome: {
+        required: true,
+        minlength: 3
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      telefone: {
+        required: true
+      },
+      cpfcnpj: {
+        required: true
+      },
+      endereco: {
+        required: true
+      },
+      marca: {
+        required: true
+      },
+      modelo: {
+        required: true
+      },
+      ano: {
+        required: true
+      },
+      detalhes: {
+        required: true
+      }
+    },
+    errorClass: 'form__control--error',
+    highlight: function (element, errorClass, validClass) {
+      $(element).parent().addClass(errorClass)
+    },
+    errorPlacement: function (error, element) {
+      return true;
+    },
+    submitHandler: function () {
+      alert('sucesso');
+      // lógica para sucesso do formulário
+      /* var dados = $(form).serialize();
+
+      $.ajax({
+        type: "POST",
+        url: "processa.php",
+        data: dados,
+        success: function (data) {
+          alert(data);
+        }
+      });
+
+      return false; */
     }
   });
 });

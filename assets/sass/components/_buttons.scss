@@ -47,18 +47,26 @@
       background-color: $c-gray;
 
       &::after {
-      border-color: transparent transparent transparent $c-white;
-    }
+        border-color: transparent transparent transparent $c-white;
+      }
     }
   }
 
   &--medium {
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1.45;
     padding: 8px 50px 8px 45px;
 
     @include media("<=phone") {
       width: 100%;
+    }
+
+    @include media(">=desktop") {
+      font-size: 16px;
+    }
+
+    @include media(">=wide") {
+      font-size: 18px;
     }
   }
 
@@ -83,6 +91,67 @@
       width: 50%;
     }
   }
-
   
+  &--red {
+    &.button--ghost {
+      border-color: $c-red;
+      background-color: transparent;
+      color: $c-red;
+
+      &:hover {
+        color: $c-white;
+        background-color: $c-red;
+      }
+    }
+  }
+  
+  &--green {
+    &.button--ghost {
+      border-color: $c-green;
+      background-color: transparent;
+      color: $c-green;
+
+      &:hover {
+        color: $c-white;
+        background-color: $c-green;
+      }
+    }
+  }
+
+  &--blue {
+    &.button--ghost {
+      border-color: $c-blue;
+      background-color: transparent;
+      color: $c-blue;
+
+      &:hover {
+        color: $c-white;
+        background-color: $c-blue;
+      }
+    }
+  }
+
+  &-group {
+    margin: 95px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  
+    @include media(">=desktop") {
+      padding: 0 6%;
+    }
+
+    .button {
+      margin-bottom: 20px;
+      width: 100%;
+
+      @include media(">=tablet") {
+        width: 46%;
+      }
+
+      @include media(">=desktop") {
+        width: 46%;
+      }
+    }
+  }
 }

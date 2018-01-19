@@ -1,15 +1,13 @@
-//npm install --save-dev gulp-sass gulp-notify gulp-livereload gulp-concat gulp-sequence gulp-uglifycss gulp-uglifyjs
-
 var gulp = require('gulp'),
-    sass = require('gulp-sass'),
-    notify = require('gulp-notify'),
-    livereload = require('gulp-livereload'),
-    concat = require('gulp-concat'),
-    gulpSequence = require('gulp-sequence'),
-    uglifycss = require('gulp-uglifycss'),
-    uglifyjs = require('gulp-uglifyjs'),
-    autoprefixer = require('gulp-autoprefixer'),
-    browserSync = require('browser-sync').create();
+  sass = require('gulp-sass'),
+  notify = require('gulp-notify'),
+  livereload = require('gulp-livereload'),
+  concat = require('gulp-concat'),
+  gulpSequence = require('gulp-sequence'),
+  uglifycss = require('gulp-uglifycss'),
+  uglifyjs = require('gulp-uglifyjs'),
+  autoprefixer = require('gulp-autoprefixer'),
+  browserSync = require('browser-sync').create();
 
 var path = 'assets/';
 
@@ -27,7 +25,7 @@ gulp.task('styles', function () {
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
     .pipe(gulp.dest('assets/css'))
     .pipe(browserSync.stream());
-    //.pipe(notify({ message: 'Styles task complete' }));
+  //.pipe(notify({ message: 'Styles task complete' }));
 });
 
 // Concatenate & Minify JS
@@ -61,4 +59,4 @@ gulp.task('watch', function () {
 
 });
 
-gulp.task('default', ['serve', 'html', 'styles', 'scripts' , 'watch']);
+gulp.task('default', ['serve', 'html', 'styles', 'scripts', 'watch']);
