@@ -34,25 +34,35 @@
       margin-right: 20px; }
 
 .input,
-.textarea {
+.textarea,
+.select {
   border: 2px solid #4a4748;
   color: #363636;
   font-size: 15px;
   padding: 10px;
   width: 100%; }
   .input.placeholder,
-  .textarea.placeholder {
+  .textarea.placeholder,
+  .select.placeholder {
     font-style: italic; }
   .input:-moz-placeholder,
-  .textarea:-moz-placeholder {
+  .textarea:-moz-placeholder,
+  .select:-moz-placeholder {
     font-style: italic; }
   .input::-webkit-input-placeholder,
-  .textarea::-webkit-input-placeholder {
+  .textarea::-webkit-input-placeholder,
+  .select::-webkit-input-placeholder {
     font-style: italic; }
 
 .textarea {
   height: 105px;
   resize: none; }
+  .textarea--big {
+    height: 164px; }
+
+select option:disabled {
+  font-style: italic;
+  text-transform: uppercase; }
 
 /* Base for label styling */
 [type="checkbox"]:not(:checked),
@@ -796,8 +806,6 @@
   height: 24px;
   padding: 0;
   z-index: 1; }
-  .slick-arrow:hover, .slick-arrow:focus {
-    background: url(../img/icons/arrow.svg) 0 0/contain no-repeat; }
   .slick-arrow::before {
     display: none; }
   .slick-arrow.slick-next {
@@ -987,8 +995,6 @@ body {
   @media (min-width: 768px) {
     .section {
       padding: 70px 0 0; } }
-  .section--white {
-    background-color: #ffffff; }
   .section__content {
     padding: 50px 0 70px;
     width: 100%; }
@@ -996,11 +1002,7 @@ body {
       padding-bottom: 0; }
   .section__header {
     text-align: center;
-    max-width: 80%;
     margin: 0 auto; }
-    @media (min-width: 992px) {
-      .section__header {
-        max-width: 60%; } }
     .section__header h2 {
       color: #4a4748;
       font-size: 18px;
@@ -1031,6 +1033,12 @@ body {
     @media (min-width: 992px) {
       .section__message {
         font-size: 18px; } }
+  .section--white {
+    background-color: #ffffff; }
+  .section--text-left {
+    text-align-last: left; }
+  .section--padding-bottom {
+    padding-bottom: 40px; }
 
 .k-container {
   margin: 0 auto;
@@ -1238,3 +1246,105 @@ body {
   @media (min-width: 992px) {
     .vantagens__item {
       font-size: 16px; } }
+
+.slick-arrow {
+  background: url(../img/icons/arrow-rounded.svg) 0 0/contain no-repeat;
+  display: inline-block;
+  height: 36px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 36px;
+  z-index: 1; }
+  .slick-arrow::before {
+    display: none; }
+  .slick-arrow.slick-next {
+    right: 10px; }
+  .slick-arrow.slick-prev {
+    -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+    left: 10px;
+    top: calc(50% - 4px); }
+
+.veiculo-slider {
+  margin-bottom: 0 !important;
+  width: 100%; }
+
+.veiculo-slider__item {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 280px;
+  position: relative;
+  cursor: pointer; }
+  @media (min-width: 768px) {
+    .veiculo-slider__item {
+      height: 420px; } }
+  @media (min-width: 992px) {
+    .veiculo-slider__item {
+      height: 520px; }
+      .veiculo-slider__item::before {
+        background: rgba(0, 0, 0, 0.2);
+        content: "";
+        height: 100%;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        -webkit-transition: opacity .3s ease;
+        transition: opacity .3s ease;
+        width: 100%; }
+      .veiculo-slider__item::after {
+        background: url("../img/icons/zoom.svg") 0 0/contain no-repeat;
+        content: "";
+        height: 68px;
+        left: 0;
+        margin: 0 auto;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        opacity: 0;
+        -webkit-transition: opacity .3s ease;
+        transition: opacity .3s ease;
+        -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+        width: 68px; }
+      .veiculo-slider__item:hover::before, .veiculo-slider__item:hover::after {
+        opacity: 1; } }
+
+.veiculo-slider-nav .slick-arrow {
+  background: url(../img/icons/arrow-rounded2.svg) 0 0/contain no-repeat;
+  width: 32px;
+  height: 32px;
+  opacity: .6; }
+
+.veiculo-slider-nav__item {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  height: 100px;
+  margin: 0;
+  position: relative; }
+  .veiculo-slider-nav__item:focus {
+    outline: none; }
+  .veiculo-slider-nav__item.slick-current::after {
+    opacity: 1; }
+  @media (min-width: 768px) {
+    .veiculo-slider-nav__item {
+      height: 120px; } }
+  @media (min-width: 992px) {
+    .veiculo-slider-nav__item {
+      height: 150px;
+      width: 200px; } }
+
+.veiculo .Car-info {
+  border-bottom: 1px solid #a9a9a9;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  margin-top: 30px; }
+  .veiculo .Car-info__date, .veiculo .Car-info__price {
+    font-size: 16px; }
+    .veiculo .Car-info__date::before, .veiculo .Car-info__price::before {
+      height: 18px;
+      width: 18px; }

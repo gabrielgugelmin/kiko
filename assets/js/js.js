@@ -45,6 +45,36 @@ $(function() {
     ]
   });
 
+  // Veiculo slider
+  $('.js-slider-veiculo').slick({
+    arrows: true,
+    asNavFor: $('.js-slider-veiculo-nav'),
+    cssEase: 'linear',
+    dots: true,
+    slidesToScroll: 1,
+    slidesToShow: 1
+  });
+
+  $('.js-slider-veiculo-nav').slick({
+    arrows: true,
+    asNavFor: $('.js-slider-veiculo'),
+    cssEase: 'linear',
+    dots: false,
+    focusOnSelect: true,
+    slidesToScroll: 1,
+    slidesToShow: 3,
+    mobileFirst: true,
+    responsive: [
+      {
+        breakpoint: 540,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  });
+
   // MENU
   // click no hamburguer icon
   $('.hamburger').on('click', function (e) {
@@ -113,14 +143,24 @@ $(function() {
       }
     };
 
+  $.validator.addMethod(
+    "validateData",
+    function (value, element) {
+      return this.optional(element) || /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/.test(value);
+    }
+  );
+
   $('.js-phone').mask(phoneMaskBehavior, options);
   $('.js-cpfcnpj').mask(cpfCnpjMaskBehavior, cpfCnpjpOptions);
   $('.js-ano').mask('0000');
+  $('.js-date').mask('00/00/0000');
   
 
   // form validate 
   var $formNewsletter = $("#formNewsletter");
   var $formConsignado = $("#formConsignado");
+  var $formFinanciamento = $("#formFinanciamento");
+  var $formContato = $("#formContato");
 
   $formNewsletter.validate({
     rules: {
@@ -137,11 +177,15 @@ $(function() {
     highlight: function (element, errorClass, validClass) {
       $(element).parent().addClass(errorClass)
     },
+    unhighlight: function (element, errorClass, validClass) {
+      $(element).parent().removeClass('error');
+    },
     errorPlacement: function (error, element) {
       return true;
     },
     submitHandler: function () {
       alert('sucesso');
+      form.submit();
       // lógica para sucesso do formulário
       /* var dados = $(form).serialize();
 
@@ -157,9 +201,6 @@ $(function() {
       return false; */
     }
   });
-
-
-
 
   $formConsignado.validate({
     rules: {
@@ -197,11 +238,129 @@ $(function() {
     highlight: function (element, errorClass, validClass) {
       $(element).parent().addClass(errorClass)
     },
+    unhighlight: function (element, errorClass, validClass) {
+      $(element).parent().removeClass('error');
+    },
     errorPlacement: function (error, element) {
       return true;
     },
     submitHandler: function () {
       alert('sucesso');
+      form.submit();
+      // lógica para sucesso do formulário
+      /* var dados = $(form).serialize();
+
+      $.ajax({
+        type: "POST",
+        url: "processa.php",
+        data: dados,
+        success: function (data) {
+          alert(data);
+        }
+      });
+
+      return false; */
+    }
+  });
+
+  $formFinanciamento.validate({
+    rules: {
+      nome: {
+        required: true,
+        minlength: 3
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      telefone: {
+        required: true
+      },
+      qtd_parcelas: {
+        required: true
+      },
+      cpfcnpj: {
+        required: true
+      },
+      data_nascimento: {
+        required: true,
+        validateData: true
+      },
+      marca: {
+        required: true
+      },
+      modelo: {
+        required: true
+      },
+      ano: {
+        required: true
+      },
+      detalhes: {
+        required: true
+      }
+    },
+    errorClass: 'form__control--error',
+    highlight: function (element, errorClass, validClass) {
+      $(element).parent().addClass(errorClass)
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $(element).parent().removeClass('error');
+    },
+    errorPlacement: function (error, element) {
+      return true;
+    },
+    submitHandler: function () {
+      alert('sucesso');
+      form.submit();
+      // lógica para sucesso do formulário
+      /* var dados = $(form).serialize();
+
+      $.ajax({
+        type: "POST",
+        url: "processa.php",
+        data: dados,
+        success: function (data) {
+          alert(data);
+        }
+      });
+
+      return false; */
+    }
+  });
+
+  $formContato.validate({
+    rules: {
+      nome: {
+        required: true,
+        minlength: 3
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      telefone: {
+        required: true
+      },
+      assunto: {
+        required: true
+      },
+      mensagem: {
+        required: true
+      }
+    },
+    errorClass: 'form__control--error',
+    highlight: function (element, errorClass, validClass) {
+      $(element).parent().addClass(errorClass)
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $(element).parent().removeClass('error');
+    },
+    errorPlacement: function (error, element) {
+      return true;
+    },
+    submitHandler: function () {
+      alert('sucesso');
+      form.submit();
       // lógica para sucesso do formulário
       /* var dados = $(form).serialize();
 

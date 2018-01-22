@@ -37,7 +37,8 @@
 }
 
 .input,
-.textarea {
+.textarea,
+.select {
   @include placeholder {
     font-style: italic;
   }
@@ -52,6 +53,15 @@
 .textarea {
   height: 105px;
   resize: none;
+
+  &--big {
+    height: 164px;
+  }
+}
+
+select option:disabled {
+  font-style: italic;
+  text-transform: uppercase;
 }
 
 /* Base for label styling */

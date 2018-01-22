@@ -76,10 +76,6 @@ body {
     padding: 70px 0 0;
   }
 
-  &--white {
-    background-color: $c-white;
-  }
-
   &__content {
     padding: 50px 0 70px;
     width: 100%;
@@ -91,12 +87,7 @@ body {
 
   &__header {
     text-align: center;
-    max-width: 80%;
     margin: 0 auto;
-
-    @include media(">=desktop") {
-      max-width: 60%;
-    }
 
     h2 {
       color: $c-gray;
@@ -136,6 +127,18 @@ body {
     @include media(">=desktop") {
       font-size: 18px;
     }
+  }
+
+  &--white {
+    background-color: $c-white;
+  }
+
+  &--text-left {
+    text-align-last: left;
+  }
+
+  &--padding-bottom {
+    padding-bottom: 40px;
   }
 }
 
@@ -389,6 +392,151 @@ body {
 
     @include media(">=desktop") {
       font-size: 16px;
+    }
+  }
+}
+
+.slick-arrow {
+  background: url(../img/icons/arrow-rounded.svg) 0 0/contain no-repeat;
+  display: inline-block;
+  height: 36px;
+  //top: 125px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  z-index: 1;
+
+  &::before {
+    display: none;
+  }
+
+  &.slick-next {
+    right: 10px;
+  }
+
+  &.slick-prev {
+    transform: scaleX(-1);
+    left: 10px;
+    top: calc(50% - 4px);
+  }
+}
+
+.veiculo {
+  &-slider {
+    margin-bottom: 0 !important;
+    width: 100%;
+  }
+
+  &-slider__item {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 280px;
+    position: relative;
+    cursor: pointer;
+
+    @include media(">=tablet") {
+      height: 420px;
+    }
+    
+    @include media(">=desktop") {
+      height: 520px;
+
+      &::before {
+        background: rgba($c-black, .2);
+        content: "";
+        height: 100%;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        transition: opacity .3s ease;
+        width: 100%;
+      }
+
+      &::after {
+        background: url("../img/icons/zoom.svg") 0 0/contain no-repeat;
+        content: "";
+        height: 68px;
+        left: 0;
+        margin: 0 auto;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        opacity: 0;
+        transition: opacity .3s ease;
+        transform: translateY(-50%);
+        width: 68px;
+      }
+
+      &:hover {
+        &::before,
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &-slider-nav {
+    .slick-arrow {
+      background: url(../img/icons/arrow-rounded2.svg) 0 0/contain no-repeat;
+      width: 32px;
+      height: 32px;
+      //top: 35px;
+      opacity: .6;
+
+      &.slick-prev {
+        //top: 45px;
+      }
+    }
+  }
+
+  &-slider-nav__item {    
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    height: 100px;
+    margin: 0;
+    position: relative;
+
+    &:focus {
+      outline: none;
+    }
+
+
+    &.slick-current {
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    @include media(">=tablet") {
+      height: 120px;
+    }
+
+    @include media(">=desktop") {
+      height: 150px;
+      width: 200px;
+    }
+  }
+
+
+  .Car-info {
+    border-bottom: 1px solid #a9a9a9;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    margin-top: 30px;
+
+    &__date,
+    &__price {
+      font-size: 16px;
+
+      &::before {
+        height: 18px;
+        width: 18px;
+      }
     }
   }
 }
