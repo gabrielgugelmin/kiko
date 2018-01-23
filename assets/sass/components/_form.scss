@@ -43,11 +43,16 @@
     font-style: italic;
   }
 
-  border: 2px solid $c-gray;
+  border: 2px solid #787677;
   color: $c-gray-dark;
-  font-size: 15px;
-  padding: 10px;
+  font-size: 14px;
+  padding: 6px 10px;
   width: 100%;
+
+  @include media(">desktop") {
+    font-size: 15px;
+    padding: 10px;
+  }
 }
 
 .textarea {
@@ -74,11 +79,15 @@ select option:disabled {
 [type="checkbox"]:checked + label {
   cursor: pointer;
   padding-left: 56px;
-  padding-top: 14px;
+  padding-top: 9px;
   font-weight: fw("regular");
   color: $c-gray;
   font-size: 16px;
   position: relative;
+
+  @include media(">=desktop") {
+    padding-top: 14px;
+  }
 }
 
 /* checkbox aspect */
@@ -87,10 +96,15 @@ select option:disabled {
   background: transparent;
   border: 2px solid $c-gray;
   content: '';
-  height: 46px;
+  height: 36px;
   left: 0; top: 0;
   position: absolute;
-  width: 46px; 
+  width: 36px; 
+
+  @include media(">=desktop") {
+    height: 46px;
+    width: 46px; 
+  }
 }
 /* checked mark aspect */
 [type="checkbox"]:not(:checked) + label:after,

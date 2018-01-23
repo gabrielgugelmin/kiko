@@ -1,0 +1,182 @@
+[
+  {
+    "name": "BMW E46 M3 DISKI SERIE 2011/2012",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": true,
+    "seminovo": false,
+    "novo": true
+  },
+  {
+    "name": "BMW E46 M3 DISKI SERIE 2011/2012",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": false,
+    "seminovo": false,
+    "novo": true
+  },
+  {
+    "name": "Mercedes-Benz - A 200",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": false,
+    "seminovo": false,
+    "novo": true
+  },
+  {
+    "name": "Mercedes-Benz - CLA 45 AMG",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": true,
+    "seminovo": false,
+    "novo": true
+  },
+  {
+    "name": "Audi - Q3",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": false,
+    "seminovo": false,
+    "novo": true
+  },
+  {
+    "name": "Jeep - Renegade",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": true,
+    "seminovo": false,
+    "novo": true
+  },
+  {
+    "name": "BMW - 335i",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": false,
+    "seminovo": true,
+    "novo": false
+  },
+  {
+    "name": "Mercedes-Benz - C180",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": false,
+    "seminovo": true,
+    "novo": false
+  },
+  {
+    "name": "Audi - A3",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": false,
+    "seminovo": true,
+    "novo": false
+  },
+  {
+    "name": "Cadillac - Escalade",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": false,
+    "seminovo": true,
+    "novo": false
+  },
+  {
+    "name": "Jaguar - XF",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": false,
+    "seminovo": true,
+    "novo": false
+  },
+  {
+    "name": "Toyota - Corolla",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": true,
+    "seminovo": true,
+    "novo": false
+  },
+  {
+    "name": "BMW - X6",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": true,
+    "seminovo": true,
+    "novo": false
+  },
+  {
+    "name": "Porsche - 911 CARRERA 4S COUP\u00c9",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": true,
+    "seminovo": true,
+    "novo": false
+  },
+  {
+    "name": "Ford - Mustang",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": true,
+    "seminovo": true,
+    "novo": false
+  },
+  {
+    "name": "BMW - 320i",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": true,
+    "seminovo": true,
+    "novo": false
+  },
+  {
+    "name": "BMW - 320i",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": true,
+    "seminovo": true,
+    "novo": false
+  },
+  {
+    "name": "Mercedes-Benz - C180",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": false,
+    "seminovo": true,
+    "novo": false
+  },
+  {
+    "name": "Land Rover - Range Rover Evoque",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": false,
+    "seminovo": true,
+    "novo": false
+  },
+  {
+    "name": "Volkswagen - Fusca",
+    "desc": "NOVO / AUTOMÁTICO / SEDAN",
+    "ano": "2011/2012",
+    "valor": "98.000,00",
+    "blindado": true,
+    "seminovo": true,
+    "novo": false
+  }
+]

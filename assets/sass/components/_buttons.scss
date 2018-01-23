@@ -33,6 +33,28 @@
     }
   }
 
+  &--icon {
+    padding: 8px 30px 8px 20px;
+
+    svg {
+      display: inline-block;
+      height: 12px;
+      right: 0;
+      position: relative;
+      transition: all 0.3s ease;
+      transition-delay: 0s;
+      top: 0;
+      margin-left: 2px;
+      width: 12px;
+    }
+
+    &:hover {
+      svg {
+        fill: $c-white;
+      }
+    }
+  }
+
   &--ghost {
     background: transparent;
     border: 2px solid $c-gray;
@@ -55,13 +77,14 @@
   &--medium {
     font-size: 14px;
     line-height: 1.45;
-    padding: 8px 50px 8px 45px;
+    padding: 8px 30px;
 
     @include media("<=phone") {
       width: 100%;
     }
 
     @include media(">=desktop") {
+      padding: 8px 50px 8px 45px;
       font-size: 16px;
     }
 
@@ -71,10 +94,14 @@
   }
 
   &--large {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.45;
     padding: 10px 40px 10px 25px;
     width: 100%;
+
+    @include media(">=tablet") {
+      font-size: 18px;
+    }
   }
 
   &--huge {
@@ -102,6 +129,10 @@
         color: $c-white;
         background-color: $c-red;
       }
+    }
+
+    svg {
+      fill: $c-red;
     }
   }
   

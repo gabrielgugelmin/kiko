@@ -161,6 +161,7 @@ $(function() {
   var $formConsignado = $("#formConsignado");
   var $formFinanciamento = $("#formFinanciamento");
   var $formContato = $("#formContato");
+  var $formProposta = $("#formProposta");
 
   $formNewsletter.validate({
     rules: {
@@ -376,7 +377,222 @@ $(function() {
       return false; */
     }
   });
+
+  $formProposta.validate({
+    rules: {
+      nome: {
+        required: true,
+        minlength: 3
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      telefone: {
+        required: true
+      },
+      formas_pagamento: {
+        required: true
+      },
+      mensagem: {
+        required: true
+      }
+    },
+    errorClass: 'form__control--error',
+    highlight: function (element, errorClass, validClass) {
+      $(element).parent().addClass(errorClass)
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $(element).parent().removeClass('error');
+    },
+    errorPlacement: function (error, element) {
+      return true;
+    },
+    submitHandler: function () {
+      alert('sucesso');
+      form.submit();
+      // lógica para sucesso do formulário
+      /* var dados = $(form).serialize();
+
+      $.ajax({
+        type: "POST",
+        url: "processa.php",
+        data: dados,
+        success: function (data) {
+          alert(data);
+        }
+      });
+
+      return false; */
+    }
+  });
+
+
+
+
+  // Grid
+
+  if ($('.js-grid').length) {
+    getProducts();
+  }
 });
+
+function initIsotope() {
+  // GRID
+  // init Isotope
+  var $container = $('.js-grid').isotope({
+    itemSelector: '.grid__item',
+    layoutMode: 'fitRows',
+    getSortData: {
+      category: '[data-category]',
+      marca: '[data-marca]',
+      modelo: '[data-modelo]',
+      valor: '[data-valor] parseInt'
+    }
+  });
+
+  var initShow = 12; //number of items loaded on init & onclick load more button
+  var counter = initShow; //counter for load more button
+  var iso = $container.data('isotope'); // get Isotope instance
+  var footer = $('.grid__footer .container');
+
+  if ($container.is('#Container')) {
+    //append load more button
+    footer.append('<button class="button button--red button--ghost button--icon button--medium js-load-more">CARREGAR MAIS<svg version="1.1" id="Capa_1" xmlns=http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve"><g><g id="plus"><polygon points="32,12 20,12 20,0 12,0 12,12 0,12 0,20 12,20 12,32 20,32 20,20 32,20"/></g></g></svg></button >');
+  }
+
+  loadMore(initShow); //execute function onload
+
+  function loadMore(toShow) {
+    var elems = $container.isotope('getFilteredItemElements');
+
+    $container.find(".hidden").removeClass("hidden");
+
+    var hiddenElems = iso.filteredItems.slice(toShow, elems.length).map(function (item) {
+      return item.element;
+    });
+
+    $(hiddenElems).addClass('hidden');
+    $container.isotope('layout');
+
+    //when no more to load, hide show more button
+    if (hiddenElems.length == 0 && $container.is('#Container')) {
+      jQuery(".js-load-more").hide();
+      footer.append('<a href="contato.html" id="entreContato" class="button button--red button--ghost button--medium">entre em contato</a>');
+    } else {
+      jQuery("#entreContato").show();
+      jQuery(".js-load-more").show();
+    };
+
+    $('.js-load-more').removeClass('is-loading');
+
+  }
+
+
+
+
+  //when load more button clicked
+  $(".js-load-more").click(function () {
+    $(this).addClass('is-loading');
+
+    if ($('.js-filter button').data('clicked')) {
+      //when filter button clicked, set initial value for counter
+      counter = initShow;
+      $('.js-filter button').data('clicked', false);
+    } else {
+      counter = counter;
+    };
+
+    counter = counter + initShow;
+
+    loadMore(counter);
+  });
+
+  // bind sort button click
+  $('.filtro-veiculo').on('click', 'a', function () {
+    var sortByValue = $(this).attr('data-sort-by');
+    $container.isotope({ sortBy: sortByValue });
+  });
+
+  // change is-active class on buttons
+  $('.filtro__item').each(function (i, buttonGroup) {
+    $(this).on('click', function () {
+      $('.filtro__item').not(this).removeClass('is-active');
+      $(this).addClass('is-active');
+
+      var categoria = $(this).attr('data-filter');
+
+      $container.isotope({
+        filter: categoria
+      });
+    });
+  });
+
+}
+
+function getProducts() {
+
+  var query_string = {};
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i = 0; i < vars.length; i++) {
+    var pair = vars[i].split("=");
+    // If first entry with this name
+    if (typeof query_string[pair[0]] === "undefined") {
+      query_string[pair[0]] = decodeURIComponent(pair[1]);
+      // If second entry with this name
+    } else if (typeof query_string[pair[0]] === "string") {
+      var arr = [query_string[pair[0]], decodeURIComponent(pair[1])];
+      query_string[pair[0]] = arr;
+      // If third or later entry with this name
+    } else {
+      query_string[pair[0]].push(decodeURIComponent(pair[1]));
+    }
+  }
+
+  //Veriavel com categoria
+  var idCategoria = query_string.categoria;
+
+  $.getJSON("/assets/json/veiculos.json", function (data) {
+
+  })
+    .fail(function (data) {
+      console.log("error");
+    }).success(function (data) {
+      $elementos = [];
+
+      var x = false;
+      $.each(data, function (index, element) {
+        if (element.titulo != '') {
+          var blindado = (element.blindado) ? 'grid__item--blindado' : '';
+          var seminovo = (element.seminovo) ? 'grid__item--seminovo' : '';
+          var novo = (element.novo) ? 'grid__item--novo' : '';
+
+          var $box = '<a href="#!" class="grid__item ' + blindado + ' ' + seminovo + ' ' + novo + '">' +
+            '<div class="grid__img" style="background-image:url(assets/img/carros/c1.jpg)"></div>' +
+            '<div class="grid__desc">' +
+              '<h3>' + element.name + '</h3>' +
+              '<p>' + element.desc + '</p>' +
+              '<div class="grid__price">R$ ' + element.valor + '</div>' +
+            '</div>' +
+          '</a>';
+
+        } else {
+
+          var $box = '<h3>Nada por aqui. <a href="./">Clique para voltar.</a></h3><br>';
+        }
+
+        $(".js-grid").append($box);
+
+      });
+
+      if (x == true) {
+      } else {
+        initIsotope();
+      }
+
+    });
+}
 
 function closeMenu() {
   $('.header').removeClass('header--open');
