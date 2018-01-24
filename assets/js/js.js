@@ -437,6 +437,10 @@ $(function() {
   }
 });
 
+var qsRegex;
+var marcaFilter;
+var modeloFilter;
+
 function initIsotope() {
   // GRID
   // init Isotope
@@ -444,10 +448,16 @@ function initIsotope() {
     itemSelector: '.grid__item',
     layoutMode: 'fitRows',
     getSortData: {
-      category: '[data-category]',
-      marca: '[data-marca]',
-      modelo: '[data-modelo]',
-      valor: '[data-valor] parseInt'
+      valor: '[data-valor] parseInt',
+      ano: '[data-ano]',
+      modelo: '[data-modelo]'
+    },
+    filter: function () {
+      var $this = $(this);
+      var searchResult = qsRegex ? $this.text().match(qsRegex) : true;
+      var marcaResult = marcaFilter ? $this.is(marcaFilter) : true;
+      var modeloResult = modeloFilter ? $this.is(modeloFilter) : true;
+      return searchResult && marcaResult && modeloResult;
     }
   });
 
@@ -460,6 +470,7 @@ function initIsotope() {
     //append load more button
     footer.append('<button class="button button--red button--ghost button--icon button--medium js-load-more">CARREGAR MAIS<svg version="1.1" id="Capa_1" xmlns=http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve"><g><g id="plus"><polygon points="32,12 20,12 20,0 12,0 12,12 0,12 0,20 12,20 12,32 20,32 20,20 32,20"/></g></g></svg></button >');
   }
+
 
   loadMore(initShow); //execute function onload
 
@@ -519,14 +530,50 @@ function initIsotope() {
     $(this).on('click', function () {
       $('.filtro__item').not(this).removeClass('is-active');
       $(this).addClass('is-active');
-
-      var categoria = $(this).attr('data-filter');
-
-      $container.isotope({
-        filter: categoria
-      });
     });
   });
+
+  $('#ordem').on('change', function () {
+    var filterValue = this.value;
+    
+    $container.isotope({
+      sortBy: filterValue,
+      sortAscending: true
+    });
+  });
+  
+  $('#marca').on('change', function () {
+    marcaFilter = this.value;
+
+    $container.isotope();
+  });
+
+  $('#modelo').on('change', function () {
+    modeloFilter = this.value;
+
+    $container.isotope();
+  });
+
+  // use value of search field to filter
+  var $quicksearch = $('.quicksearch').keyup(debounce(function () {
+    qsRegex = new RegExp($quicksearch.val(), 'gi');
+    $container.isotope();
+  }, 200));
+
+  // debounce so filtering doesn't happen every millisecond
+  function debounce(fn, threshold) {
+    var timeout;
+    return function debounced() {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+      function delayed() {
+        fn();
+        timeout = null;
+      }
+      timeout = setTimeout(delayed, threshold || 100);
+    }
+  }
 
 }
 
@@ -568,7 +615,7 @@ function getProducts() {
           var seminovo = (element.seminovo) ? 'grid__item--seminovo' : '';
           var novo = (element.novo) ? 'grid__item--novo' : '';
 
-          var $box = '<a href="#!" class="grid__item ' + blindado + ' ' + seminovo + ' ' + novo + '">' +
+          var $box = '<a href="#!" class="grid__item ' + blindado + ' ' + seminovo + ' ' + novo + ' ' + element.marca + ' ' + element.modelo +'" data-valor="' + element.valor + '" data-ano="'+ element.ano +'">' +
             '<div class="grid__img" style="background-image:url(assets/img/carros/c1.jpg)"></div>' +
             '<div class="grid__desc">' +
               '<h3>' + element.name + '</h3>' +

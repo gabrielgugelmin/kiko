@@ -90,13 +90,13 @@
             <nav class="menu">
               <ul class="menu__list">
                 <li class="menu__item">
-                  <a href="#!" class="menu__link">Sobre</a>
+                  <a href="sobre.html" class="menu__link">Sobre</a>
                 </li>
                 <li class="menu__item">
-                  <a href="#!" class="menu__link">Novos</a>
+                  <a href="estoque.html" class="menu__link">Novos</a>
                 </li>
                 <li class="menu__item">
-                  <a href="#!" class="menu__link">Seminovos</a>
+                  <a href="estoque.html" class="menu__link">Seminovos</a>
                 </li>
                 <li class="menu__item">
                   <a href="#!" class="menu__link">Financiamento</a>
@@ -105,7 +105,7 @@
                   <a href="consorcio.html" class="menu__link">Consórcio</a>
                 </li>
                 <li class="menu__item">
-                  <a href="#!" class="menu__link">Contato</a>
+                  <a href="contato.html" class="menu__link">Contato</a>
                 </li>
                 <li class="menu__item">
                   <a href="#!" class="menu__link">
@@ -120,7 +120,7 @@
     </header>
 
     <div class="page-content">
-      <div class="section filtro js-filter">
+      <div class="section section--no-padding filtro js-filter">
         <button class="filtro__item filtro__item--green" data-filter=".grid__item--seminovo">
           <h3>SEMINOVOS</h3>
           <img src="assets/img/seminovos.png" alt="Seminovos">
@@ -135,17 +135,53 @@
         </button>
       </div>
 
-      <section class="grid section section--white">
-        <header class="section__header">
+      <section class="section section--white">
+        <div class="section__header">
           <div class="container">
-            <div class="col-md-10 col-md-offset-1">
-              <h2>OU CONTINUE NAVEGANDO</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut
-                nunc. Semper ac dolor vitae accumsan.</p>
+            <h2>ESTOQUE</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
+              dolor vitae accumsan.</p>
+          </div>
+        </div>
+        <div class="section__content section--padding-bottom">
+          <div class="container">
+            <div class="form form--inline">
+              <div class="form__control">
+                <input class="input quicksearch" type="search" placeholder="FILTRAR POR TERMOS">
+              </div>
+              <div class="form__control">
+                <select class="input" name="marca" id="marca">
+                  <option value="0" disabled selected>FILTRAR POR MARCA</option>
+                  <option value="*">TODOS</option>
+                  <option value=".audi">AUDI</option>
+                  <option value=".bmw">BWM</option>
+                  <option value=".mercedes">MERCEDES</option>
+                </select>
+              </div>
+              <div class="form__control">
+                <select class="input" name="modelo" id="modelo">
+                  <option value="0" disabled selected>FILTRAR POR MODELO</option>
+                  <option value="*">TODOS</option>
+                  <option value=".modelo1">MODELO 1</option>
+                  <option value=".modelo2">MODELO 2</option>
+                  <option value=".modelo3">MODELO 3</option>
+                </select>
+              </div>
+              <div class="form__control">
+                <select class="input" name="ordem" id="ordem">
+                  <option value="0" disabled selected>ORDENAR POR</option>
+                  <option value="*">TODOS</option>
+                  <option value="valor">VALOR</option>
+                  <option value="ano">ANO</option>
+                </select>
+              </div>
             </div>
           </div>
-        </header>
-        <div class="section__content">
+        </div>
+      </section>
+
+      <section class="grid section section--no-padding section--white">
+        <div class="section__grid">
 
           <div class="grid js-grid" id="Container">
 
@@ -153,7 +189,8 @@
         </div>
 
         <footer class="grid__footer">
-          <div class="container"></div>
+          <div class="container">
+          </div>
         </footer>
 
 
@@ -287,22 +324,22 @@
 
             <ul class="footer__list">
               <li>
-                <a href="#!">Sobre</a>
+                <a href="sobre.html">Sobre</a>
               </li>
               <li>
-                <a href="#/">Novos</a>
+                <a href="estoque.html">Novos</a>
               </li>
               <li>
-                <a href="#!">Seminovos</a>
+                <a href="estoque.html">Seminovos</a>
               </li>
               <li>
-                <a href="#!">Financiamento</a>
+                <a href="financiamento.html">Financiamento</a>
               </li>
               <li>
-                <a href="#!">Consórcio</a>
+                <a href="consorcio.html">Consórcio</a>
               </li>
               <li>
-                <a href="#/">Contato</a>
+                <a href="contato">Contato</a>
               </li>
             </ul>
           </div>

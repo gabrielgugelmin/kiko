@@ -85,6 +85,10 @@ body {
     }
   }
 
+  &__grid {
+    width: 100%;
+  }
+
   &__header {
     text-align: left;
     margin: 0 auto;
@@ -148,6 +152,10 @@ body {
 
   &--padding-bottom {
     padding-bottom: 40px;
+  }
+  
+  &--no-padding {
+    padding: 0;
   }
 }
 
