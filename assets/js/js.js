@@ -75,6 +75,39 @@ $(function() {
     ]
   });
 
+  $('.js-slider-sobre').slick({
+    dots: true,
+    arrows: false,
+    autoplay: true
+  });
+  
+  $('.js-slider-historia').slick({
+    dots: true,
+    arrows: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    mobileFirst: true,
+    responsive: [
+      {
+        breakpoint: 767,
+        settings: {
+          
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          arrows: true,
+          dots: false,
+          slidesToShow: 4,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  });
+
   // MENU
   // click no hamburguer icon
   $('.hamburger').on('click', function (e) {
@@ -530,6 +563,12 @@ function initIsotope() {
     $(this).on('click', function () {
       $('.filtro__item').not(this).removeClass('is-active');
       $(this).addClass('is-active');
+
+      var categoria = $(this).attr('data-filter');
+      
+      $container.isotope({
+        filter: categoria
+      });
     });
   });
 
@@ -600,7 +639,7 @@ function getProducts() {
   //Veriavel com categoria
   var idCategoria = query_string.categoria;
 
-  $.getJSON("/assets/json/veiculos.json", function (data) {
+  $.getJSON("http://kikoautos.com.br/front/assets/json/veiculos.json", function (data) {
 
   })
     .fail(function (data) {

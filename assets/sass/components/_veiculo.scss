@@ -1,28 +1,3 @@
-.slick-arrow {
-  background: url(../img/icons/arrow-rounded.svg) 0 0/contain no-repeat;
-  display: inline-block;
-  height: 36px;
-  //top: 125px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 36px;
-  z-index: 1;
-
-  &::before {
-    display: none;
-  }
-
-  &.slick-next {
-    right: 10px;
-  }
-
-  &.slick-prev {
-    transform: scaleX(-1);
-    left: 10px;
-    top: calc(50% - 4px);
-  }
-}
-
 .veiculo {
   &-slider {
     margin-bottom: 0 !important;

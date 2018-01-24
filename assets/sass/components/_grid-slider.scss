@@ -15,40 +15,5 @@
 
   .grid__img {
     height: 180px;
-  }
-
-  .slick-dots {
-    bottom: -40px;
-    
-    li {
-      background-color: $c-gray-light;
-      border-radius: 10px;
-      height: 10px;
-      transition: $dt;
-      width: 42px;
-
-      &:hover {
-        background-color: darken($c-gray-light, 8%);
-      }
-    }
-
-    button {
-      padding: 0;
-      width: 100%;
-
-      &::before {
-        display: none;
-      }
-    }
-
-    .slick-active {
-      background-color: $c-red;
-
-      &:hover {
-        background-color: darken($c-red, 8%);
-      }
-    }
-  }
-
-  
+  }  
 }
