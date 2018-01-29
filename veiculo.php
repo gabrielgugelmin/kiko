@@ -1,3 +1,4 @@
+<?php header('Access-Control-Allow-Origin: *'); ?>
 <html>
 
 <head>
@@ -93,13 +94,13 @@
                   <a href="sobre.html" class="menu__link">Sobre</a>
                 </li>
                 <li class="menu__item">
-                  <a href="estoque.html" class="menu__link">Novos</a>
+                  <a href="estoque.php" class="menu__link">Novos</a>
                 </li>
                 <li class="menu__item">
-                  <a href="estoque.html" class="menu__link">Seminovos</a>
+                  <a href="estoque.php" class="menu__link">Seminovos</a>
                 </li>
                 <li class="menu__item">
-                  <a href="#!" class="menu__link">Financiamento</a>
+                  <a href="financiamento.html" class="menu__link">Financiamento</a>
                 </li>
                 <li class="menu__item">
                   <a href="consorcio.html" class="menu__link">Consórcio</a>
@@ -108,10 +109,18 @@
                   <a href="contato.html" class="menu__link">Contato</a>
                 </li>
                 <li class="menu__item">
-                  <a href="#!" class="menu__link">
+                <div class="search">
+                  <button class="search__button js-toggle-search">
                     <img src="assets/img/icons/search.svg" alt="Buscar">
-                  </a>
-                </li>
+                  </button>
+                  
+                  <div class="search__content">
+                    <input type="text" name="input_busca" value="" placeholder="Buscar veículo..." class="js-search">
+                    
+                    <div class="search__result"></div>
+                  </div>
+                </div>
+              </li>
               </ul>
             </nav>
           </div>
@@ -120,80 +129,185 @@
     </header>
 
     <div class="page-content">
-      <div class="section section--no-padding filtro js-filter">
-        <button class="filtro__item filtro__item--green" data-filter=".grid__item--seminovo">
-          <h3>SEMINOVOS</h3>
-          <img src="assets/img/seminovos.png" alt="Seminovos">
-        </button>
-        <button class="filtro__item filtro__item--red" data-filter=".grid__item--novo">
-          <h3>NOVOS</h3>
-          <img src="assets/img/novos.png" alt="Novo">
-        </button>
-        <button class="filtro__item filtro__item--blue" data-filter=".grid__item--blindado">
-          <h3>BLINDADOS</h3>
-          <img src="assets/img/blindados.png" alt="Blindado">
-        </button>
-      </div>
 
-      <section class="section section--white">
-        <div class="section__header">
-          <div class="container">
-            <h2>ESTOQUE</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
-              dolor vitae accumsan.</p>
+      <section>
+        <div class="container">
+          <ol class="breadcrumb">
+            <li>
+              <a href="#">ESTOQUE</a>
+            </li>
+            <li>
+              <a href="#">NOVO</a>
+            </li>
+            <li class="active">BMW E46 M3 DISKI SERIE</li>
+          </ol>
+
+          <div class="row">
+            <div class="section__header section--text-left">
+              <div class="col-sm-2">
+                <img src="assets/img/logo/hyundai.jpg" alt="Hyundai">
+              </div>
+              <div class="col-sm-10">
+                <h2>
+                   HYUNDAI New Tucson GL
+                </h2>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
+                dolor vitae accumsan.</p>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="section__content section--padding-bottom">
-          <div class="container">
-            <div class="form form--inline">
-              <div class="form__control">
-                <input class="input quicksearch" type="search" placeholder="FILTRAR POR TERMOS">
+          <div class="row">
+            <div class="section__content">
+              <div class="col-md-8">
+                <div class="veiculo-slider js-slider-veiculo">
+                  <div class="veiculo-slider__item" data-fancybox="gallery" href="assets/img/carros/c1.jpg" style="background-image: url(assets/img/carros/c1.jpg); "></div>
+                  <div class="veiculo-slider__item" data-fancybox="gallery" href="assets/img/carros/c2.jpg" style="background-image: url(assets/img/carros/c2.jpg); "></div>
+                  <div class="veiculo-slider__item" data-fancybox="gallery" href="assets/img/carros/c1.jpg" style="background-image: url(assets/img/carros/c1.jpg); "></div>
+                  <div class="veiculo-slider__item" data-fancybox="gallery" href="assets/img/carros/c2.jpg" style="background-image: url(assets/img/carros/c2.jpg); "></div>
+                  <div class="veiculo-slider__item" data-fancybox="gallery" href="assets/img/carros/c1.jpg" style="background-image: url(assets/img/carros/c1.jpg); "></div>
+                  <div class="veiculo-slider__item" data-fancybox="gallery" href="assets/img/carros/c2.jpg" style="background-image: url(assets/img/carros/c2.jpg); "></div>
+                  <div class="veiculo-slider__item" data-fancybox="gallery" href="assets/img/carros/c1.jpg" style="background-image: url(assets/img/carros/c1.jpg); "></div>
+                  <div class="veiculo-slider__item" data-fancybox="gallery" href="assets/img/carros/c2.jpg" style="background-image: url(assets/img/carros/c2.jpg); "></div>
+                </div>
+
+                <div class="veiculo-slider-nav js-slider-veiculo-nav">
+                  <div class="veiculo-slider-nav__item" style="background-image: url(assets/img/carros/c1.jpg); "></div>
+                  <div class="veiculo-slider-nav__item" style="background-image: url(assets/img/carros/c2.jpg); "></div>
+                  <div class="veiculo-slider-nav__item" style="background-image: url(assets/img/carros/c1.jpg); "></div>
+                  <div class="veiculo-slider-nav__item" style="background-image: url(assets/img/carros/c2.jpg); "></div>
+                  <div class="veiculo-slider-nav__item" style="background-image: url(assets/img/carros/c1.jpg); "></div>
+                  <div class="veiculo-slider-nav__item" style="background-image: url(assets/img/carros/c2.jpg); "></div>
+                  <div class="veiculo-slider-nav__item" style="background-image: url(assets/img/carros/c1.jpg); "></div>
+                  <div class="veiculo-slider-nav__item" style="background-image: url(assets/img/carros/c2.jpg); "></div>
+                </div>
               </div>
-              <div class="form__control">
-                <select class="input" name="marca" id="marca">
-                  <option value="0" disabled selected>FILTRAR POR MARCA</option>
-                  <option value="*">TODOS</option>
-                  <option value=".audi">AUDI</option>
-                  <option value=".bmw">BWM</option>
-                  <option value=".mercedes">MERCEDES</option>
-                </select>
-              </div>
-              <div class="form__control">
-                <select class="input" name="modelo" id="modelo">
-                  <option value="0" disabled selected>FILTRAR POR MODELO</option>
-                  <option value="*">TODOS</option>
-                  <option value=".modelo1">MODELO 1</option>
-                  <option value=".modelo2">MODELO 2</option>
-                  <option value=".modelo3">MODELO 3</option>
-                </select>
-              </div>
-              <div class="form__control">
-                <select class="input" name="ordem" id="ordem">
-                  <option value="0" disabled selected>ORDENAR POR</option>
-                  <option value="*">TODOS</option>
-                  <option value="valor">VALOR</option>
-                  <option value="ano">ANO</option>
-                </select>
+              <div class="col-md-4">
+                <div class="veiculo-info">
+                  <ul class="veiculo-list">
+                    <li><span>MARCA</span> Hyndai</li>
+                    <li><span>MODELO</span> New Tucson</li>
+                    <li><span>COR</span> Branco</li>
+                    <li><span>ANO/MODELO</span> 2017/2018</li>
+                    <li><span>MOTOR</span> R$ 120.000</li>
+                  </ul>
+
+                  <div class="veiculo-desc">
+                    <small>
+                       OUTRAS INFORMAÇÕES:
+                    </small>
+                    <ul>
+                      <li>Acendedor automático dos faróis</li>
+                      <li>Central Multimídia Bluetooth</li>
+                      <li>Banco do condutor e passageiro elétrico</li>
+                      <li>Volante e manopla em couro </li>
+                      <li>Rodas de Liga 18"</li>
+                      <li>Rebatimento elétrico dos retrovisores</li>
+                      <li>Piloto automático</li>
+                      <li>Ar condicionado digital duas zonas</li>
+                      <li>Rack de teto</li>
+                      <li>Comando no volante</li>
+                      <li>Airbags frontais, laterais e cortina</li>
+                      <li>Botão de partida</li>
+                      <li>Controle de Estabilidade (ESP)</li>
+                      <li>Sistema de Controle de Tração (TCS)</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+        
       </section>
 
-      <section class="grid section section--no-padding section--white">
-        <div class="section__grid">
+      <section class="section">
+        <header class="section__header">
+          <div class="container">
+            <div class="col-md-8 col-md-offset-2">
+              <h2>FAÇA SUA PROPOSTA</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc.
+                Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+            </div>
+          </div>
+        </header>
+        <div class="section__content">
+          <div class="container">
+            <form class="form" action="" id="formProposta">
+              <div class="row">
+                <div class="col-md-4">
+      
+                  <div class="form__control">
+                    <input type="text" class="input" placeholder="NOME" name="nome">
+                  </div>
+      
+                  <div class="form__control">
+                    <input type="email" class="input" placeholder="EMAIL" name="email">
+                  </div>
+      
+                  <div class="form__control">
+                    <input type="tel" class="input js-phone" placeholder="TELEFONE" name="telefone">
+                  </div>
+                </div>
+      
+                <div class="col-md-8">
+      
+                  <div class="form__control form__control--select">
+                    <select class="input" name="formas_pagamento" id="formas_pagamento">
+                      <option value="0" disabled selected>FORMAS DE PAGAMENTO</option>
+                      <option value="1">PAGAMENTO 1</option>
+                      <option value="2">PAGAMENTO 2</option>
+                    </select>
+                  </div>
+      
+                  <div class="form__control">
+                    <textarea name="mensagem" class="textarea" placeholder="Olá, estou interessado no veículo Hyundai New Tucson"></textarea>
+                  </div>
+                </div>
+      
+              </div>
+      
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form__control">
+                    <input type="checkbox" id="novidades_email" />
+                    <label for="novidades_email">Receber novidades por e-mail</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form__control text-right">
+                    <button type="submit" class="button button--arrow button--ghost button--medium">ENVIAR</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
 
+      <section class="grid section section--white">
+        <header class="section__header">
+          <div class="container">
+            <div class="col-md-10 col-md-offset-1">
+              <h2>OU CONTINUE NAVEGANDO</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
+              dolor vitae accumsan.</p>
+            </div>
+          </div>
+        </header>
+        <div class="section__content">
+      
           <div class="grid js-grid" id="Container">
-
+            
           </div>
         </div>
 
         <footer class="grid__footer">
-          <div class="container">
-          </div>
+          <div class="container"></div>
         </footer>
-
-
+      
+        
       </section>
 
       <section class="section section--white section--padding-bottom">
@@ -233,8 +347,8 @@
           <div class="container">
             <div class="col-md-8 col-md-offset-2">
               <h2>ASSINE NOSSO NEWSLETTER</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut
-                nunc. Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc.
+                Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
             </div>
           </div>
         </header>
@@ -270,8 +384,8 @@
           <div class="container">
             <div class="col-md-8 col-md-offset-2">
               <h2>KIKOAUTOS NO INSTAGRAM</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut
-                nunc. Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc.
+                Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
             </div>
           </div>
         </header>
@@ -327,10 +441,10 @@
                 <a href="sobre.html">Sobre</a>
               </li>
               <li>
-                <a href="estoque.html">Novos</a>
+                <a href="estoque.php">Novos</a>
               </li>
               <li>
-                <a href="estoque.html">Seminovos</a>
+                <a href="estoque.php">Seminovos</a>
               </li>
               <li>
                 <a href="financiamento.html">Financiamento</a>

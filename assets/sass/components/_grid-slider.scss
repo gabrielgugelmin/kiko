@@ -8,6 +8,16 @@
     margin-bottom: 40px;
   }
 
+  .slick-arrow.slick-next {
+    right: 30px;
+    top: 98px;
+  }
+  
+  .slick-arrow.slick-prev {
+    left: 30px;
+    top: 90px;
+  }
+
   .grid__item {
     height: auto;
     margin: 0 25px;

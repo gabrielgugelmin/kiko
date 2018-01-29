@@ -120,6 +120,57 @@ $(function() {
     }
   });
 
+  // pesquisa
+  $('.js-search').on('focus', function (e) {
+    $('.search__result').addClass('search__result--open');
+  });
+
+  $('.js-toggle-search').on('click', function(){
+    $('.search').addClass('search--open');
+  });
+
+  /* var veiculosArray = '';
+
+  $.ajax({
+    url: "/assets/json/busca.php",
+    dataType: "json",
+    async: false,
+    success: function (data) {
+      veiculosArray = data;
+    }
+  }); */
+
+  var veiculosArray = [{"value":"BMW","data":"bmw"},{"value":"Porsche 911","data":"porsche 911"},{"value":"Camaro","data":"camaro"},{"value":"Porsche 911","data":"porsche 911"},{"value":"Hublot","data":"hublot"},{"value":"Panerai","data":"panerai"},{"value":"IWC","data":"iwc"},{"value":"Rolex","data":"rolex"},{"value":"Camaro","data":"camaro"},{"value":"IWC","data":"iwc"},{"value":"Rolex","data":"rolex"}];
+
+  // https://github.com/devbridge/jQuery-Autocomplete
+  $('.js-search').autocomplete({
+    lookup: veiculosArray,
+    triggerSelectOnValidInput: false,
+    lookupFilter: function (suggestion, originalQuery, queryLowerCase) {
+      var re = new RegExp('\\b' + $.Autocomplete.utils.escapeRegExChars(queryLowerCase), 'gi');
+      return re.test(suggestion.data);
+    },
+    onSelect: function (suggestion) {
+
+      //alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+      window.location.href = "/estoque/" + suggestion.link;
+
+    },
+    appendTo: '.search__result',
+    onSearchComplete: function () {
+      $('.search__result').addClass('search__result--visible');
+    }
+  });
+
+  $(document).mouseup(function (e) {
+    var container = $(".search");
+
+    // if the target of the click isn't the container nor a descendant of the container
+    if (!container.is(e.target) && container.has(e.target).length === 0) {
+      container.removeClass('search--open');
+    }
+  });
+
 
   var $containerInstafeed = $('#instafeed');
   // Instagram
@@ -657,8 +708,8 @@ function getProducts() {
           var $box = '<a href="#!" class="grid__item ' + blindado + ' ' + seminovo + ' ' + novo + ' ' + element.marca + ' ' + element.modelo +'" data-valor="' + element.valor + '" data-ano="'+ element.ano +'">' +
             '<div class="grid__img" style="background-image:url(assets/img/carros/c1.jpg)"></div>' +
             '<div class="grid__desc">' +
-              '<h3>' + element.name + '</h3>' +
-              '<p>' + element.desc + '</p>' +
+              '<h3 class="grid__title">' + element.name + '</h3>' +
+              '<p class="grid__text">' + element.desc + '</p>' +
               '<div class="grid__price">R$ ' + element.valor + '</div>' +
             '</div>' +
           '</a>';

@@ -65,17 +65,16 @@
 
   &__desc {
     background-color: $c-white;
-    letter-spacing: .8px;
-    padding: 15px 10px 25px;
+    padding: 15px 10px 15px;
     text-align: center;
     transition: $dt;
 
     @include media(">=tablet") {
-      padding: 15px 30px 40px;
+      padding: 20px 25px 20px;
     }
     
-    h3,
-    p {
+    .grid__title,
+    .grid__text {
       color: $c-gray;     
       font-weight: fw("bold"); 
       margin: 0;
@@ -83,21 +82,24 @@
       transition: $dt;
     }
 
-    h3 {
+    .grid__title {
       font-size: 12px;
       margin-bottom: 2px;
+      letter-spacing: ls(100, 12);
     }
 
-    p {
+    .grid__text {
       font-size: 10px;
+      letter-spacing: ls(100, 10);
     }
   }
 
   &__price {
     color: $c-red;
     font-weight: fw("bold");
-    font-size: 16px;;
+    font-size: 16px;
     margin-top: 15px;
+    letter-spacing: ls(100, 16);
     transition: $dt;
   }
 
@@ -152,16 +154,21 @@
       font-size: 18px;
       font-weight: fw("bold");
       left: 0;
-      letter-spacing: 6px;
+      letter-spacing: ls(900, 18);
       margin:  0 auto;
       position: absolute;
       right: 0;
       text-align: center;
       top: 30px;
 
-      @include media(">=tablet") {
+      @include media(">=desktop") {
+        font-size: 22px;
+        letter-spacing: ls(900, 22);
+      }
+
+      @include media(">=wide") {
         font-size: 24px;
-        letter-spacing: 9px;
+        letter-spacing: ls(900, 24);
       }
     }
 
@@ -177,6 +184,14 @@
       @include media(">=tablet") {
         bottom: -40px;
         max-width: 240px;
+      }
+
+      @include media(">=desktop") {
+        max-width: 260px;
+      }
+
+      @include media(">=wide") {
+        max-width: 300px;
       }
     }
 

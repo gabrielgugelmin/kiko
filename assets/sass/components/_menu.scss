@@ -20,6 +20,14 @@
   &__item {
     padding: 0 10px;
 
+    @include media(">=wide") {
+      padding: 0 15px;
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+
     &:hover {
       .menu__link {
         color: $c-red;
@@ -32,14 +40,16 @@
     display: block;
     font-size: 16px;
     font-weight: fw("semibold");
+    letter-spacing: ls(100, 16);
+    padding: 10px 0;
+    text-align: center;
     text-transform: uppercase;
     transition: $dt;
-    text-align: center;
-    padding: 10px 0;
 
     @include media(">=desktop") {
       display: inline-block;
       font-size: 12px;
+      letter-spacing: ls(100, 12);
       padding: 0;
     }
 
