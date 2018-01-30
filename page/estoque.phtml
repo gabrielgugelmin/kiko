@@ -1,0 +1,164 @@
+<div class="section section--no-padding filtro js-filter">
+        <button class="filtro__item filtro__item--green" data-filter=".grid__item--seminovo">
+          <h3>SEMINOVOS</h3>
+          <img src="assets/img/seminovos.png" alt="Seminovos">
+        </button>
+        <button class="filtro__item filtro__item--red" data-filter=".grid__item--novo">
+          <h3>NOVOS</h3>
+          <img src="assets/img/novos.png" alt="Novo">
+        </button>
+        <button class="filtro__item filtro__item--blue" data-filter=".grid__item--blindado">
+          <h3>BLINDADOS</h3>
+          <img src="assets/img/blindados.png" alt="Blindado">
+        </button>
+      </div>
+
+      <section class="section section--white">
+        <div class="section__header">
+          <div class="container">
+            <h2>ESTOQUE</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
+              dolor vitae accumsan.</p>
+          </div>
+        </div>
+        <div class="section__content section--padding-bottom">
+          <div class="container">
+            <div class="form form--inline">
+              <div class="form__control">
+                <input class="input quicksearch" type="search" placeholder="FILTRAR POR TERMOS">
+              </div>
+              <div class="form__control form__control--select">
+                <select class="select" name="marca" id="marca">
+                  <option value="0" disabled selected>FILTRAR POR MARCA</option>
+                  <option value="*">TODOS</option>
+                  <option value=".audi">AUDI</option>
+                  <option value=".bmw">BWM</option>
+                  <option value=".mercedes">MERCEDES</option>
+                </select>
+              </div>
+              <div class="form__control form__control--select">
+                <select class="select" name="modelo" id="modelo">
+                  <option value="0" disabled selected>FILTRAR POR MODELO</option>
+                  <option value="*">TODOS</option>
+                  <option value=".modelo1">MODELO 1</option>
+                  <option value=".modelo2">MODELO 2</option>
+                  <option value=".modelo3">MODELO 3</option>
+                </select>
+              </div>
+              <div class="form__control form__control--select">
+                <select class="select" name="ordem" id="ordem">
+                  <option value="0" disabled selected>ORDENAR POR</option>
+                  <option value="*">TODOS</option>
+                  <option value="valor">VALOR</option>
+                  <option value="ano">ANO</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid section section--no-padding section--white">
+        <div class="section__grid">
+
+          <div class="grid js-grid" id="Container">
+
+          </div>
+        </div>
+
+        <footer class="grid__footer">
+          <div class="container">
+          </div>
+        </footer>
+
+
+      </section>
+
+      <section class="section section--white section--padding-bottom">
+        <header class="section__header">
+          <div class="container">
+            <div class="col-md-8 col-md-offset-2">
+              <h2>SERVIÇOS</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </div>
+        </header>
+      </section>
+
+      <section>
+        <div class="media media--horizontal media--full">
+          <a href="financiamento.html" class="media__item">
+            <div class="media__img" style="background-image: url(assets/img/p1.jpg);"></div>
+            <div class="media__desc media__desc--gray">
+              <h4 class="media__title">FINANCIAMENTO</h4>
+            </div>
+          </a>
+
+          <a href="consorcio.html" class="media__item">
+            <div class="media__img" style="background-image: url(assets/img/p2.jpg);"></div>
+            <div class="media__desc media__desc--red">
+              <h4 class="media__title">CONSÓRCIO</h4>
+            </div>
+          </a>
+
+
+
+        </div>
+      </section>
+
+      <section class="section newsletter">
+        <header class="section__header">
+          <div class="container">
+            <div class="col-md-8 col-md-offset-2">
+              <h2>ASSINE NOSSO NEWSLETTER</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut
+                nunc. Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+            </div>
+          </div>
+        </header>
+
+        <div class="k-container">
+          <div class="section__content">
+            <form class="form form--inline" id="formNewsletter">
+              <div class="form__control">
+                <input type="text" class="input" placeholder="NOME COMPLETO" name="nome">
+                <span class="form__error">*</span>
+              </div>
+
+              <div class="form__control">
+                <input type="email" class="input" placeholder="E-MAIL" name="email">
+                <span class="form__error">*</span>
+              </div>
+
+              <div class="form__control">
+                <button type="submit" class="button button--arrow button--large">cadastrar</button>
+              </div>
+            </form>
+
+            <small class="newsletter__small">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit.
+            </small>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--white">
+        <header class="section__header">
+          <div class="container">
+            <div class="col-md-8 col-md-offset-2">
+              <h2>KIKOAUTOS NO INSTAGRAM</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut
+                nunc. Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+            </div>
+          </div>
+        </header>
+
+        <div class="section__content">
+          <div id="instafeed" class="instafeed"></div>
+        </div>
+
+        <a hreft="https://www.instagram.com/kikoautos" class="instafeed__link" target="_blank">
+          https://www.instagram.com/kikoautos
+        </a>
+      </section>

@@ -1,10 +1,53 @@
 .footer {
   background-color: lighten($c-gray-dark, 6.27);
-  padding: 75px 0 0;
+  display: flex;
+  flex-direction: column;
+  padding: 75px 30px 50px;
 
-  .row {
-    margin: 0;
-    padding: 0 30px;
+  @include media(">=tablet") {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &__column {
+    margin-bottom: 40px;
+    width: 100%;
+
+    &:first-child {
+      padding-left: 0;
+    }
+    
+    &:last-child {
+      padding-right: 0;
+    }
+
+    @include media(">=tablet") {
+      padding: 0 40px;
+      width: 50%;
+
+      &--small {
+        align-self: flex-end;
+      }
+    }
+
+    @include media(">=desktop") {
+      margin-bottom: 0;
+      align-self: flex-start;
+      width: 29%;
+
+      &--medium {
+        width: 24%;
+      }
+      
+      &--small {
+        align-self: flex-start;
+        width: 18%;
+      }
+      
+      &:not(:first-child) {
+        margin-top: 80px;
+      }
+    }
   }
 
   &__logo {
@@ -33,7 +76,6 @@
     letter-spacing: ls(400, 18);
     line-height: 2;
     margin-bottom: 30px;
-    margin-top: 80px;
     text-transform: uppercase;
   }
 
@@ -98,7 +140,6 @@
 
   &__bottom {
     background-color: $c-gray-dark;
-    margin-top: 50px;
     position: relative;
     padding: 25px 30px;
 
@@ -120,6 +161,4 @@
       }
     }
   }
-
-  
 }

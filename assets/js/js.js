@@ -524,6 +524,7 @@ $(function() {
 var qsRegex;
 var marcaFilter;
 var modeloFilter;
+var categoriaFilter;
 
 function initIsotope() {
   // GRID
@@ -541,7 +542,8 @@ function initIsotope() {
       var searchResult = qsRegex ? $this.text().match(qsRegex) : true;
       var marcaResult = marcaFilter ? $this.is(marcaFilter) : true;
       var modeloResult = modeloFilter ? $this.is(modeloFilter) : true;
-      return searchResult && marcaResult && modeloResult;
+      var categoriaResult = categoriaFilter ? $this.is(categoriaFilter) : true;
+      return searchResult && marcaResult && modeloResult && categoriaResult;
     }
   });
 
@@ -616,10 +618,12 @@ function initIsotope() {
       $(this).addClass('is-active');
 
       var categoria = $(this).attr('data-filter');
-      
-      $container.isotope({
+      categoriaFilter = $(this).attr('data-filter');
+      $container.isotope();
+
+      /* $container.isotope({
         filter: categoria
-      });
+      }); */
     });
   });
 
@@ -690,7 +694,7 @@ function getProducts() {
   //Veriavel com categoria
   var idCategoria = query_string.categoria;
 
-  $.getJSON("http://kikoautos.com.br/front/assets/json/veiculos.json", function (data) {
+  $.getJSON("/assets/json/veiculos.json", function (data) {
 
   })
     .fail(function (data) {
