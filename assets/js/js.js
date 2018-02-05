@@ -50,7 +50,7 @@ $(function() {
     arrows: true,
     asNavFor: $('.js-slider-veiculo-nav'),
     cssEase: 'linear',
-    dots: true,
+    dots: false,
     slidesToScroll: 1,
     slidesToShow: 1
   });
@@ -129,18 +129,18 @@ $(function() {
     $('.search').addClass('search--open');
   });
 
-  /* var veiculosArray = '';
+  var veiculosArray = '';
 
   $.ajax({
-    url: "/assets/json/busca.php",
+    url: "/assets/json/busca-veiculos.php",
     dataType: "json",
     async: false,
     success: function (data) {
       veiculosArray = data;
     }
-  }); */
+  });
 
-  var veiculosArray = [{"value":"BMW","data":"bmw"},{"value":"Porsche 911","data":"porsche 911"},{"value":"Camaro","data":"camaro"},{"value":"Porsche 911","data":"porsche 911"},{"value":"Hublot","data":"hublot"},{"value":"Panerai","data":"panerai"},{"value":"IWC","data":"iwc"},{"value":"Rolex","data":"rolex"},{"value":"Camaro","data":"camaro"},{"value":"IWC","data":"iwc"},{"value":"Rolex","data":"rolex"}];
+//   var veiculosArray = [{"value":"BMW","data":"bmw"},{"value":"Porsche 911","data":"porsche 911"},{"value":"Camaro","data":"camaro"},{"value":"Porsche 911","data":"porsche 911"},{"value":"Hublot","data":"hublot"},{"value":"Panerai","data":"panerai"},{"value":"IWC","data":"iwc"},{"value":"Rolex","data":"rolex"},{"value":"Camaro","data":"camaro"},{"value":"IWC","data":"iwc"},{"value":"Rolex","data":"rolex"}];
 
   // https://github.com/devbridge/jQuery-Autocomplete
   $('.js-search').autocomplete({
@@ -153,7 +153,7 @@ $(function() {
     onSelect: function (suggestion) {
 
       //alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
-      window.location.href = "/estoque/" + suggestion.link;
+      window.location.href = "/veiculo/" + suggestion.link;
 
     },
     appendTo: '.search__result',
@@ -443,24 +443,63 @@ $(function() {
     errorPlacement: function (error, element) {
       return true;
     },
-    submitHandler: function () {
-      alert('sucesso');
-      form.submit();
-      // lógica para sucesso do formulário
-      /* var dados = $(form).serialize();
+    submitHandler: function (form, e) {
+      
+      e.preventDefault();
 
-      $.ajax({
+      $formContato.ajaxSubmit({
+        url: "/ajax/contato.php",
         type: "POST",
-        url: "processa.php",
-        data: dados,
         success: function (data) {
-          alert(data);
+          alert('Mensagem enviada com sucesso.');
+          // Limpa o form
+          $formContato.trigger("reset");
+          $('input, textarea').removeClass('form__control--error');
+        }, error: function (data) {
+          console.log('erro', data);
         }
       });
-
-      return false; */
     }
   });
+
+	/* FORM CONTATO */
+/*
+	$('#formContato').submit(function(e){ 
+	    
+	    e.preventDefault();
+	    var qtdErro = 0;
+	
+	    	$(this).find('[data-validate=true]').each(function() {
+				var value = $.trim($(this).find('input, textarea').val());
+				if(!value.length > 0){
+					$(this).addClass('form__control--error');
+					qtdErro++;
+				}else{
+					$(this).removeClass('form__control--error');
+				}
+			}); 
+			
+			if(qtdErro == 0){
+				return $.ajax({
+					type: "POST",
+					url: "/ajax/contato.php",
+					data: $(this).serialize(),
+					success: function(data) {
+					if (data === "success") {
+						alert('Mensagem enviada com sucesso.');
+			 			// Limpa o form
+			 			$('#formContato').trigger("reset");
+					} else {
+					  alert('Erro ao tentar enviar mensagem: '+data);
+					}
+					}
+				});
+			}else{
+				alert('Erro ao tentar enviar mensagem. Tente novamente.');
+			}
+	
+	});
+*/
 
   $formProposta.validate({
     rules: {
@@ -519,12 +558,15 @@ $(function() {
   if ($('.js-grid').length) {
     getProducts();
   }
+
+  if ($('.js-grid-semi').length) {
+    getSeminovos();
+  }
 });
 
 var qsRegex;
 var marcaFilter;
 var modeloFilter;
-var categoriaFilter;
 
 function initIsotope() {
   // GRID
@@ -542,8 +584,7 @@ function initIsotope() {
       var searchResult = qsRegex ? $this.text().match(qsRegex) : true;
       var marcaResult = marcaFilter ? $this.is(marcaFilter) : true;
       var modeloResult = modeloFilter ? $this.is(modeloFilter) : true;
-      var categoriaResult = categoriaFilter ? $this.is(categoriaFilter) : true;
-      return searchResult && marcaResult && modeloResult && categoriaResult;
+      return searchResult && marcaResult && modeloResult;
     }
   });
 
@@ -575,7 +616,7 @@ function initIsotope() {
     //when no more to load, hide show more button
     if (hiddenElems.length == 0 && $container.is('#Container')) {
       jQuery(".js-load-more").hide();
-      footer.append('<a href="contato.html" id="entreContato" class="button button--red button--ghost button--medium">entre em contato</a>');
+      footer.append('<a href="/contato" id="entreContato" class="button button--red button--ghost button--medium">entre em contato</a>');
     } else {
       jQuery("#entreContato").show();
       jQuery(".js-load-more").show();
@@ -618,12 +659,10 @@ function initIsotope() {
       $(this).addClass('is-active');
 
       var categoria = $(this).attr('data-filter');
-      categoriaFilter = $(this).attr('data-filter');
-      $container.isotope();
-
-      /* $container.isotope({
+      
+      $container.isotope({
         filter: categoria
-      }); */
+      });
     });
   });
 
@@ -671,6 +710,47 @@ function initIsotope() {
 
 }
 
+function getSeminovos() {
+
+  $.getJSON('http://' + window.location.host + "/assets/json/showroom.php", function (data) {
+
+  })
+    .fail(function (data) {
+      console.log("error");
+    }).success(function (data) {
+      $elementos = [];
+
+      $.each(data, function (index, element) {
+
+        if (element.modelo != '') {
+          console.log(element);
+
+          var blindado = (element.blindado == 'sim') ? 'grid__item--blindado' : '';
+          var seminovo = (element.conservacao == 'seminovo') ? 'grid__item--seminovo' : '';
+          var novo = (element.conservacao == 'novo') ? 'grid__item--novo' : '';
+
+          var $box = '<a href="/veiculo/' + element.alias + '/' + element.idVeiculo + '" class="grid__item ' + blindado + ' ' + seminovo + ' ' + novo + ' ' + element.idMarca + ' ' + element.modelo + '" data-valor="' + element.preco + '" data-ano="' + element.anoModelo + '">' +
+            '<div class="grid__img" style="background-image: url(/assets/img/albuns/album_' + element.idAlbum + '/' + element.capa + ');"></div>' +
+            '<div class="grid__desc">' +
+            '<h3 class="grid__title">' + element.idMarca + ' ' + element.modelo + ' ' + element.anoFabricacao + '/' + element.anoModelo + '</h3>' +
+            '<p class="grid__text">' + element.conservacao + ' / ' + element.idTransmissao + ' / ' + element.idVeiculoCategoria + '</p>' +
+            '<div class="grid__price">R$ ' + element.preco + '</div>' +
+            '</div>' +
+            '</a>';
+
+
+        } else {
+
+          var $box = '<h3>Nada por aqui. <a href="./">Clique para voltar.</a></h3><br>';
+        }
+
+        $(".js-grid-semi").append($box);
+
+      });
+
+    });
+}
+
 function getProducts() {
 
   var query_string = {};
@@ -694,7 +774,7 @@ function getProducts() {
   //Veriavel com categoria
   var idCategoria = query_string.categoria;
 
-  $.getJSON("/assets/json/veiculos.json", function (data) {
+  $.getJSON('http://'+window.location.host+"/assets/json/showroom.php", function (data) {
 
   })
     .fail(function (data) {
@@ -704,19 +784,22 @@ function getProducts() {
 
       var x = false;
       $.each(data, function (index, element) {
-        if (element.titulo != '') {
-          var blindado = (element.blindado) ? 'grid__item--blindado' : '';
-          var seminovo = (element.seminovo) ? 'grid__item--seminovo' : '';
-          var novo = (element.novo) ? 'grid__item--novo' : '';
+        
+        if (element.modelo != '') { console.log(element);
+        
+          var blindado = (element.blindado=='sim') ? 'grid__item--blindado' : '';
+          var seminovo = (element.conservacao=='seminovo') ? 'grid__item--seminovo' : '';
+          var novo = (element.conservacao=='novo') ? 'grid__item--novo' : '';
 
-          var $box = '<a href="#!" class="grid__item ' + blindado + ' ' + seminovo + ' ' + novo + ' ' + element.marca + ' ' + element.modelo +'" data-valor="' + element.valor + '" data-ano="'+ element.ano +'">' +
-            '<div class="grid__img" style="background-image:url(assets/img/carros/c1.jpg)"></div>' +
+          var $box = '<a href="/veiculo/'+ element.alias +'/'+element.idVeiculo+'" class="grid__item ' + blindado + ' ' + seminovo + ' ' + novo + ' ' + element.idMarca + ' ' + element.modelo +'" data-valor="' + element.preco + '" data-ano="'+ element.anoModelo +'">' +
+            '<div class="grid__img" style="background-image: url(/assets/img/albuns/album_'+ element.idAlbum +'/'+ element.capa +');"></div>' +
             '<div class="grid__desc">' +
-              '<h3 class="grid__title">' + element.name + '</h3>' +
-              '<p class="grid__text">' + element.desc + '</p>' +
-              '<div class="grid__price">R$ ' + element.valor + '</div>' +
+              '<h3 class="grid__title">' + element.idMarca + ' ' + element.modelo + ' ' + element.anoFabricacao +'/'+ element.anoModelo + '</h3>' +
+              '<p class="grid__text">' + element.conservacao +' / '+ element.idTransmissao +' / '+ element.idVeiculoCategoria + '</p>' +
+              '<div class="grid__price">R$ ' + element.preco + '</div>' +
             '</div>' +
           '</a>';
+
 
         } else {
 

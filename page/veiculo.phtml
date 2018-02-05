@@ -1,0 +1,353 @@
+<section>
+<div class="container">
+  
+  <div class="row">
+  <ol class="breadcrumb">
+    <li>
+      <a href="/estoque">ESTOQUE</a>
+    </li>
+    <li>
+      <a href="/estoque?<?=$veiculo[0]->conservacao?>"><?=strtoupper($veiculo[0]->conservacao)?></a>
+    </li>
+    <li class="active"><?=strtoupper($marca->nome)?> <?=strtoupper($veiculo[0]->modelo)?></li>
+  </ol>
+  </div>
+
+  <div class="row">
+    <div class="section__header section--text-left">
+      <div class="col-sm-2">
+        <?php if($marca->logo!=''){ ?> <img src="<?=$URLSITE?>/assets/img/marcas/<?=$marca->logo?>" alt="<?=$marca->nome?>"><?php } ?>
+      </div>
+      <div class="col-sm-10">
+        <h2>
+           <?=$marca->nome?> <?=$veiculo[0]->modelo?>
+        </h2>
+
+        <p><?=$veiculo[0]->observacoes?></p>
+        
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="section__content">
+      <div class="col-md-8">
+        <div class="veiculo-slider js-slider-veiculo">
+	      
+	      <?php for($i=0;$i<count($album);$i++){  ?>  
+          	<div class="veiculo-slider__item" data-fancybox="gallery" href="<?=$URLSITE?>/assets/img/albuns/album_<?=$album[$i]->idAlbum?>/<?=$album[$i]->file?>" style="background-image: url(<?=$URLSITE?>/assets/img/albuns/album_<?=$album[$i]->idAlbum?>/<?=$album[$i]->file?>);"></div>
+		  <?php } ?>
+          
+        </div>
+
+        <div class="veiculo-slider-nav js-slider-veiculo-nav">
+	      <?php for($i=0;$i<count($album);$i++){  ?>  
+          <div class="veiculo-slider-nav__item" style="background-image: url(<?=$URLSITE?>/assets/img/albuns/album_<?=$album[$i]->idAlbum?>/<?=$album[$i]->file?>);"></div>
+          <?php } ?>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="veiculo-info">
+          <ul class="veiculo-list">
+            <li><span>MARCA</span> <?=$marca->nome?></li>
+            <li><span>MODELO</span> <?=$veiculo[0]->modelo?></li>
+            <li><span>COR</span> <?=$cor->nome?></li>
+            <li><span>ANO/MODELO</span> <?=$veiculo[0]->anoFabricacao?>/<?=$veiculo[0]->anoModelo?></li>
+            <li><span>PREÇO</span> R$ <?=$veiculo[0]->preco?></li>
+          </ul>
+
+          <div class="veiculo-desc">
+            <small>
+               OUTRAS INFORMAÇÕES:
+            </small>
+            <ul>
+              
+				<?php if($veiculo[0]->km!=''){ ?><li>Km: <span><?=$veiculo[0]->km?></span></li><?php } ?>  
+				<?php if($veiculo[0]->motor!=''){ ?><li>Motor: <span><?=$veiculo[0]->motor?></span></li><?php } ?>
+				<?php if($veiculo[0]->potencia!=''){ ?><li>Potência: <span><?=$veiculo[0]->potencia?></span></li><?php } ?>
+				<?php if($veiculo[0]->aceleracao!=''){ ?><li>Aceleração: <span><?=$veiculo[0]->aceleracao?></span></li><?php } ?>
+				<?php if($veiculo[0]->airbag!=''){ ?><li>Airbag: <span><?=$veiculo[0]->airbag?></span></li><?php } ?>
+				<?php if($veiculo[0]->garantiaFabrica!=''){ ?><li>Garantia de fábrica: <span><?=$veiculo[0]->garantiaFabrica?></span></li><?php } ?>
+				<?php if($combustivel->tipo!=''){ ?><li>Combustível: <span><?=$combustivel->tipo?></span></li><?php } ?>
+				<?php if($transmissao->tipo!=''){ ?><li>Transmissão: <span><?=$transmissao->tipo?></span></li><?php } ?>
+				<?php if($veiculo[0]->placa!=''){ ?><li>Placa: <span>XXX-<?=substr($veiculo[0]->placa, -4)?></span></li><?php } ?>
+				<?php if($veiculo[0]->Portas!=''){ ?><li>Portas: <span><?=$veiculo[0]->portas?></span></li><?php } ?>
+				<?php if($veiculo[0]->Motor!=''){ ?><li>Motor: <span><?=$veiculo[0]->motor?></span></li><?php } ?>
+				<?php if($veiculo[0]->multimidia!=''){ ?><li>Multimídia: <span><?=$veiculo[0]->multimidia?></span></li><?php } ?>
+				<?php if($veiculo[0]->bancos!=''){ ?><li>Bancos: <span><?=$veiculo[0]->bancos?></span></li><?php } ?>
+				<?php if($veiculo[0]->freios!=''){ ?><li>Freios: <span><?=$veiculo[0]->freios?></span></li><?php } ?>
+				<?php if($veiculo[0]->farois!=''){ ?><li>Faróis: <span><?=$veiculo[0]->farois?></span></li><?php } ?>
+				<?php if($veiculo[0]->rodas!=''){ ?><li>Rodas: <span><?=$veiculo[0]->rodas?></span></li><?php } ?>
+				<?php if($sensor->tipo!=''){ ?><li>Sensor de estacionamento: <span><?=$sensor->tipo?></span></li><?php } ?>
+				<?php if($combustivel->tipo!=''){ ?><li>Combustível: <span><?=$combustivel->tipo?></span></li><?php } ?>
+				<?php if($veiculo[0]->bluetooth=='sim'){ ?><li>Bluetooth: <span><?=strtoupper($veiculo[0]->bluetooth)?></span></li><?php } ?>
+				<?php if($veiculo[0]->tetoSolar=='sim' or $veiculo[0]->tetoSolar=='semipanoramico'){ ?><li>Teto Solar: <span><?=strtoupper($veiculo[0]->tetoSolar)?></span></li><?php } ?>
+				<?php if($veiculo[0]->conversivel=='sim'){ ?><li>Conversível: <span><?=strtoupper($veiculo[0]->conversivel)?></span></li><?php } ?>
+				<?php if($veiculo[0]->pilotoAutomatico=='sim'){ ?><li>Piloto Automático: <span><?=strtoupper($veiculo[0]->pilotoAutomatico)?></span></li><?php } ?>
+				<?php if($veiculo[0]->sensorChuva=='sim'){ ?><li>Sensor de Chuva: <span><?=strtoupper($veiculo[0]->sensorChuva)?></span></li><?php } ?>
+				<?php if($veiculo[0]->blindado=='sim'){ ?><li>Blindado: <span><?=strtoupper($veiculo[0]->blindado)?></span></li><?php } ?>
+			    <?php if($veiculo[0]->observacoes!=''){ ?><li>Observações: <span><?=($veiculo[0]->observacoes)?></span></li><?php } ?>
+			    <?php if($veiculo[0]->oferta!=''){ ?><li>Condições especiais: <span><?=($veiculo[0]->oferta)?></span></li><?php } ?>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</section>
+
+<section class="section">
+<header class="section__header">
+  <div class="container">
+    <div class="col-md-8 col-md-offset-2">
+      <h2>FAÇA SUA PROPOSTA</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc.
+        Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+    </div>
+  </div>
+</header>
+<div class="section__content">
+  <div class="container">
+    <form class="form" action="" id="formProposta">
+      <div class="row">
+        <div class="col-md-4">
+
+          <div class="form__control">
+            <input type="text" class="input" placeholder="NOME" name="nome">
+          </div>
+
+          <div class="form__control">
+            <input type="email" class="input" placeholder="EMAIL" name="email">
+          </div>
+
+          <div class="form__control">
+            <input type="tel" class="input js-phone" placeholder="TELEFONE" name="telefone">
+          </div>
+        </div>
+
+        <div class="col-md-8">
+
+          <div class="form__control form__control--select">
+            <select class="input" name="formas_pagamento" id="formas_pagamento">
+              <option value="0" disabled selected>FORMAS DE PAGAMENTO</option>
+              <option value="1">PAGAMENTO 1</option>
+              <option value="2">PAGAMENTO 2</option>
+            </select>
+          </div>
+
+          <div class="form__control">
+            <textarea name="mensagem" class="textarea" placeholder="Olá, estou interessado no veículo Hyundai New Tucson"></textarea>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form__control">
+            <input type="checkbox" id="novidades_email" />
+            <label for="novidades_email">Receber novidades por e-mail</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form__control text-right">
+            <button type="submit" class="button button--arrow button--ghost button--medium">ENVIAR</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <br>
+  <div class="container text-center"><a href="/financiamento" class="button button--ghost button--blue button--small">OU SOLICITAR UM FINANCIAMENTO?</a></div>
+
+  
+</div>
+</section>
+
+<section class="grid section section--white">
+<header class="section__header">
+  <div class="container">
+    <div class="col-md-10 col-md-offset-1">
+      <h2>OU CONTINUE NAVEGANDO</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
+      dolor vitae accumsan.</p>
+    </div>
+  </div>
+</header>
+<div class="section__content">
+
+  <div class="grid">
+    <a href="#!" class="grid__item">
+      <div class="grid__img" style="background-image: url(/assets/img/carros/c1.jpg);"></div>
+      <div class="grid__desc">
+        <h3 class="grid__title">Toyota Hilux 2011/2011</h3>
+        <p class="grid__text">seminovo / Automático / pickup</p>
+        <div class="grid__price">R$ 106.990,00</div>
+      </div>
+    </a>
+
+    <a href="#!" class="grid__item">
+      <div class="grid__img" style="background-image: url(/assets/img/carros/c1.jpg);"></div>
+      <div class="grid__desc">
+        <h3 class="grid__title">Toyota Hilux 2011/2011</h3>
+        <p class="grid__text">seminovo / Automático / pickup</p>
+        <div class="grid__price">R$ 106.990,00</div>
+      </div>
+    </a>
+
+    <a href="#!" class="grid__item">
+      <div class="grid__img" style="background-image: url(/assets/img/carros/c1.jpg);"></div>
+      <div class="grid__desc">
+        <h3 class="grid__title">Toyota Hilux 2011/2011</h3>
+        <p class="grid__text">seminovo / Automático / pickup</p>
+        <div class="grid__price">R$ 106.990,00</div>
+      </div>
+    </a>
+
+    <a href="#!" class="grid__item">
+      <div class="grid__img" style="background-image: url(/assets/img/carros/c1.jpg);"></div>
+      <div class="grid__desc">
+        <h3 class="grid__title">Toyota Hilux 2011/2011</h3>
+        <p class="grid__text">seminovo / Automático / pickup</p>
+        <div class="grid__price">R$ 106.990,00</div>
+      </div>
+    </a>
+
+    <a href="#!" class="grid__item">
+      <div class="grid__img" style="background-image: url(/assets/img/carros/c1.jpg);"></div>
+      <div class="grid__desc">
+        <h3 class="grid__title">Toyota Hilux 2011/2011</h3>
+        <p class="grid__text">seminovo / Automático / pickup</p>
+        <div class="grid__price">R$ 106.990,00</div>
+      </div>
+    </a>
+
+    <a href="#!" class="grid__item">
+      <div class="grid__img" style="background-image: url(/assets/img/carros/c1.jpg);"></div>
+      <div class="grid__desc">
+        <h3 class="grid__title">Toyota Hilux 2011/2011</h3>
+        <p class="grid__text">seminovo / Automático / pickup</p>
+        <div class="grid__price">R$ 106.990,00</div>
+      </div>
+    </a>
+
+    <a href="#!" class="grid__item">
+      <div class="grid__img" style="background-image: url(/assets/img/carros/c1.jpg);"></div>
+      <div class="grid__desc">
+        <h3 class="grid__title">Toyota Hilux 2011/2011</h3>
+        <p class="grid__text">seminovo / Automático / pickup</p>
+        <div class="grid__price">R$ 106.990,00</div>
+      </div>
+    </a>
+
+    <a href="#!" class="grid__item">
+      <div class="grid__img" style="background-image: url(/assets/img/carros/c1.jpg);"></div>
+      <div class="grid__desc">
+        <h3 class="grid__title">Toyota Hilux 2011/2011</h3>
+        <p class="grid__text">seminovo / Automático / pickup</p>
+        <div class="grid__price">R$ 106.990,00</div>
+      </div>
+    </a>
+    
+  </div>
+</div>
+
+<footer class="grid__footer">
+  <div class="container"></div>
+</footer>
+
+
+</section>
+
+<section class="section section--white section--padding-bottom">
+<header class="section__header">
+  <div class="container">
+    <div class="col-md-8 col-md-offset-2">
+      <h2>SERVIÇOS</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </div>
+</header>
+</section>
+
+<section>
+<div class="media media--horizontal media--full">
+  <a href="/financiamento" class="media__item">
+    <div class="media__img" style="background-image: url(/assets/img/p1.jpg);"></div>
+    <div class="media__desc media__desc--gray">
+      <h4 class="media__title">FINANCIAMENTO</h4>
+    </div>
+  </a>
+
+  <a href="/consorcio" class="media__item">
+    <div class="media__img" style="background-image: url(/assets/img/p2.jpg);"></div>
+    <div class="media__desc media__desc--red">
+      <h4 class="media__title">CONSÓRCIO</h4>
+    </div>
+  </a>
+
+
+
+</div>
+</section>
+
+<section class="section newsletter">
+<header class="section__header">
+  <div class="container">
+    <div class="col-md-8 col-md-offset-2">
+      <h2>ASSINE NOSSO NEWSLETTER</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc.
+        Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+    </div>
+  </div>
+</header>
+
+<div class="k-container">
+  <div class="section__content">
+    <form class="form form--inline" id="formNewsletter">
+      <div class="form__control">
+        <input type="text" class="input" placeholder="NOME COMPLETO" name="nome">
+        <span class="form__error">*</span>
+      </div>
+
+      <div class="form__control">
+        <input type="email" class="input" placeholder="E-MAIL" name="email">
+        <span class="form__error">*</span>
+      </div>
+
+      <div class="form__control">
+        <button type="submit" class="button button--arrow button--large">cadastrar</button>
+      </div>
+    </form>
+
+    <small class="newsletter__small">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
+      dolor sit amet, consectetur adipiscing elit.
+    </small>
+  </div>
+</div>
+</section>
+
+<section class="section section--white">
+<header class="section__header">
+  <div class="container">
+    <div class="col-md-8 col-md-offset-2">
+      <h2>KIKOAUTOS NO INSTAGRAM</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc.
+        Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+    </div>
+  </div>
+</header>
+
+<div class="section__content">
+  <div id="instafeed" class="instafeed"></div>
+</div>
+
+<a hreft="https://www.instagram.com/kikoautos" class="instafeed__link" target="_blank">
+  https://www.instagram.com/kikoautos
+</a>
+</section>

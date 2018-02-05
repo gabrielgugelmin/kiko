@@ -74,14 +74,14 @@ include_once('core/core.php');
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	<!-- CSS -->
-	<link rel="stylesheet" href="assets/css/normalize.min.css">
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/jquery.fancybox.min.css">
-	<link rel="stylesheet" href="assets/css/slick.css">
-	<link rel="stylesheet" href="assets/css/slick-theme.css">
-	<link rel="stylesheet" href="assets/css/perfect-scrollbar.css">
+	<link rel="stylesheet" href="/assets/css/normalize.min.css">
+	<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/assets/css/jquery.fancybox.min.css">
+	<link rel="stylesheet" href="/assets/css/slick.css">
+	<link rel="stylesheet" href="/assets/css/slick-theme.css">
+	<link rel="stylesheet" href="/assets/css/perfect-scrollbar.css">
 
-	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="/assets/css/style.css">
 	
 	<!-- FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
@@ -93,7 +93,13 @@ include_once('core/core.php');
 	
 	<div class="page-wrapper">
 		
-		<?php if($pagina=="" or file_exists('page/'.$pagina.'.phtml')){ include_once('include/header.phtml'); } ?>
+		<?php
+			
+			//if($pagina=="" or file_exists('page/'.$pagina.'.phtml')){ 
+				include_once('include/header.phtml'); 
+			//} 
+		
+		?>
 		
 		<div class="page-content">	
 
@@ -111,11 +117,7 @@ include_once('core/core.php');
 					}else{
 					
 						//Do contrario mosta a pagina de erro
-						include_once("page/erro404.phtml"); 
-						
-						/* include_once('include/header.phtml');
-						include_once("page/home.phtml");
-						include_once("include/footer.phtml"); */
+						include_once("page/error404.phtml"); 
 					}
 				
 				}else{
@@ -129,7 +131,13 @@ include_once('core/core.php');
 		
 		</div> <!-- PageContent -->
 
-		<?php if($pagina=="" or file_exists('page/'.$pagina.'.phtml')){ include_once('include/footer.phtml'); } ?>
+		<?php 
+			
+			//if($pagina=="" or file_exists('page/'.$pagina.'.phtml')){ 
+			
+				include_once('include/footer.phtml'); 
+			//} 
+		?>
 		
 	</div> <!-- PageWrapper -->
 	
@@ -137,19 +145,20 @@ include_once('core/core.php');
 	
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVQh8KHCVUKoqVJHQGZbQNHdYjAPe8Km0"></script>
 
-	  <script src="assets/js/jquery.min.js"></script>
-	  <script src="assets/js/bootstrap.min.js"></script>
-	  <script src="assets/js/isotope.pkgd.min.js"></script>
-	  <script src="assets/js/jquery.autocomplete.min.js"></script>
-	  <script src="assets/js/jquery.fancybox.min.js"></script>
-	  <script src="assets/js/perfect-scrollbar.jquery.min.js"></script>
-	  <script src="assets/js/slick.min.js"></script>
-	  <script src="assets/js/instafeed.min.js"></script>
-	  <script src="assets/js/jquery.validate.min.js"></script>
-	  <script src="assets/js/jquery.mask.min.js"></script>
-	  <script src="assets/js/slick.min.js"></script>
+	  <script src="/assets/js/jquery.min.js"></script>
+	  <script src="/assets/js/bootstrap.min.js"></script>
+	  <script src="/assets/js/isotope.pkgd.min.js"></script>
+	  <script src="/assets/js/jquery.autocomplete.min.js"></script>
+	  <script src="/assets/js/jquery.fancybox.min.js"></script>
+	  <script src="/assets/js/perfect-scrollbar.jquery.min.js"></script>
+	  <script src="/assets/js/jquery.form.min.js"></script>
+	  <script src="/assets/js/slick.min.js"></script>
+	  <script src="/assets/js/instafeed.min.js"></script>
+	  <script src="/assets/js/jquery.validate.min.js"></script>
+	  <script src="/assets/js/jquery.mask.min.js"></script>
+	  <script src="/assets/js/slick.min.js"></script>
 	  
-	  <script src="assets/js/js.js"></script>
+	  <script src="/assets/js/js.js"></script>
 		
 
 	<?php if($siteAnalytics!=''){ ?>

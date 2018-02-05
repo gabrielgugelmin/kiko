@@ -56,6 +56,12 @@
   }
 
   &-slider-nav {
+    background-color: #ddd;
+    
+    .slick-track {
+      margin: 0 auto;
+    }
+
     .slick-arrow {
       background: url(../img/icons/arrow-rounded2.svg) 0 0/contain no-repeat;
       width: 32px;
@@ -152,6 +158,11 @@
         font-size: 14px;
         line-height: 1.4;
         margin-bottom: 12px;
+        font-weight: fw("bold");
+
+        span {
+          font-weight: fw("regular");
+        }
       }
     }
 

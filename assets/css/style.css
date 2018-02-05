@@ -503,7 +503,14 @@ select option:disabled {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap; }
   .grid__item {
-    display: inline-block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    min-height: 320px;
     width: 50%; }
     .grid__item:hover {
       text-decoration: none; }
@@ -551,6 +558,16 @@ select option:disabled {
         height: 200px; } }
   .grid__desc {
     background-color: #ffffff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 auto;
+            flex: 1 0 auto;
     padding: 15px 10px 15px;
     text-align: center;
     -webkit-transition: all 0.3s ease;
@@ -562,22 +579,22 @@ select option:disabled {
     .grid__desc .grid__text {
       color: #4a4748;
       font-weight: 700;
-      margin: 0;
       text-transform: uppercase;
       -webkit-transition: all 0.3s ease;
       transition: all 0.3s ease; }
     .grid__desc .grid__title {
       font-size: 12px;
-      margin-bottom: 2px;
-      letter-spacing: 1.2px; }
+      letter-spacing: 1.2px;
+      margin: 0 0 2px 0; }
     .grid__desc .grid__text {
       font-size: 10px;
-      letter-spacing: 1px; }
+      letter-spacing: 1px;
+      margin-bottom: 15px; }
   .grid__price {
     color: #cc1c22;
     font-weight: 700;
     font-size: 16px;
-    margin-top: 15px;
+    margin-top: auto;
     letter-spacing: 1.6px;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease; }
@@ -1177,11 +1194,15 @@ select option:disabled {
       .veiculo-slider__item:hover::before, .veiculo-slider__item:hover::after {
         opacity: 1; } }
 
-.veiculo-slider-nav .slick-arrow {
-  background: url(../img/icons/arrow-rounded2.svg) 0 0/contain no-repeat;
-  width: 32px;
-  height: 32px;
-  opacity: .6; }
+.veiculo-slider-nav {
+  background-color: #ddd; }
+  .veiculo-slider-nav .slick-track {
+    margin: 0 auto; }
+  .veiculo-slider-nav .slick-arrow {
+    background: url(../img/icons/arrow-rounded2.svg) 0 0/contain no-repeat;
+    width: 32px;
+    height: 32px;
+    opacity: .6; }
 
 .veiculo-slider-nav__item {
   background-position: center center;
@@ -1246,7 +1267,10 @@ select option:disabled {
   .veiculo-desc ul li {
     font-size: 14px;
     line-height: 1.4;
-    margin-bottom: 12px; }
+    margin-bottom: 12px;
+    font-weight: 700; }
+    .veiculo-desc ul li span {
+      font-weight: 400; }
 
 * {
   font-family: "Open Sans", sans-serif; }
@@ -1587,7 +1611,7 @@ body {
     .consorcio__marcas img:first-child {
       margin-bottom: 60px; }
     @media (min-width: 768px) {
-      .consorcio__marcas img {
+      .consorcio__marcas img:first-child {
         margin-bottom: 0; } }
 
 .vantagens__content {
