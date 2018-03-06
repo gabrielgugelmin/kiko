@@ -11,6 +11,18 @@
     &:hover,
     &:focus {
       text-decoration: none;
+
+      .media__desc--gray {
+        background-color: darken($c-gray, 8%);
+      }
+
+      .media__desc--red {
+        background-color: darken($c-red, 8%);
+      }
+
+      .media__desc--blue {
+        background-color: darken($c-blue, 8%);
+      }
     }
   }
 

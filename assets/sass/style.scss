@@ -166,6 +166,27 @@ body {
 
   &--text-left {
     text-align: left;
+
+    &.section__header {
+      img {
+        display: block;
+        margin: 20px auto 0;
+        max-width: 160px;
+
+        @include media(">=tablet") {
+          margin: 20px 0 0 0;
+        }
+      }
+
+      h2,
+      p {
+        text-align: center;
+
+        @include media(">=tablet") {
+          text-align: left;
+        }
+      }
+    }
   }
 
   &--padding-bottom {

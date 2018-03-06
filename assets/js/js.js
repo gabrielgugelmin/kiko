@@ -14,7 +14,11 @@ $(function() {
 
   // Banner principal
   $('.js-banner-slider').slick({
-    arrows: false
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    fade: true
+    
   });
 
   // Grid slider
@@ -23,6 +27,7 @@ $(function() {
     dots: false,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: false,
     mobileFirst: true,
     responsive: [
       {
@@ -536,8 +541,12 @@ $(function() {
 });
 
 var qsRegex;
+var buttonFilter;
 var marcaFilter;
 var modeloFilter;
+var novoFilter;
+var seminovoFilter;
+var blindadoFilter;
 
 function initIsotope() {
   // GRID
@@ -553,9 +562,13 @@ function initIsotope() {
     filter: function () {
       var $this = $(this);
       var searchResult = qsRegex ? $this.text().match(qsRegex) : true;
+      var buttonResult = buttonFilter ? $this.is( buttonFilter ) : true;
       var marcaResult = marcaFilter ? $this.is(marcaFilter) : true;
       var modeloResult = modeloFilter ? $this.is(modeloFilter) : true;
-      return searchResult && marcaResult && modeloResult;
+       var novoResult = novoFilter ? $this.is(novoFilter) : true;
+        var seminovoResult = seminovoFilter ? $this.is(seminovoFilter) : true;
+         var blindadoResult = blindadoFilter ? $this.is(blindadoFilter) : true;
+      return searchResult && marcaResult && modeloResult && novoResult && seminovoResult && blindadoResult && buttonResult;
     }
   });
 
@@ -587,7 +600,15 @@ function initIsotope() {
     //when no more to load, hide show more button
     if (hiddenElems.length == 0 && $container.is('#Container')) {
       jQuery(".js-load-more").hide();
-      footer.append('<a href="/contato" id="entreContato" class="button button--red button--ghost button--medium">entre em contato</a>');
+     
+	  	//$('.grid__footer .container').html('<a href="/contato" id="entreContato" class="button button--red button--ghost button--medium">entre em contato</a>');
+	  	
+	  	if(footer.find('#entreContato').length){
+	    
+	    }else{
+		    footer.append('<a href="/contato" id="entreContato" class="button button--red button--ghost button--medium">entre em contato</a>');
+	    }
+      
     } else {
       jQuery("#entreContato").show();
       jQuery(".js-load-more").show();
@@ -618,28 +639,41 @@ function initIsotope() {
   });
 
   // bind sort button click
+/*
   $('.filtro-veiculo').on('click', 'a', function () {
     var sortByValue = $(this).attr('data-sort-by');
+    
+     alert(categoria);
+      if(categoria=='.grid__item--novo'){
+	      novoFilter = this.value;
+      }else if(categoria=='.grid__item--seminovo'){
+	      seminovoFilter = this.value;
+      }else if(categoria=='.grid__item--blindado'){
+	      blindadoFilter = this.value;
+	  }
+    
     $container.isotope({ sortBy: sortByValue });
+    
   });
+*/
 
   // change is-active class on buttons
-  $('.filtro__item').each(function (i, buttonGroup) {
-    $(this).on('click', function () {
+  //$('.filtro__item').each(function (i, buttonGroup) {
+    $('.filtro__item').on('click', function () {
+      
       $('.filtro__item').not(this).removeClass('is-active');
       $(this).addClass('is-active');
-
-      var categoria = $(this).attr('data-filter');
-      
-      $container.isotope({
-        filter: categoria
-      });
+	  buttonFilter = $(this).attr('data-filter');
+      var categoria = $(this).attr('data-filter'); 
+	     
+      $container.isotope();
+      loadMore(1000);
     });
-  });
+  //});
 
   $('#ordem').on('change', function () {
     var filterValue = this.value;
-    
+    loadMore(1000);
     $container.isotope({
       sortBy: filterValue,
       sortAscending: true
@@ -648,20 +682,23 @@ function initIsotope() {
   
   $('#marca').on('change', function () {
     marcaFilter = this.value;
-
+	loadMore(1000);
     $container.isotope();
   });
 
   $('#modelo').on('change', function () {
     modeloFilter = this.value;
-
+	loadMore(1000);
     $container.isotope();
   });
+  
 
   // use value of search field to filter
-  var $quicksearch = $('.quicksearch').keyup(debounce(function () {
+  var $quicksearch = $('.quicksearch').keyup( debounce( function() {
     qsRegex = new RegExp($quicksearch.val(), 'gi');
+
     $container.isotope();
+    loadMore(1000);
   }, 200));
 
   // debounce so filtering doesn't happen every millisecond
@@ -762,7 +799,7 @@ function getProducts() {
           var seminovo = (element.conservacao=='seminovo') ? 'grid__item--seminovo' : '';
           var novo = (element.conservacao=='novo') ? 'grid__item--novo' : '';
 
-          var $box = '<a title="'+ element.idMarca + ' ' + element.modelo + '" href="/veiculo/'+ element.alias +'/'+element.idVeiculo+'" class="grid__item ' + blindado + ' ' + seminovo + ' ' + novo + ' ' + element.idMarca + ' ' + element.alias +'" data-valor="' + element.preco + '" data-ano="'+ element.anoModelo +'">' +
+          var $box = '<a title="'+ element.idMarca + ' ' + element.modelo + '" href="/veiculo/'+ element.alias +'/'+element.idVeiculo+'" data-category="' + blindado + ' ' + seminovo + ' ' + novo + '" class="grid__item ' + blindado + ' ' + seminovo + ' ' + novo + ' ' + element.idMarca + ' ' + element.alias +'" data-valor="' + element.preco + '" data-ano="'+ element.anoModelo +'">' +
             '<div class="grid__img" style="background-image: url(/assets/img/albuns/album_'+ element.idAlbum +'/'+ element.capa +');"></div>' +
             '<div class="grid__desc">' +
               '<h3 class="grid__title">' + element.idMarca + ' ' + element.modelo + ' ' + element.anoFabricacao +'/'+ element.anoModelo + '</h3>' +
