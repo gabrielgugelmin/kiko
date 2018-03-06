@@ -200,7 +200,7 @@ body {
 .table {
   border: 1px solid $c-black;
   font-size: 12px;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 
   caption {
     font-size: 14px;
@@ -254,7 +254,7 @@ body {
     margin-bottom: 60px;
 
     @include media(">=desktop") {
-      margin-bottom: 0;
+      margin-bottom: 30px;
     }
 
     .button {

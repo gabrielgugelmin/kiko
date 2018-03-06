@@ -1,6 +1,6 @@
 <div class="media media--horizontal media--full">  
         <div class="media__item">
-          <div class="media__img" style="background-image: url(assets/img/p3.jpg);"></div>
+          <div class="media__img" style="background-image: url(/assets/img/p3.jpg);"></div>
           <div class="media__desc media__desc--blue">
             <h4 class="media__title">VENDA SEU CARRO</h4>
           </div>
@@ -12,8 +12,7 @@
           <div class="container">
             <div class="col-md-8 col-md-offset-2">
               <h2>SEU VEÍCULO CONSIGNADO</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper
-                ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+              <p>Utilizamos das melhores estratégias de marketing para divulgar seu veículo e realizar a venda em tempo recorde. Além do nosso site e redes sociais, divulgamos o seu veículo em sites de parceiros e campanhas de links patrocinados.</p>
             </div>
           </div>
         </header>
@@ -39,10 +38,10 @@
                 <img src="assets/img/seguidores.png" alt="Negociação facilitada">
               </div>
               <div class="media__desc">
-                <h4 class="media__title">MAIS DE 20 MIl
+                <h4 class="media__title">MAIS DE 20 MIL
                   <br>SEGUIDORES
                 </h4>
-                <p class="media__text">Seu carro em nossas mídias sociais</p>
+                <p class="media__text">Seu carro em nossas redes sociais e parceiros</p>
               </div>
             </div>
       
@@ -55,7 +54,7 @@
                   <br>RECORDE
                 </h4>
                 <p class="media__text">
-                  Veículos vendidos em menos de 24hrs
+                  Já realizamos vendas de consignados em menos de 24 horas
                 </p>
               </div>
             </div>
@@ -69,7 +68,7 @@
                   <br>SEU PRODUTO
                 </h4>
                 <p class="media__text">
-                  Investimos em todas plataformas de venda Online
+                  Investimos em todas plataformas de venda online
                 </p>
               </div>
             </div>
@@ -78,7 +77,7 @@
         </div>
       
         <p class="section__message">
-           Não perca a venda, solicite contato pelo formulário:
+           Não deixe de vender ainda hoje, solicite contato pelo formulário agora:
         </p>
       </section>
 
@@ -88,7 +87,7 @@
             <div class="col-md-8 col-md-offset-2">
               <h2>PREENCHA O FORMULÁRIO</h2>
               <p>Todos os campos são obrigatórios. Caso você tiver alguma dificuldade
-                <a href="contato.html" class="k-link">entre em contato</a>.</p>
+                <a href="/contato" class="k-link">entre em contato</a>.</p>
             </div>
           </div>          
         </header>
@@ -129,11 +128,11 @@
                   </div>
 
                   <div class="form__control">
-                    <input type="text" class="input js-ano" placeholder="ANO DE FABRICAÇÃO E MODELO" name="ano">
+                    <input type="text" class="input" placeholder="ANO DE FABRICAÇÃO E MODELO" name="anoFabricacaoModelo">
                   </div>
 
                   <div class="form__control">
-                    <textarea name="detalhes" class="textarea" placeholder="INFORME MAIS DETALHES DO VEÍCULO"></textarea>
+                    <textarea name="observacoes" class="textarea" placeholder="INFORME MAIS DETALHES DO VEÍCULO"></textarea>
                   </div>
                 </div>
 
@@ -142,7 +141,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form__control">
-                    <input type="checkbox" id="novidades_email" />
+                    <input type="checkbox" name="newsletter" value="1" id="novidades_email" />
                     <label for="novidades_email">Receber novidades por e-mail</label>
                   </div>
                 </div>
@@ -159,15 +158,15 @@
 
       <section>
         <div class="media media--horizontal media--full">
-          <a href="consorcio.html" class="media__item">
-            <div class="media__img" style="background-image: url(assets/img/p2.jpg);"></div>
+          <a href="/consorcio" class="media__item">
+            <div class="media__img" style="background-image: url(/assets/img/p2.jpg);"></div>
             <div class="media__desc media__desc--red">
               <h4 class="media__title">CONSÓRCIO</h4>
             </div>
           </a>
       
-          <a href="financiamento.html" class="media__item">
-            <div class="media__img" style="background-image: url(assets/img/p1.jpg);"></div>
+          <a href="/financiamento" class="media__item">
+            <div class="media__img" style="background-image: url(/assets/img/p1.jpg);"></div>
             <div class="media__desc media__desc--gray">
               <h4 class="media__title">FINANCIAMENTO</h4>
             </div>
@@ -176,39 +175,24 @@
         </div>
       </section>
 
-      <section class="section newsletter">
-        <header class="section__header">
-          <div class="container">
-            <div class="col-md-8 col-md-offset-2">
-              <h2>ASSINE NOSSO NEWSLETTER</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper
-                ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
-            </div>
-          </div>
-        </header>
-      
-        <div class="k-container">
-          <div class="section__content">
-            <form class="form form--inline" id="formNewsletter">
-              <div class="form__control">
-                <input type="text" class="input" placeholder="NOME COMPLETO" name="nome">
-                <span class="form__error">*</span>
-              </div>
-      
-              <div class="form__control">
-                <input type="email" class="input" placeholder="E-MAIL" name="email">
-                <span class="form__error">*</span>
-              </div>
-      
-              <div class="form__control">
-                <button type="submit" class="button button--arrow button--large">cadastrar</button>
-              </div>
-            </form>
-      
-            <small class="newsletter__small">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit.
-            </small>
-          </div>
-        </div>
-      </section>
+     <?php
+
+			/*
+			* Incluse Newsletter
+			*	
+			*/
+			
+			include_once('include/section-newsletter.phtml');	
+		
+		?>
+		
+		<?php
+		
+			/*
+			* Incluse Newsletter
+			*	
+			*/
+			
+			include_once('include/section-instagram.phtml');	
+		
+		?>

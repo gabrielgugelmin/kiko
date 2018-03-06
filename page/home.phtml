@@ -12,13 +12,16 @@
 	  <div class="container">
 	    <div class="col-md-8 col-md-offset-2">
 	      <h2>Novos</h2>
-	      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
-	        dolor vitae accumsan. interdum hendrerit lacinia.</p>
+	      <p>Confira nosso estoque multimarcas de veículos zero quilômetro e surpreenda-se com as vantagens que só a Kikoautos pode oferecer além das concessionárias.</p>
 	    </div>
 	  </div>
 	</header>
 
 	<div class="section__content">
+	
+	<?php
+		    
+	if(count($veiculoDestaqueNovos)>3){  ?>
 	
 	  <div class="grid-slider js-grid-slider">
 	
@@ -47,42 +50,16 @@
 	      </div>
 	    </a>
 	    
-	    <a href="/veiculo/<?=$rowDestaqueNovo->alias?>/<?=$rowDestaqueNovo->idVeiculo?>" class="grid__item">
-	      <div class="grid__img" style="background-image: url(<?=$URLSITE?>/assets/img/albuns/album_<?=$rowDestaqueNovo->idAlbum?>/<?=$capaNovo[0]->file?>);"></div>
-	      <div class="grid__desc">
-	        <h3 class="grid__title"><?=$marcaNovo->nome?> <?=$rowDestaqueNovo->modelo?> <?=$rowDestaqueNovo->anoFabricacao?>/<?=$rowDestaqueNovo->anoModelo?></h3>
-	        <p class="grid__text"><?=$rowDestaqueNovo->conservacao?> / <?=$transmissaoNovo->tipo?> / <?=$categoriaNovo->nome?></p>
-	        <div class="grid__price">
-	          R$ <?=$rowDestaqueNovo->preco?>
-	        </div>
-	      </div>
-	    </a>
-	    
-	    <a href="/veiculo/<?=$rowDestaqueNovo->alias?>/<?=$rowDestaqueNovo->idVeiculo?>" class="grid__item">
-	      <div class="grid__img" style="background-image: url(<?=$URLSITE?>/assets/img/albuns/album_<?=$rowDestaqueNovo->idAlbum?>/<?=$capaNovo[0]->file?>);"></div>
-	      <div class="grid__desc">
-	        <h3 class="grid__title"><?=$marcaNovo->nome?> <?=$rowDestaqueNovo->modelo?> <?=$rowDestaqueNovo->anoFabricacao?>/<?=$rowDestaqueNovo->anoModelo?></h3>
-	        <p class="grid__text"><?=$rowDestaqueNovo->conservacao?> / <?=$transmissaoNovo->tipo?> / <?=$categoriaNovo->nome?></p>
-	        <div class="grid__price">
-	          R$ <?=$rowDestaqueNovo->preco?>
-	        </div>
-	      </div>
-	    </a>
-	    
-	    <a href="/veiculo/<?=$rowDestaqueNovo->alias?>/<?=$rowDestaqueNovo->idVeiculo?>" class="grid__item">
-	      <div class="grid__img" style="background-image: url(<?=$URLSITE?>/assets/img/albuns/album_<?=$rowDestaqueNovo->idAlbum?>/<?=$capaNovo[0]->file?>);"></div>
-	      <div class="grid__desc">
-	        <h3 class="grid__title"><?=$marcaNovo->nome?> <?=$rowDestaqueNovo->modelo?> <?=$rowDestaqueNovo->anoFabricacao?>/<?=$rowDestaqueNovo->anoModelo?></h3>
-	        <p class="grid__text"><?=$rowDestaqueNovo->conservacao?> / <?=$transmissaoNovo->tipo?> / <?=$categoriaNovo->nome?></p>
-	        <div class="grid__price">
-	          R$ <?=$rowDestaqueNovo->preco?>
-	        </div>
-	      </div>
-	    </a>
-	    
 	    <?php } ?>
 	  
 	  </div>
+	  
+	<?php }else{ ?>
+		
+		<p class="text-center">Nenhum veículo em destaque! Veja <a href="/estoque">nosso estoque completo</a>.</p> 
+	    
+	<?php } ?>  
+	  
 	</div>
 
 	<a href="/estoque" class="button button--huge button--arrow">VER TODOS</a> 
@@ -95,8 +72,7 @@
   <div class="container">
     <div class="col-md-8 col-md-offset-2">
       <h2>SEMINOVOS</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper
-        ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+      <p>Confira nosso estoque multimarcas de veículos seminovos com garantia de procedência, qualidade e multipossibilidades na negociação.</p>
     </div>
   </div>
 </header>
@@ -104,32 +80,7 @@
 
   <div class="grid js-grid-semi">      
     
-    <?php
-	//Seleciona veciculos destacados
-	for($sm=0;$sm<count($veiculoDestaqueSM);$sm++){ 
-		
-		$rowDestaque = $veiculoDestaqueSM[$sm]; 	
-		
-		$marca 			= DAOFactory::getMarcaDAO()->load($rowDestaque->idMarca);
-		$transmissao 	= DAOFactory::getTransmissaoDAO()->load($rowDestaque->idTransmissao);
-		$categoria	 	= DAOFactory::getVeiculoCategoriaDAO()->load($rowDestaque->idVeiculoCategoria);
-		$capa 			= DAOFactory::getAlbumMidiaDAO()->queryCondList(' idAlbum="'.$rowDestaque->idAlbum.'" ORDER BY ordem ASC LIMIT 1 '); 
-	
-	?>
-	
-    <a href="/veiculo/<?=$rowDestaque->alias?>/<?=$rowDestaque->idVeiculo?>" class="grid__item">
-      <div class="grid__img" style="background-image: url(<?=$URLSITE?>/assets/img/albuns/album_<?=$rowDestaque->idAlbum?>/<?=$capa[0]->file?>);"></div>
-      <div class="grid__desc">
-        <h3 class="grid__title"><?=$marca->nome?> <?=$rowDestaque->modelo?> <?=$rowDestaque->anoFabricacao?>/<?=$rowDestaque->anoModelo?>></h3>
-        <p class="grid__text"><?=$rowDestaque->conservacao?> / <?=$transmissao->tipo?> / <?=$categoria->nome?></p>
-        <div class="grid__price">
-          R$ <?=$rowDestaque->preco?>
-        </div>
-      </div>
-    </a>
-    
-    <?php } ?>
-    
+        
   </div>
 </div>
 
@@ -141,8 +92,7 @@
   <div class="container">
     <div class="col-md-8 col-md-offset-2">
       <h2>NOSSOS DIFERENCIAIS</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
-      dolor vitae accumsan. interdum hendrerit lacinia.</p>
+      <p>Profissionalismo e foco no atendimento, em um ambiente inovador e dinâmico. Confira esses e outros diferenciais que fazem da Kikoautos a sua melhor opção em novos e seminovos na região.</p>
     </div>
   </div>
 </header>
@@ -151,7 +101,7 @@
 
     <div class="media__item">
       <div class="media__img">
-        <a href="/sobre"><img src="assets/img/variedade.png" alt="Variedade de marcas"></a>
+        <a href="/sobre#veriedade"><img src="/assets/img/variedade.png" alt="Variedade de marcas"></a>
       </div>
        <div class="media__desc">
          <h4 class="media__title">Variedade de<br>marcas</h4>
@@ -160,7 +110,7 @@
 
     <div class="media__item">
       <div class="media__img">
-        <a href="/sobre"><img src="assets/img/negociacao.png" alt="Negociação facilitada"></a>
+        <a href="/sobre#negociacao"><img src="/assets/img/negociacao.png" alt="Negociação facilitada"></a>
       </div>
       <div class="media__desc">
         <h4 class="media__title">Negociação<br>facilitada</h4>
@@ -169,7 +119,7 @@
 
     <div class="media__item">
       <div class="media__img">
-        <a href="/sobre"><img src="assets/img/certificacao.png" alt="Certificação de blindados"></a>
+        <a href="/sobre#certificacao"><img src="/assets/img/certificacao.png" alt="Certificação de blindados"></a>
       </div>
       <div class="media__desc">
         <h4 class="media__title">Certificação de<br>blindados</h4>
@@ -178,7 +128,7 @@
 
     <div class="media__item">
       <div class="media__img">
-        <a href="/sobre"><img src="assets/img/estrutura.png" alt="Estrutura Moderna"></a>
+        <a href="/sobre#estrutura"><img src="/assets/img/estrutura.png" alt="Estrutura Moderna"></a>
       </div>
       <div class="media__desc">
         <h4 class="media__title">Estrutura<br>Moderna</h4>
@@ -191,99 +141,37 @@
 <a href="/sobre" class="button button--huge button--arrow">SAIBA MAIS</a>
 </section>
 
-<section class="section section--white">
-<header class="section__header">
-  <div class="container">
-    <div class="col-md-8 col-md-offset-2">
-      <h2>SERVIÇOS</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
-      dolor vitae accumsan. interdum hendrerit lacinia. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor
-      at tellus feugiat congue quis ut nunc. Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
-    </div>
-  </div>        
-</header>
 
-<div class="section__content section__content--top">
-  <div class="media media--horizontal media--full">
-  
-    <a href="/financiamento" class="media__item">
-      <div class="media__img" style="background-image: url(assets/img/p1.jpg);"></div>
-      <div class="media__desc media__desc--gray">
-        <h4 class="media__title">FINANCIAMENTO</h4>
-      </div>
-    </a>
-  
-    <a href="/consorcio" class="media__item">
-      <div class="media__img" style="background-image: url(assets/img/p2.jpg);"></div>
-      <div class="media__desc media__desc--red">
-        <h4 class="media__title">CONSÓRCIO</h4>
-      </div>
-    </a>
-  
-    <a href="/consignado" class="media__item">
-      <div class="media__img" style="background-image: url(assets/img/p3.jpg);"></div>
-      <div class="media__desc media__desc--blue">
-        <h4 class="media__title">VENDA SEU CARRO</h4>
-      </div>
-    </a>
-  
-  </div>
-</div>
-</section>
+<?php
 
-<section class="section newsletter">
-<header class="section__header">
-  <div class="container">
-    <div class="col-md-8 col-md-offset-2">
-      <h2>ASSINE NOSSO NEWSLETTER</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
-      dolor vitae accumsan. interdum hendrerit lacinia.</p>
-    </div>        
-  </div>
-</header>
+	/*
+	* Incluse Newsletter
+	*	
+	*/
+	
+	include_once('include/section-servicos.phtml');	
 
-<div class="k-container">
-  <div class="section__content">
-    <form class="form form--inline" id="formNewsletter">
-      <div class="form__control">
-        <input type="text" class="input" placeholder="NOME COMPLETO" name="nome">
-        <span class="form__error">*</span>
-      </div>
+?>
 
-      <div class="form__control">
-        <input type="email" class="input" placeholder="E-MAIL" name="email">
-        <span class="form__error">*</span>
-      </div>
+<?php
 
-      <div class="form__control">
-        <button type="submit" class="button button--arrow button--large">cadastrar</button>
-      </div>
-    </form>
+	/*
+	* Incluse Newsletter
+	*	
+	*/
+	
+	include_once('include/section-newsletter.phtml');	
 
-    <small class="newsletter__small">
-       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
-      ipsum dolor sit amet, consectetur adipiscing elit.
-    </small>
-  </div>
-</div>
-</section>
+?>
 
-<section class="section section--white">
-<header class="section__header">
-  <div class="container">
-    <div class="col-md-8 col-md-offset-2">
-      <h2>KIKOAUTOS NO INSTAGRAM</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
-      dolor vitae accumsan. interdum hendrerit lacinia.</p>
-    </div>
-  </div>
-</header>
+<?php
 
-<div class="section__content">
-  <div id="instafeed" class="instafeed"></div>
-</div>
+	/*
+	* Incluse Newsletter
+	*	
+	*/
+	
+	include_once('include/section-instagram.phtml');	
 
-<a hreft="https://www.instagram.com/kikoautos" class="instafeed__link" target="_blank">
-   https://www.instagram.com/kikoautos
-</a>
-</section>
+?>
+

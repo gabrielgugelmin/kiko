@@ -180,7 +180,7 @@ $(function() {
       get: 'user',
       userId: '248226773',
       clientId: '604a50aa8fab404f9705ed4b7dd7ad17',
-      accessToken: '248226773.604a50a.403e75a180134bd9b810099ef51e38ef',
+      accessToken: '248226773.604a50a.440ecacf5bd84a528dd3f0b334ddcf87',
       limit: 7,
       resolution: 'standard_resolution',
       template: '<li class="instafeed__item" style="background-image: url({{image}});"><a href="{{link}}" target="_blank"><div class="instafeed__info"><span>{{likes}}</span><span>{{comments}}</span></div></a></li>',
@@ -268,22 +268,24 @@ $(function() {
     errorPlacement: function (error, element) {
       return true;
     },
-    submitHandler: function () {
-      alert('sucesso');
-      form.submit();
-      // lógica para sucesso do formulário
-      /* var dados = $(form).serialize();
-
-      $.ajax({
+    submitHandler: function (form, e) {
+      
+      e.preventDefault();
+	  $('.form__control').removeClass('form__control--error');
+	  
+      $formNewsletter.ajaxSubmit({
+        url: "/ajax/newsletter.php",
         type: "POST",
-        url: "processa.php",
-        data: dados,
         success: function (data) {
           alert(data);
+          // Limpa o form
+          $formNewsletter.trigger("reset");
+          
+        }, error: function (data) {
+          console.log('erro', data);
         }
       });
-
-      return false; */
+      
     }
   });
 
@@ -329,22 +331,24 @@ $(function() {
     errorPlacement: function (error, element) {
       return true;
     },
-    submitHandler: function () {
-      alert('sucesso');
-      form.submit();
-      // lógica para sucesso do formulário
-      /* var dados = $(form).serialize();
-
-      $.ajax({
+    submitHandler: function (form, e) {
+      
+      e.preventDefault();
+	  $('.form__control').removeClass('form__control--error');
+	  
+      $formConsignado.ajaxSubmit({
+        url: "/ajax/consignado.php",
         type: "POST",
-        url: "processa.php",
-        data: dados,
         success: function (data) {
-          alert(data);
+          alert('Mensagem enviada com sucesso.');
+          // Limpa o form
+          $formConsignado.trigger("reset");
+          
+        }, error: function (data) {
+          console.log('erro', data);
         }
       });
 
-      return false; */
     }
   });
 
@@ -394,22 +398,23 @@ $(function() {
     errorPlacement: function (error, element) {
       return true;
     },
-    submitHandler: function () {
-      alert('sucesso');
-      form.submit();
-      // lógica para sucesso do formulário
-      /* var dados = $(form).serialize();
-
-      $.ajax({
+    submitHandler: function (form, e) {
+      
+      e.preventDefault();
+	  $('.form__control').removeClass('form__control--error');
+	  
+      $formFinanciamento.ajaxSubmit({
+        url: "/ajax/financiar.php",
         type: "POST",
-        url: "processa.php",
-        data: dados,
         success: function (data) {
-          alert(data);
+          alert('Mensagem enviada com sucesso.');
+          // Limpa o form
+          $formFinanciamento.trigger("reset");
+          
+        }, error: function (data) {
+          console.log('erro', data);
         }
       });
-
-      return false; */
     }
   });
 
@@ -446,7 +451,8 @@ $(function() {
     submitHandler: function (form, e) {
       
       e.preventDefault();
-
+	  $('.form__control').removeClass('form__control--error');
+	  
       $formContato.ajaxSubmit({
         url: "/ajax/contato.php",
         type: "POST",
@@ -454,52 +460,15 @@ $(function() {
           alert('Mensagem enviada com sucesso.');
           // Limpa o form
           $formContato.trigger("reset");
-          $('input, textarea').removeClass('form__control--error');
+          
         }, error: function (data) {
           console.log('erro', data);
         }
       });
+
     }
   });
 
-	/* FORM CONTATO */
-/*
-	$('#formContato').submit(function(e){ 
-	    
-	    e.preventDefault();
-	    var qtdErro = 0;
-	
-	    	$(this).find('[data-validate=true]').each(function() {
-				var value = $.trim($(this).find('input, textarea').val());
-				if(!value.length > 0){
-					$(this).addClass('form__control--error');
-					qtdErro++;
-				}else{
-					$(this).removeClass('form__control--error');
-				}
-			}); 
-			
-			if(qtdErro == 0){
-				return $.ajax({
-					type: "POST",
-					url: "/ajax/contato.php",
-					data: $(this).serialize(),
-					success: function(data) {
-					if (data === "success") {
-						alert('Mensagem enviada com sucesso.');
-			 			// Limpa o form
-			 			$('#formContato').trigger("reset");
-					} else {
-					  alert('Erro ao tentar enviar mensagem: '+data);
-					}
-					}
-				});
-			}else{
-				alert('Erro ao tentar enviar mensagem. Tente novamente.');
-			}
-	
-	});
-*/
 
   $formProposta.validate({
     rules: {
@@ -531,22 +500,24 @@ $(function() {
     errorPlacement: function (error, element) {
       return true;
     },
-    submitHandler: function () {
-      alert('sucesso');
-      form.submit();
-      // lógica para sucesso do formulário
-      /* var dados = $(form).serialize();
-
-      $.ajax({
+    submitHandler: function (form, e) {
+      
+      e.preventDefault();
+	  $('.form__control').removeClass('form__control--error');
+	  
+      $formProposta.ajaxSubmit({
+        url: "/ajax/proposta.php",
         type: "POST",
-        url: "processa.php",
-        data: dados,
         success: function (data) {
-          alert(data);
+          alert('Mensagem enviada com sucesso.');
+          // Limpa o form
+          $formProposta.trigger("reset");
+          
+        }, error: function (data) {
+          console.log('erro', data);
         }
       });
-
-      return false; */
+      
     }
   });
 
@@ -712,7 +683,7 @@ function initIsotope() {
 
 function getSeminovos() {
 
-  $.getJSON('http://' + window.location.host + "/assets/json/showroom.php", function (data) {
+  $.getJSON('https://' + window.location.host + "/assets/json/showroom-seminovos.php", function (data) {
 
   })
     .fail(function (data) {
@@ -721,15 +692,15 @@ function getSeminovos() {
       $elementos = [];
 
       $.each(data, function (index, element) {
-
+	  	
         if (element.modelo != '') {
-          console.log(element);
+          //console.log(element);
 
           var blindado = (element.blindado == 'sim') ? 'grid__item--blindado' : '';
           var seminovo = (element.conservacao == 'seminovo') ? 'grid__item--seminovo' : '';
           var novo = (element.conservacao == 'novo') ? 'grid__item--novo' : '';
 
-          var $box = '<a href="/veiculo/' + element.alias + '/' + element.idVeiculo + '" class="grid__item ' + blindado + ' ' + seminovo + ' ' + novo + ' ' + element.idMarca + ' ' + element.modelo + '" data-valor="' + element.preco + '" data-ano="' + element.anoModelo + '">' +
+          var $box = '<a title="'+ element.idMarca + ' ' + element.modelo + '" href="/veiculo/' + element.alias + '/' + element.idVeiculo + '" class="grid__item ' + blindado + ' ' + seminovo + ' ' + novo + ' ' + element.idMarca + ' ' + element.alias + '" data-valor="' + element.preco + '" data-ano="' + element.anoModelo + '">' +
             '<div class="grid__img" style="background-image: url(/assets/img/albuns/album_' + element.idAlbum + '/' + element.capa + ');"></div>' +
             '<div class="grid__desc">' +
             '<h3 class="grid__title">' + element.idMarca + ' ' + element.modelo + ' ' + element.anoFabricacao + '/' + element.anoModelo + '</h3>' +
@@ -741,7 +712,7 @@ function getSeminovos() {
 
         } else {
 
-          var $box = '<h3>Nada por aqui. <a href="./">Clique para voltar.</a></h3><br>';
+          var $box = '<p class="text-center">Nenhum veículo em destaque! Veja <a href="/estoque">nosso estoque completo</a>.</p> ';
         }
 
         $(".js-grid-semi").append($box);
@@ -774,7 +745,7 @@ function getProducts() {
   //Veriavel com categoria
   var idCategoria = query_string.categoria;
 
-  $.getJSON('http://'+window.location.host+"/assets/json/showroom.php", function (data) {
+  $.getJSON('https://'+window.location.host+"/assets/json/showroom.php", function (data) {
 
   })
     .fail(function (data) {
@@ -785,13 +756,13 @@ function getProducts() {
       var x = false;
       $.each(data, function (index, element) {
         
-        if (element.modelo != '') { console.log(element);
+        if (element.modelo != '') { //console.log(element);
         
           var blindado = (element.blindado=='sim') ? 'grid__item--blindado' : '';
           var seminovo = (element.conservacao=='seminovo') ? 'grid__item--seminovo' : '';
           var novo = (element.conservacao=='novo') ? 'grid__item--novo' : '';
 
-          var $box = '<a href="/veiculo/'+ element.alias +'/'+element.idVeiculo+'" class="grid__item ' + blindado + ' ' + seminovo + ' ' + novo + ' ' + element.idMarca + ' ' + element.modelo +'" data-valor="' + element.preco + '" data-ano="'+ element.anoModelo +'">' +
+          var $box = '<a title="'+ element.idMarca + ' ' + element.modelo + '" href="/veiculo/'+ element.alias +'/'+element.idVeiculo+'" class="grid__item ' + blindado + ' ' + seminovo + ' ' + novo + ' ' + element.idMarca + ' ' + element.alias +'" data-valor="' + element.preco + '" data-ano="'+ element.anoModelo +'">' +
             '<div class="grid__img" style="background-image: url(/assets/img/albuns/album_'+ element.idAlbum +'/'+ element.capa +');"></div>' +
             '<div class="grid__desc">' +
               '<h3 class="grid__title">' + element.idMarca + ' ' + element.modelo + ' ' + element.anoFabricacao +'/'+ element.anoModelo + '</h3>' +
@@ -850,3 +821,29 @@ function checkWindowWidth() {
 
   return size;
 }
+
+
+function PrintElem(elem)
+{
+    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+    mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+    mywindow.document.write('</head><body >');
+    //mywindow.document.write('<h1 style="margin-top: 0; margin-bottom: 0;">' + document.title  + '</h1>');
+    $("#gruposAbertos, .section__content").css('padding-top', 0);
+  
+    mywindow.document.write($("#gruposAbertos").prepend('<h1 style="margin-top: 0; margin-bottom: 0;">' + document.title + '</h1>'));
+    mywindow.document.write($("#gruposAbertos").html());
+
+    //mywindow.document.write(document.getElementById(elem).innerHTML);
+    mywindow.document.write('</body></html>');
+
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10*/
+
+    mywindow.print();
+    mywindow.close();
+
+    return true;
+}
+

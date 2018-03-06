@@ -9,11 +9,22 @@
  * @link http://www.KikoAutos.com.br
 */
 
+//Inicia sessions
+session_start();
+
+/**
+ * Cria session para usuario logado
+ *
+ */
+if(!isset($_SESSION['adminId'])){
+	//die();
+	header('Location: https://kikoautos.com.br/index.html');
+}
+
 //Verifica existencia de arquivo de conexao
 if(!file_exists('templates/class/dao/sql/ConnectionProperty.class.php')){ header('Location: install.php'); }
 
-//Inicia sessions
-session_start();
+
 
 require_once('application/include_dao.php');
 
@@ -21,6 +32,9 @@ require_once('application/include_dao.php');
  * @var mixed $transaction Cria nova instância da classe
  */
 $transaction = new Transaction();
+
+
+
 
 
 /**
@@ -35,13 +49,6 @@ include_once('core/core.php');
 <head>
 	<meta charset="UTF-8">
 	<title><?=$siteTitle?></title>
-	
-	<!-- Og -->
-    <meta property="og:title" content="<?=$siteTitle?>"/>
-	<meta property="og:description" content="<?=$siteDescription?>"/>
-	<meta property="og:image" content="<?=$siteLogo?>"/>
-	<meta property="og:url" content="<?=$siteUrl?>"/>
-	<meta property="og:site_name" content="<?=$siteTitle?>"/>
     
     <!-- Metas -->
 <!-- 	<meta name="google-site-verification" content="" /> -->
@@ -50,28 +57,36 @@ include_once('core/core.php');
     <meta name="author" content="Inffus WEB">
     
     
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?=$URLSITE?>/assets/img/favicons/apple-touch-icon-57x57.png" />
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?=$URLSITE?>/assets/img/favicons/apple-touch-icon-114x114.png" />
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?=$URLSITE?>/assets/img/favicons/apple-touch-icon-72x72.png" />
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?=$URLSITE?>/assets/img/favicons/apple-touch-icon-144x144.png" />
-	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="<?=$URLSITE?>/assets/img/favicons/apple-touch-icon-60x60.png" />
-	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="<?=$URLSITE?>/assets/img/favicons/apple-touch-icon-120x120.png" />
-	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="<?=$URLSITE?>/assets/img/favicons/apple-touch-icon-76x76.png" />
-	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="<?=$URLSITE?>/assets/img/favicons/apple-touch-icon-152x152.png" />
-	<link rel="icon" type="image/png" href="<?=$URLSITE?>/assets/img/favicons/favicon-196x196.png" sizes="196x196" />
-	<link rel="icon" type="image/png" href="<?=$URLSITE?>/assets/img/favicons/favicon-96x96.png" sizes="96x96" />
-	<link rel="icon" type="image/png" href="<?=$URLSITE?>/assets/img/favicons/favicon-32x32.png" sizes="32x32" />
-	<link rel="icon" type="image/png" href="<?=$URLSITE?>/assets/img/favicons/favicon-16x16.png" sizes="16x16" />
-	<link rel="icon" type="image/png" href="<?=$URLSITE?>/assets/img/favicons/favicon-128.png" sizes="128x128" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?=$URLSITE?>/assets/img/favicon/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?=$URLSITE?>/assets/img/favicon/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?=$URLSITE?>/assets/img/favicon/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?=$URLSITE?>/assets/img/favicon/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="<?=$URLSITE?>/assets/img/favicon/apple-touch-icon-60x60.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="<?=$URLSITE?>/assets/img/favicon/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="<?=$URLSITE?>/assets/img/favicon/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="<?=$URLSITE?>/assets/img/favicon/apple-touch-icon-152x152.png" />
+	<link rel="icon" type="image/png" href="<?=$URLSITE?>/assets/img/favicon/favicon-196x196.png" sizes="196x196" />
+	<link rel="icon" type="image/png" href="<?=$URLSITE?>/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/png" href="<?=$URLSITE?>/assets/img/favicon/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="<?=$URLSITE?>/assets/img/favicon/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="<?=$URLSITE?>/assets/img/favicon/favicon-128.png" sizes="128x128" />
 	<meta name="application-name" content="&nbsp;"/>
 	<meta name="msapplication-TileColor" content="#FFFFFF" />
-	<meta name="msapplication-TileImage" content="<?=$URLSITE?>/assets/img/favicons/mstile-144x144.png" />
-	<meta name="msapplication-square70x70logo" content="<?=$URLSITE?>/assets/img/favicons/mstile-70x70.png" />
-	<meta name="msapplication-square150x150logo" content="<?=$URLSITE?>/assets/img/favicons/mstile-150x150.png" />
-	<meta name="msapplication-wide310x150logo" content="<?=$URLSITE?>/assets/img/favicons/mstile-310x150.png" />
-	<meta name="msapplication-square310x310logo" content="<?=$URLSITE?>/assets/img/favicons/mstile-310x310.png" />
+	<meta name="msapplication-TileImage" content="<?=$URLSITE?>/assets/img/favicon/mstile-144x144.png" />
+	<meta name="msapplication-square70x70logo" content="<?=$URLSITE?>/assets/img/favicon/mstile-70x70.png" />
+	<meta name="msapplication-square150x150logo" content="<?=$URLSITE?>/assets/img/favicon/mstile-150x150.png" />
+	<meta name="msapplication-wide310x150logo" content="<?=$URLSITE?>/assets/img/favicon/mstile-310x150.png" />
+	<meta name="msapplication-square310x310logo" content="<?=$URLSITE?>/assets/img/favicon/mstile-310x310.png" />
     
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	
+	<!-- Og -->
+    <meta property="og:title" content="<?=$siteTitle?>"/>
+	<meta property="og:description" content="<?=$siteDescription?>"/>
+	<?=$metaImages?>
+	<meta property="og:url" content="<?=$siteUrl?>"/>
+	<meta property="og:site_name" content="<?=$siteTitle?>"/>
 	
 	<!-- CSS -->
 	<link rel="stylesheet" href="/assets/css/normalize.min.css">
@@ -163,7 +178,6 @@ include_once('core/core.php');
 
 	<?php if($siteAnalytics!=''){ ?>
 	
-<!--
 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -174,7 +188,6 @@ include_once('core/core.php');
 		  ga('send', 'pageview');
 		
 		</script>
--->
 	
 	<?php } ?>
 	

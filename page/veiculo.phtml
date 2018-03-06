@@ -6,9 +6,11 @@
     <li>
       <a href="/estoque">ESTOQUE</a>
     </li>
+<!--
     <li>
       <a href="/estoque?<?=$veiculo[0]->conservacao?>"><?=strtoupper($veiculo[0]->conservacao)?></a>
     </li>
+-->
     <li class="active"><?=strtoupper($marca->nome)?> <?=strtoupper($veiculo[0]->modelo)?></li>
   </ol>
   </div>
@@ -23,7 +25,22 @@
            <?=$marca->nome?> <?=$veiculo[0]->modelo?>
         </h2>
 
-        <p><?=$veiculo[0]->observacoes?></p>
+        <p>
+	    <?php
+	    
+	    if($veiculo[0]->observacoes==''){
+		    
+		    echo 'Seu carro novo esta esperando por você! Não perca esta oportunidade: '.$marca->nome.' '.$veiculo[0]->modelo.', modelo '.$veiculo[0]->anoFabricacao.'/'
+		    .$veiculo[0]->anoModelo.', cor '.$cor->nome.', com '.$veiculo[0]->km.'km por apenas R$ '.$veiculo[0]->preco.' aceitamos seu usado na troca.';
+		    
+		    
+	    }else{
+		    
+		    echo($veiculo[0]->observacoes);
+	    }    
+	        
+	        
+        ?></p>
         
       </div>
     </div>
@@ -33,15 +50,26 @@
       <div class="col-md-8">
         <div class="veiculo-slider js-slider-veiculo">
 	      
-	      <?php for($i=0;$i<count($album);$i++){  ?>  
-          	<div class="veiculo-slider__item" data-fancybox="gallery" href="<?=$URLSITE?>/assets/img/albuns/album_<?=$album[$i]->idAlbum?>/<?=$album[$i]->file?>" style="background-image: url(<?=$URLSITE?>/assets/img/albuns/album_<?=$album[$i]->idAlbum?>/<?=$album[$i]->file?>);"></div>
+	      <?php 
+		      
+		      for($i=0;$i<count($album);$i++){  
+		      if($album[$i]->nome=='') $textAlt = ''.$marca->nome.' '.$veiculo[0]->modelo; else $textAlt = $album[$i]->nome;
+		      
+	      ?>  
+          	<div title="<?=$textAlt?>" class="veiculo-slider__item" data-fancybox="gallery" href="<?=$URLSITE?>/assets/img/albuns/album_<?=$album[$i]->idAlbum?>/<?=$album[$i]->file?>" style="background-image: url(<?=$URLSITE?>/assets/img/albuns/album_<?=$album[$i]->idAlbum?>/<?=$album[$i]->file?>);"></div>
 		  <?php } ?>
           
         </div>
 
         <div class="veiculo-slider-nav js-slider-veiculo-nav">
-	      <?php for($i=0;$i<count($album);$i++){  ?>  
-          <div class="veiculo-slider-nav__item" style="background-image: url(<?=$URLSITE?>/assets/img/albuns/album_<?=$album[$i]->idAlbum?>/<?=$album[$i]->file?>);"></div>
+	      <?php 
+		      
+		      for($i=0;$i<count($album);$i++){  
+			      
+			      if($album[$i]->nome=='') $textAlt = ''.$marca->nome.' '.$veiculo[0]->modelo; else $textAlt = $album[$i]->nome;
+		      ?>  
+          <div title="<?=$textAlt?>" class="veiculo-slider-nav__item" style="background-image: url(<?=$URLSITE?>/assets/img/albuns/album_<?=$album[$i]->idAlbum?>/<?=$album[$i]->file?>);"></div>
+          
           <?php } ?>
         </div>
       </div>
@@ -78,7 +106,7 @@
 				<?php if($veiculo[0]->farois!=''){ ?><li>Faróis: <span><?=$veiculo[0]->farois?></span></li><?php } ?>
 				<?php if($veiculo[0]->rodas!=''){ ?><li>Rodas: <span><?=$veiculo[0]->rodas?></span></li><?php } ?>
 				<?php if($sensor->tipo!=''){ ?><li>Sensor de estacionamento: <span><?=$sensor->tipo?></span></li><?php } ?>
-				<?php if($combustivel->tipo!=''){ ?><li>Combustível: <span><?=$combustivel->tipo?></span></li><?php } ?>
+				
 				<?php if($veiculo[0]->bluetooth=='sim'){ ?><li>Bluetooth: <span><?=strtoupper($veiculo[0]->bluetooth)?></span></li><?php } ?>
 				<?php if($veiculo[0]->tetoSolar=='sim' or $veiculo[0]->tetoSolar=='semipanoramico'){ ?><li>Teto Solar: <span><?=strtoupper($veiculo[0]->tetoSolar)?></span></li><?php } ?>
 				<?php if($veiculo[0]->conversivel=='sim'){ ?><li>Conversível: <span><?=strtoupper($veiculo[0]->conversivel)?></span></li><?php } ?>
@@ -104,8 +132,7 @@
   <div class="container">
     <div class="col-md-8 col-md-offset-2">
       <h2>FAÇA SUA PROPOSTA</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc.
-        Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+      <p>Deixe seus dados, selecione sua forma de pagamento ideal e deixe sua proposta detalhando o máximo possível sobre sua ideia de negócio.</p>
     </div>
   </div>
 </header>
@@ -114,6 +141,9 @@
     <form class="form" action="" id="formProposta">
       <div class="row">
         <div class="col-md-4">
+	        
+	      <input type="hidden" class="input" name="idVeiculo" value="<?=$veiculo[0]->idVeiculo?>">
+	      <input type="hidden" class="input" name="nomeVeiculo" value="<?=$marca->nome?> <?=$veiculo[0]->modelo?> - <?=$veiculo[0]->anoFabricacao?>/<?=$veiculo[0]->anoModelo?> - R$ <?=$veiculo[0]->preco?>">
 
           <div class="form__control">
             <input type="text" class="input" placeholder="NOME" name="nome">
@@ -133,8 +163,11 @@
           <div class="form__control form__control--select">
             <select class="input" name="formas_pagamento" id="formas_pagamento">
               <option value="0" disabled selected>FORMAS DE PAGAMENTO</option>
-              <option value="1">PAGAMENTO 1</option>
-              <option value="2">PAGAMENTO 2</option>
+              <option value="Pagamento à vista">Pagamento à vista</option>
+              <option value="Financiamento">Financiamento</option>
+              <option value="Consórcio">Consórcio</option>
+              <option value="Meu veículo no negócio">Meu veículo no negócio</option>
+              <option value="Outro">Outro</option>
             </select>
           </div>
 
@@ -148,7 +181,7 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form__control">
-            <input type="checkbox" id="novidades_email" />
+            <input type="checkbox" name="newsletter" value="1" id="novidades_email" />
             <label for="novidades_email">Receber novidades por e-mail</label>
           </div>
         </div>
@@ -172,182 +205,80 @@
 <header class="section__header">
   <div class="container">
     <div class="col-md-10 col-md-offset-1">
-      <h2>OU CONTINUE NAVEGANDO</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
-      dolor vitae accumsan.</p>
+      <h2>Veja outros modelos similares</h2>
     </div>
   </div>
 </header>
-<div class="section__content">
+<div class="section__content section__content--top">
 
   <div class="grid">
-    <a href="#!" class="grid__item">
-      <div class="grid__img" style="background-image: url(/assets/img/carros/c1.jpg);"></div>
-      <div class="grid__desc">
-        <h3 class="grid__title">Toyota Hilux 2011/2011</h3>
-        <p class="grid__text">seminovo / Automático / pickup</p>
-        <div class="grid__price">R$ 106.990,00</div>
-      </div>
-    </a>
 
-    <a href="#!" class="grid__item">
-      <div class="grid__img" style="background-image: url(/assets/img/carros/c1.jpg);"></div>
+	
+	<?php
+	//Seleciona veciculos destacados
+	for($re=0;$re<count($veiculosRelacionados);$re++){ 
+		
+		$rowRelacionado = $veiculosRelacionados[$re]; 	
+		
+		$marca 			= DAOFactory::getMarcaDAO()->load($rowRelacionado->idMarca);
+		$transmissao 	= DAOFactory::getTransmissaoDAO()->load($rowRelacionado->idTransmissao);
+		$categoria	 	= DAOFactory::getVeiculoCategoriaDAO()->load($rowRelacionado->idVeiculoCategoria);
+		$capa 			= DAOFactory::getAlbumMidiaDAO()->queryCondList(' idAlbum="'.$rowRelacionado->idAlbum.'" ORDER BY ordem ASC LIMIT 1 '); 
+	
+	?>
+	
+    <a href="/veiculo/<?=$rowRelacionado->alias?>/<?=$rowRelacionado->idVeiculo?>" class="grid__item">
+      <div class="grid__img" style="background-image: url(<?=$URLSITE?>/assets/img/albuns/album_<?=$rowRelacionado->idAlbum?>/<?=$capa[0]->file?>);"></div>
       <div class="grid__desc">
-        <h3 class="grid__title">Toyota Hilux 2011/2011</h3>
-        <p class="grid__text">seminovo / Automático / pickup</p>
-        <div class="grid__price">R$ 106.990,00</div>
+        <h3 class="grid__title"><?=$marca->nome?> <?=$rowRelacionado->modelo?> <?=$rowRelacionado->anoFabricacao?>/<?=$rowRelacionado->anoModelo?></h3>
+        <p class="grid__text"><?=$rowRelacionado->conservacao?> / <?=$transmissao->tipo?> / <?=$categoria->nome?></p>
+        <div class="grid__price">
+          R$ <?=$rowRelacionado->preco?>
+        </div>
       </div>
     </a>
+    
+    <?php } ?>
 
-    <a href="#!" class="grid__item">
-      <div class="grid__img" style="background-image: url(/assets/img/carros/c1.jpg);"></div>
-      <div class="grid__desc">
-        <h3 class="grid__title">Toyota Hilux 2011/2011</h3>
-        <p class="grid__text">seminovo / Automático / pickup</p>
-        <div class="grid__price">R$ 106.990,00</div>
-      </div>
-    </a>
-
-    <a href="#!" class="grid__item">
-      <div class="grid__img" style="background-image: url(/assets/img/carros/c1.jpg);"></div>
-      <div class="grid__desc">
-        <h3 class="grid__title">Toyota Hilux 2011/2011</h3>
-        <p class="grid__text">seminovo / Automático / pickup</p>
-        <div class="grid__price">R$ 106.990,00</div>
-      </div>
-    </a>
-
-    <a href="#!" class="grid__item">
-      <div class="grid__img" style="background-image: url(/assets/img/carros/c1.jpg);"></div>
-      <div class="grid__desc">
-        <h3 class="grid__title">Toyota Hilux 2011/2011</h3>
-        <p class="grid__text">seminovo / Automático / pickup</p>
-        <div class="grid__price">R$ 106.990,00</div>
-      </div>
-    </a>
-
-    <a href="#!" class="grid__item">
-      <div class="grid__img" style="background-image: url(/assets/img/carros/c1.jpg);"></div>
-      <div class="grid__desc">
-        <h3 class="grid__title">Toyota Hilux 2011/2011</h3>
-        <p class="grid__text">seminovo / Automático / pickup</p>
-        <div class="grid__price">R$ 106.990,00</div>
-      </div>
-    </a>
-
-    <a href="#!" class="grid__item">
-      <div class="grid__img" style="background-image: url(/assets/img/carros/c1.jpg);"></div>
-      <div class="grid__desc">
-        <h3 class="grid__title">Toyota Hilux 2011/2011</h3>
-        <p class="grid__text">seminovo / Automático / pickup</p>
-        <div class="grid__price">R$ 106.990,00</div>
-      </div>
-    </a>
-
-    <a href="#!" class="grid__item">
-      <div class="grid__img" style="background-image: url(/assets/img/carros/c1.jpg);"></div>
-      <div class="grid__desc">
-        <h3 class="grid__title">Toyota Hilux 2011/2011</h3>
-        <p class="grid__text">seminovo / Automático / pickup</p>
-        <div class="grid__price">R$ 106.990,00</div>
-      </div>
-    </a>
     
   </div>
 </div>
 
-<footer class="grid__footer">
-  <div class="container"></div>
-</footer>
-
 
 </section>
 
-<section class="section section--white section--padding-bottom">
-<header class="section__header">
-  <div class="container">
-    <div class="col-md-8 col-md-offset-2">
-      <h2>SERVIÇOS</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-  </div>
-</header>
-</section>
-
-<section>
-<div class="media media--horizontal media--full">
-  <a href="/financiamento" class="media__item">
-    <div class="media__img" style="background-image: url(/assets/img/p1.jpg);"></div>
-    <div class="media__desc media__desc--gray">
-      <h4 class="media__title">FINANCIAMENTO</h4>
-    </div>
-  </a>
-
-  <a href="/consorcio" class="media__item">
-    <div class="media__img" style="background-image: url(/assets/img/p2.jpg);"></div>
-    <div class="media__desc media__desc--red">
-      <h4 class="media__title">CONSÓRCIO</h4>
-    </div>
-  </a>
 
 
 
-</div>
-</section>
+<?php
 
-<section class="section newsletter">
-<header class="section__header">
-  <div class="container">
-    <div class="col-md-8 col-md-offset-2">
-      <h2>ASSINE NOSSO NEWSLETTER</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc.
-        Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
-    </div>
-  </div>
-</header>
+	/*
+	* Incluse Newsletter
+	*	
+	*/
+	
+	include_once('include/section-servicos.phtml');	
 
-<div class="k-container">
-  <div class="section__content">
-    <form class="form form--inline" id="formNewsletter">
-      <div class="form__control">
-        <input type="text" class="input" placeholder="NOME COMPLETO" name="nome">
-        <span class="form__error">*</span>
-      </div>
+?>
 
-      <div class="form__control">
-        <input type="email" class="input" placeholder="E-MAIL" name="email">
-        <span class="form__error">*</span>
-      </div>
+<?php
 
-      <div class="form__control">
-        <button type="submit" class="button button--arrow button--large">cadastrar</button>
-      </div>
-    </form>
+	/*
+	* Incluse Newsletter
+	*	
+	*/
+	
+	include_once('include/section-newsletter.phtml');	
 
-    <small class="newsletter__small">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
-      dolor sit amet, consectetur adipiscing elit.
-    </small>
-  </div>
-</div>
-</section>
+?>
 
-<section class="section section--white">
-<header class="section__header">
-  <div class="container">
-    <div class="col-md-8 col-md-offset-2">
-      <h2>KIKOAUTOS NO INSTAGRAM</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc.
-        Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
-    </div>
-  </div>
-</header>
+<?php
 
-<div class="section__content">
-  <div id="instafeed" class="instafeed"></div>
-</div>
+	/*
+	* Incluse Newsletter
+	*	
+	*/
+	
+	include_once('include/section-instagram.phtml');	
 
-<a hreft="https://www.instagram.com/kikoautos" class="instafeed__link" target="_blank">
-  https://www.instagram.com/kikoautos
-</a>
-</section>
+?>

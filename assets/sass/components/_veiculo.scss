@@ -5,7 +5,7 @@
   }
 
   &-slider__item {
-    background-position: center center;
+    background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
     height: 280px;
@@ -17,7 +17,7 @@
     }
     
     @include media(">=desktop") {
-      height: 520px;
+      height: 465px;
 
       &::before {
         background: rgba($c-black, .2);
@@ -52,6 +52,10 @@
           opacity: 1;
         }
       }
+    }
+
+    @include media(">=wide") {
+      height: 565px;
     }
   }
 

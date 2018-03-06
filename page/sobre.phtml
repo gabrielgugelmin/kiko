@@ -3,8 +3,7 @@
           <div class="container">
             <div class="col-md-8 col-md-offset-2">
               <h2>SOBRE A KIKOAUTOS</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
-              dolor vitae accumsan.</p>
+              <p>Saiba tudo sobre nossa história de sucesso e inovação que temos construído ao longo de 30 anos de muito trabalho e dedicação.</p>
             </div>
           </div>
         </header>
@@ -13,11 +12,11 @@
             <div class="sobre">
               <div class="sobre__column">
                 <p>
-                   A KikoAutos tem como foco oferecer a seus clientes serviços agregados, não apenas um excelente automóvel 0KM ou seminovo.
+                  A Kikoautos tem como foco oferecer a seus clientes serviços agregados, não apenas um excelente automóvel 0KM ou seminovo.
                   Por isso, serve como vitrine para o mercado e se destaca pelo seu atendimento de qualidade, consultores a ltamente treinados
-                  e infraestrutura moderna e diferenciada.
-                  <br>Desde 1988 é pioneira em Taubaté e região, investindo em tecnologia e na força do
-                  mercado digital como tendência e futuro para o comércio automotivo.
+                  e infraestrutura moderna e diferenciada.</p>
+                <p>  
+                  Desde 1988 é pioneira em Taubaté e região, investindo em tecnologia e na força do mercado digital como tendência e futuro para o comércio automotivo.
                 </p> 
 
                 <h3 class="section__h3">Missão e Valores</h3>
@@ -32,9 +31,9 @@
               </div>
               <div class="sobre__column">
                 <div class="sobre-slider js-slider-sobre">
-                  <div class="sobre-slider__item" style="background-image:url(assets/img/sobre.jpg)"></div>
-                  <div class="sobre-slider__item" style="background-image:url(assets/img/sobre.jpg)"></div>
-                  <div class="sobre-slider__item" style="background-image:url(assets/img/sobre.jpg)"></div>
+	              <?php for($i=0;$i<count($bannerSobre);$i++){  ?>  
+                  <div class="sobre-slider__item" style="background-image:url(<?=$URLSITE?>/assets/img/albuns/album_<?=$bannerSobre[$i]->idAlbum?>/<?=$bannerSobre[$i]->file?>)"></div>
+                  <?php } ?>
                 </div>
               </div>
             </div>
@@ -47,8 +46,10 @@
           <div class="container">
             <div class="col-md-8 col-md-offset-2">
               <h2>HISTÓRIA</h2>
+<!--
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
               dolor vitae accumsan.</p>
+-->
             </div>
           </div>
         </header>
@@ -57,30 +58,26 @@
             <div class="historia-slider js-slider-historia">
               <div class="historia-slider__item">
                 <h4>1990</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper
-                  ac dolor vitae accumsan.</p>
+                <p>Após uma especialização internacional para estudar o mercado, surge a Kiko Automóveis com uma estrutura ainda maior e moderna, oferecendo um serviço de qualidade em Taubaté.</p>
               </div>
 
               <div class="historia-slider__item">
                 <h4>1994</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper
-                  ac dolor vitae accumsan.</p>
+                <p>Com a abertura do mercado nacional, houve a expansão da compra e venda de veículos com mais opções de marcas.</p>
               </div>
               <div class="historia-slider__item">
                 <h4>2000</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
-                dolor vitae accumsan. interdum hendrerit lacinia.</p>
+                <p>Com o avanço tecnológico, principalmente a Internet, e munidos de informação, nos tornamos competitivos no mercado e investimos em especialização profissional além de investir no mercado digital.</p>
               </div>
 
               <div class="historia-slider__item">
                 <h4>2006</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis.</p>
+                <p>O primeiro site da Kiko surge, juntando todo nosso estoque em uma só plataforma. A Kiko Automóveis se torna, então, a Kikoautos.</p>
               </div>
 
               <div class="historia-slider__item">
                 <h4>Atualmente</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
-                dolor vitae accumsan.</p>
+                <p>Com uma nova marca e um novo conceito, investimos em uma estrutura moderna e maior para receber nossos clientes com conforto, profissionalismo e segurança.</p>
               </div>
             </div>
           </div>
@@ -92,8 +89,7 @@
           <div class="container">
             <div class="col-md-8 col-md-offset-2">
               <h2>NOSSOS DIFERENCIAIS</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper
-                ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+<!--               <p>Confira os diferenciais que fazem da Kikoautos referência regional em venda de veículos novos e seminovos.</p> -->
             </div>
           </div>
         </header>
@@ -104,7 +100,7 @@
               <div class="col-sm-4">
                 <div class="diferencial__item">
                   <img src="assets/img/variedade.png" alt="Variedade">
-                  <h4>
+                  <h4 id="variedade">
                      Variedade<br>de marcas
                   </h4>
                 </div>
@@ -112,9 +108,7 @@
               <div class="col-sm-8">
                 <div class="diferencial__item">
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
-                    dolor vitae accumsan. interdum hendrerit lacinia. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor
-                    at tellus feugiat congue quis ut nunc. Semper ac dolor vitae accumsan. interdum hendrerit lacinia.
+                    Nossa capacidade multimarcas não só para carros seminovos, mas para carros 0Km, permite com que nossos clientes tenham ampla possibilidade na hora de fazer sua escolha e tudo em um só lugar.
                   </p>
                 </div>
                 
@@ -125,7 +119,7 @@
               <div class="col-sm-4">
                 <div class="diferencial__item">
                   <img src="assets/img/negociacao.png" alt="Variedade">
-                  <h4>
+                  <h4 id="negociacao">
                      Negociação<br>facilitada
                   </h4>
                 </div>
@@ -133,9 +127,7 @@
               <div class="col-sm-8">
                 <div class="diferencial__item">
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
-                    dolor vitae accumsan. interdum hendrerit lacinia. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor
-                    at tellus feugiat congue quis ut nunc. Semper ac dolor vitae accumsan. interdum hendrerit lacinia.
+                    Antes mesmo de você perceber os documentos já estarão prontos e você já está com as chaves na mão. Isso graças a agilidade da nossa equipe especializada e às melhores alternativas para concretizar a negociação.
                   </p>
                 </div>
               </div>
@@ -145,7 +137,7 @@
               <div class="col-sm-4">
                 <div class="diferencial__item">
                   <img src="assets/img/certificacao.png" alt="Variedade">
-                  <h4>
+                  <h4 id="certificacao">
                      Certificação<br>de blindados
                   </h4>
                 </div>
@@ -153,9 +145,7 @@
               <div class="col-sm-8">
                 <div class="diferencial__item">
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
-                    dolor vitae accumsan. interdum hendrerit lacinia. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor
-                    at tellus feugiat congue quis ut nunc. Semper ac dolor vitae accumsan. interdum hendrerit lacinia.
+                    A Kikoautos possui autorização concedida pelo Exército Brasileiro para comercialização de veículos com blindagem. Provando a confiança adquirida ao longo do tempo que nos possibilita oferecer cada vez mais para nosso cliente.
                   </p>
                 </div>
               </div>
@@ -165,7 +155,7 @@
               <div class="col-sm-4">
                 <div class="diferencial__item">
                   <img src="assets/img/estrutura.png" alt="Variedade">
-                  <h4>
+                  <h4 id="estrutura">
                      Estrutura<br>Moderna
                   </h4>
                 </div>
@@ -173,9 +163,7 @@
               <div class="col-sm-8">
                 <div class="diferencial__item">
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
-                    dolor vitae accumsan. interdum hendrerit lacinia. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor
-                    at tellus feugiat congue quis ut nunc. Semper ac dolor vitae accumsan. interdum hendrerit lacinia.
+                    Nossas lojas possuem um ambiente descontraído e confortável para que você tome as melhores decisões sentindo-se em casa. Além disso a Kikoautos está modernizando suas lojas e abrindo novas unidades projetadas exclusivamente para beneficiar o negócio de revenda de veículos.
                   </p>
                 </div>
               </div>
@@ -185,39 +173,24 @@
         </div>
       </section>
 
-      <section class="section newsletter">
-        <header class="section__header">
-          <div class="container">
-            <div class="col-md-8 col-md-offset-2">
-              <h2>ASSINE NOSSO NEWSLETTER</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut
-                nunc. Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
-            </div>
-          </div>
-        </header>
+      <?php
 
-        <div class="k-container">
-          <div class="section__content">
-            <form class="form form--inline" id="formNewsletter">
-              <div class="form__control">
-                <input type="text" class="input" placeholder="NOME COMPLETO" name="nome">
-                <span class="form__error">*</span>
-              </div>
-
-              <div class="form__control">
-                <input type="email" class="input" placeholder="E-MAIL" name="email">
-                <span class="form__error">*</span>
-              </div>
-
-              <div class="form__control">
-                <button type="submit" class="button button--arrow button--large">cadastrar</button>
-              </div>
-            </form>
-
-            <small class="newsletter__small">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit.
-            </small>
-          </div>
-        </div>
-      </section>
+			/*
+			* Incluse Newsletter
+			*	
+			*/
+			
+			include_once('include/section-newsletter.phtml');	
+		
+		?>
+		
+		<?php
+		
+			/*
+			* Incluse Newsletter
+			*	
+			*/
+			
+			include_once('include/section-instagram.phtml');	
+		
+		?>

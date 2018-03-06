@@ -1,4 +1,5 @@
-<div class="media media--horizontal media--full">  
+
+	<div class="media media--horizontal media--full hidden-print">  
         <div class="media__item">
           <div class="media__img" style="background-image: url(assets/img/p2.jpg);"></div>
           <div class="media__desc media__desc--red">
@@ -7,13 +8,12 @@
         </div>
       </div>
 
-      <section class="section consorcio section--white">
+      <section class="section consorcio section--white hidden-print">
         <header class="section__header">
           <div class="container">
             <div class="col-md-8 col-md-offset-2">
               <h2>KikoAUTOS E Vinac</h2>
-              <p>Duas marcas consolidadas, unindo seus serviços para multiplicar seus sonhos. Uma parceria que traz para você a confiança
-                dos consórcios Vinac, a exclusividade KikoAutos e a credibilidade das duas grandes empresas.</p>
+              <p>Duas marcas consolidadas, unindo seus serviços para multiplicar seus sonhos. Uma parceria que traz para você a confiança dos consórcios Vinac, a exclusividade KikoAutos e a credibilidade das duas grandes empresas.</p>
             </div>
           </div>
         </header>
@@ -25,13 +25,12 @@
         </div>
       </section>
 
-      <section class="section ">
+      <section class="section hidden-print">
         <header class="section__header">
           <div class="container">
             <div class="col-md-8 col-md-offset-2">
               <h2>VANTAGENS</h2>
-              <p>Vinac Consórcios é uma das maiores administradoras de consórcios do país. Muito respeitada pela pontualidade na entrega de
-                suas cartas de crédito, pela transparência e respeito aos seus clientes.</p>
+              <p>Vinac Consórcios é uma das maiores administradoras de consórcios do país. Muito respeitada pela pontualidade na entrega de suas cartas de crédito, pela transparência e respeito aos seus clientes.</p>
             </div>
           </div>
         </header>
@@ -71,7 +70,7 @@
         </div>
       </section>
 
-      <section class="section section--white">
+      <section id="gruposAbertos" class="section section--white">
         <header class="section__header">
           <div class="container">
             <div class="col-md-8 col-md-offset-2">
@@ -82,119 +81,77 @@
         <div class="section__content">
           <div class="container">
             <div class="row">
-              <div class="col-md-6">
-                <table class="table">
-                  <caption>GRUPO 703 | 60 meses | 1ª assembleia: 26/10/2017 as 20 horas</caption>
-                  <thead>
-                    <tr>
-                      <th>VEÍCULO</th>
-                      <th>CRÉDITO</th>
-                      <th>PRESTAÇÃO</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>lorem ipsum</td>
-                      <td>R$ 34.000,00</td>
-                      <td>R$ 599</td>
-                    </tr>
-                    <tr>
-                      <td>lorem ipsum</td>
-                      <td>R$ 34.000,00</td>
-                      <td>R$ 599</td>
-                    </tr>
-                    <tr>
-                      <td>lorem ipsum</td>
-                      <td>R$ 34.000,00</td>
-                      <td>R$ 599</td>
-                    </tr>
-                    <tr>
-                      <td>lorem ipsum</td>
-                      <td>R$ 34.000,00</td>
-                      <td>R$ 599</td>
-                    </tr>
-                    <tr>
-                      <td>lorem ipsum</td>
-                      <td>R$ 34.000,00</td>
-                      <td>R$ 599</td>
-                    </tr>
-                    <tr>
-                      <td>lorem ipsum</td>
-                      <td>R$ 34.000,00</td>
-                      <td>R$ 599</td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <div class="table__action">
-                  <span>Vencimentos todo dia 10 do mês</span>
-                  <button class="button button--red button--ghost">
-                    ENTRAR NO GRUPO
-                  </button>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <table class="table">
-                  <caption>GRUPO 703 | 60 meses | 1ª assembleia: 26/10/2017 as 20 horas</caption>
-                  <thead>
-                    <tr>
-                      <th>VEÍCULO</th>
-                      <th>CRÉDITO</th>
-                      <th>PRESTAÇÃO</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>lorem ipsum</td>
-                      <td>R$ 34.000,00</td>
-                      <td>R$ 599</td>
-                    </tr>
-                    <tr>
-                      <td>lorem ipsum</td>
-                      <td>R$ 34.000,00</td>
-                      <td>R$ 599</td>
-                    </tr>
-                    <tr>
-                      <td>lorem ipsum</td>
-                      <td>R$ 34.000,00</td>
-                      <td>R$ 599</td>
-                    </tr>
-                    <tr>
-                      <td>lorem ipsum</td>
-                      <td>R$ 34.000,00</td>
-                      <td>R$ 599</td>
-                    </tr>
-                    <tr>
-                      <td>lorem ipsum</td>
-                      <td>R$ 34.000,00</td>
-                      <td>R$ 599</td>
-                    </tr>
-                    <tr>
-                      <td>lorem ipsum</td>
-                      <td>R$ 34.000,00</td>
-                      <td>R$ 599</td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <div class="table__action">
-                  <span>Vencimentos todo dia 10 do mês</span>
-                  <button class="button button--red button--ghost">
-                    ENTRAR NO GRUPO
-                  </button>
-                </div>
-              </div>
+              
+              <?php
+	            
+	            //Lista os grupos
+	            if(count($grupoConsorcio)>0){
+		            
+		          for($g=0;$g<count($grupoConsorcio);$g++){   
+	              
+	          ?>    
+              
+	              <div class="col-md-6">
+	                <table class="table">
+	                  <caption>GRUPO <?=$grupoConsorcio[$g]->grupo?> | <?=$grupoConsorcio[$g]->meses?> | <?=$grupoConsorcio[$g]->assembleia?></caption>
+	                  <thead>
+	                    <tr>
+	                      <th>VEÍCULO</th>
+	                      <th>CRÉDITO</th>
+	                      <th>PRESTAÇÃO</th>
+	                    </tr>
+	                  </thead>
+	                  <tbody>
+		                 
+		                <?php
+		              
+				              //Seleciona os veiculso do grupo
+				              $consorcio = DAOFactory::getConsorcioDAO()->queryByIdGrupoConsorcio($grupoConsorcio[$g]->idGrupoConsorcio);  
+				              
+				              for($c=0;$c<count($consorcio);$c++){ 
+				                  
+		                ?>  
+		                  
+			                    <tr>
+			                      <td><?=$consorcio[$c]->veiculo?></td>
+			                      <td>R$ <?=$consorcio[$c]->credito?></td>
+			                      <td>R$ <?=$consorcio[$c]->prestacao?></td>
+			                    </tr>
+			                    
+			                    
+			            <?php } ?>        
+	
+	                  </tbody>
+	                </table>
+	
+	                <div class="table__action hidden-print">
+	                  <span><?=$grupoConsorcio[$g]->vemcimento?></span>
+	                  <a href="/contato?grupo=<?=$grupoConsorcio[$g]->grupo?>" class="button button--red button--ghost">
+	                    ENTRAR NO GRUPO
+	                  </a>
+	                </div>
+	              </div>
+              
+              <?php
+	           	
+	           		}
+	           	}   
+	              
+	              
+	           ?>
+              
+            
             </div>
 
-            <div class="row">
+            <div class="row hidden-print">
               <div class="col-xs-12">
                 <div class="button-group">
-                  <button class="button button--ghost button--blue button--medium">
+                  <button onclick="print()" class="button button--ghost button--blue button--medium">
                     IMPRIMIR ESTA PÁGINA?
                   </button>
-                  <button class="button button--ghost button--green button--medium">
+                  <a href="/contato?ref=Tenho dúvidas sobre consórcio." class="button button--ghost button--green button--medium">
                     DÚVIDAS? FALE CONOSCO
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -210,7 +167,7 @@
         </div>
       </section>
 
-      <section class="section section--white">
+      <section class="section section--white hidden-print">
         <header class="section__header">
           <div class="container">
             <div class="col-md-8 col-md-offset-2">
@@ -220,48 +177,40 @@
           
         </header>
         <div class="media media--horizontal media--full">
-          <a href="financiamento.html" class="media__item">
-            <div class="media__img" style="background-image: url(assets/img/p1.jpg);"></div>
+          <a href="/financiamento" class="media__item">
+            <div class="media__img" style="background-image: url(/assets/img/p1.jpg);"></div>
             <div class="media__desc media__desc--gray">
               <h4 class="media__title">FINANCIAMENTO</h4>
             </div>
           </a>
+          <a href="/consignado" class="media__item">
+		      <div class="media__img" style="background-image: url(/assets/img/p3.jpg);"></div>
+		      <div class="media__desc media__desc--blue">
+		        <h4 class="media__title">VENDA SEU CARRO</h4>
+		      </div>
+		    </a>
+
         </div>
       </section>
 
-      <section class="section newsletter">
-        <header class="section__header">
-          <div class="container">
-            <div class="col-md-8 col-md-offset-2">
-              <h2>ASSINE NOSSO NEWSLETTER</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac
-                dolor vitae accumsan. interdum hendrerit lacinia.</p>
-            </div>
-          </div>          
-        </header>
-      
-        <div class="k-container">
-          <div class="section__content">
-            <form class="form form--inline" id="formNewsletter">
-              <div class="form__control">
-                <input type="text" class="input" placeholder="NOME COMPLETO" name="nome">
-                <span class="form__error">*</span>
-              </div>
-      
-              <div class="form__control">
-                <input type="email" class="input" placeholder="E-MAIL" name="email">
-                <span class="form__error">*</span>
-              </div>
-      
-              <div class="form__control">
-                <button type="submit" class="button button--arrow button--large">cadastrar</button>
-              </div>
-            </form>
-      
-            <small class="newsletter__small">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit.
-            </small>
-          </div>
-        </div>
-      </section>
+      <?php
+
+			/*
+			* Incluse Newsletter
+			*	
+			*/
+			
+			include_once('include/section-newsletter.phtml');	
+		
+		?>
+		
+		<?php
+		
+			/*
+			* Incluse Newsletter
+			*	
+			*/
+			
+			include_once('include/section-instagram.phtml');	
+		
+		?>

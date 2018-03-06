@@ -13,7 +13,7 @@
             <div class="col-md-8 col-md-offset-2">
               <h2>PREENCHA O FORMULÁRIO</h2>
               <p>Todos os campos são obrigatórios. Caso você tiver alguma dificuldade
-                <a href="contato.html" class="k-link">entre em contato</a>.</p>
+                <a href="/contato" class="k-link">entre em contato</a>.</p>
             </div>
           </div>
         </header>
@@ -62,10 +62,20 @@
                   </div>
 
                   <div class="form__control form__control--select">
-                    <select class="input" name="veiculo_interesse" id="veiculo_interesse">
+                    <select class="input" name="idVeiculo" id="veiculo_interesse">
                       <option value="0" disabled selected>VEÍCULO DE INTERESSE</option>
-                      <option value="1">Veículo 1</option>
-                      <option value="2">Veículo 2</option>
+                      
+                      <?php 
+	                      
+	                    //Seleciona veciculos destacados
+	                    if(count($veiculoAtivos)>0){
+		                    
+						for($x=0;$x<count($veiculoAtivos);$x++){ 
+					  ?>
+                      	<option value="<?=$veiculoAtivos[$x]->idVeiculo?>"><?=$veiculoAtivos[$x]->idMarca?> <?=$veiculoAtivos[$x]->modelo?> - <?=$veiculoAtivos[$x]->anoFabricacao?>/<?=$veiculoAtivos[$x]->anoModelo?> - R$ <?=$veiculoAtivos[$x]->preco?></option>
+					  
+					  <?php } } ?>
+					  
                     </select>
                   </div>
                 </div>
@@ -75,7 +85,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form__control">
-                    <input type="checkbox" id="novidades_email" />
+                    <input type="checkbox" name="newsletter" value="1" id="novidades_email" />
                     <label for="novidades_email">Receber novidades por e-mail</label>
                   </div>
                 </div>
@@ -92,48 +102,41 @@
 
       <section>
         <div class="media media--horizontal media--full">
-          <a href="consorcio.html" class="media__item">
-            <div class="media__img" style="background-image: url(assets/img/p2.jpg);"></div>
+          <a href="/consorcio" class="media__item">
+            <div class="media__img" style="background-image: url(/assets/img/p2.jpg);"></div>
             <div class="media__desc media__desc--red">
               <h4 class="media__title">CONSÓRCIO</h4>
             </div>
           </a>
+          
+          <a href="/consignado" class="media__item">
+		      <div class="media__img" style="background-image: url(/assets/img/p3.jpg);"></div>
+		      <div class="media__desc media__desc--blue">
+		        <h4 class="media__title">VENDA SEU CARRO</h4>
+		      </div>
+		    </a>
+          
         </div>
       </section>
 
-      <section class="section newsletter">
-        <header class="section__header">
-          <div class="container">
-            <div class="col-md-8 col-md-offset-2">
-              <h2>ASSINE NOSSO NEWSLETTER</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc.
-                Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
-            </div>
-          </div>
-        </header>
+     	<?php
 
-        <div class="k-container">
-          <div class="section__content">
-            <form class="form form--inline" id="formNewsletter">
-              <div class="form__control">
-                <input type="text" class="input" placeholder="NOME COMPLETO" name="nome">
-                <span class="form__error">*</span>
-              </div>
-
-              <div class="form__control">
-                <input type="email" class="input" placeholder="E-MAIL" name="email">
-                <span class="form__error">*</span>
-              </div>
-
-              <div class="form__control">
-                <button type="submit" class="button button--arrow button--large">cadastrar</button>
-              </div>
-            </form>
-
-            <small class="newsletter__small">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit.
-            </small>
-          </div>
-        </div>
-      </section>
+			/*
+			* Incluse Newsletter
+			*	
+			*/
+			
+			include_once('include/section-newsletter.phtml');	
+		
+		?>
+		
+		<?php
+		
+			/*
+			* Incluse Newsletter
+			*	
+			*/
+			
+			include_once('include/section-instagram.phtml');	
+		
+		?>
